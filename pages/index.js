@@ -1,13 +1,11 @@
 import Head from 'next/head'
-import Navbar from '../components/Navbar/Navbar'
+import Layout from '../components/Layout'
 export default function Home() {
   return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Navbar/>
-    </div>
+    <>
+      <Layout titleHead="Illich Rada">
+        <span>Hola!</span>
+      </Layout>
+    </>
   )
 }
