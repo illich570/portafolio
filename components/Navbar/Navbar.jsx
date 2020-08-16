@@ -5,6 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 
+
 // background-color: ${props => props.theme.palette.primary.main};
 
 const Navbar = withTheme(styled(Grid)`
@@ -16,6 +17,12 @@ const Navbar = withTheme(styled(Grid)`
   align-items: center;
   `
 )
+
+const LinksNavbar = styled.a`
+  color: white;
+  text-decoration: none;
+  padding: 0 1.5em;
+`
 
 export default function Nav(){
   const [showSidebar,setShowSidebar] = useState(false);
@@ -33,29 +40,34 @@ export default function Nav(){
         <h3>Illich</h3>
         </Grid>
         
-        <Grid container item xs={6} direction="row" alignItems="center" justify="center" spacing={6}>
+        <Grid item xs={6} justify="center">
           <Hidden xsDown implementation="css">
-            <Typography color="primary" variant="h5">Proyectos</Typography>
-            <Typography color="primary" variant="h5">Contacto</Typography>
-            <Typography color="primary" variant="h5">About</Typography>
+            <Grid direction="row" container justify="center">
+              <span>
+                <LinksNavbar href="#" target="_blank" rel="noopener noreferrer">Home</LinksNavbar>
+                <LinksNavbar href="#" target="_blank" rel="noopener noreferrer">Proyectos</LinksNavbar>
+                <LinksNavbar href="#" target="_blank" rel="noopener noreferrer">About</LinksNavbar>
+              </span>
+            </Grid>
           </Hidden>
           <Hidden smUp>
+          <Grid direction="row" container justify="flex-end">
             <IconButton style={{color: 'white'}} onClick={handleShowSidebar}>
             <MenuIcon/>
             </IconButton>
+            </Grid>
           </Hidden>
         </Grid>
         <Drawer anchor="right" open={showSidebar} onClose={handleShowSidebar}>
-          <Grid direction="column" justify="center" alignItems="center" style={{height: '100%', display: 'flex', padding: '1em'}}>
+          <Grid container direction="column" justify="center" alignItems="center" style={{height: '100%', display: 'flex', padding: '1em'}}>
             <Typography color="primary" variant="h5">Proyectos</Typography>
             <Typography color="primary" variant="h5">Contacto</Typography>
             <Typography color="primary" variant="h5">About</Typography>
           </Grid>
-          <Grid direction="column" justify="center" alignItems="center" style={{padding: '1em'}}>
+          <Grid container direction="column" justify="center" alignItems="center" style={{padding: '1em'}}>
             <Typography align="center" color="primary" variant="h6">Illich Rada</Typography>
           </Grid>
-          
-          </Drawer>
+        </Drawer>
     </Navbar>
   )
 }
