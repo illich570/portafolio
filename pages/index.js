@@ -1,10 +1,11 @@
-import Head from 'next/head'
 import Layout from '../components/Layout'
+import ParallaxCard from '../components/ParallaxCard/ParallaxCard';
+
 export default function Home() {
   return (
     <>
       <Layout titleHead="Illich Rada">
-        <span>Hola!</span>
+        <ParallaxCard/>
       </Layout>
     </>
   )
