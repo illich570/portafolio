@@ -23,6 +23,9 @@ const LinksNavbar = styled.a`
   text-decoration: none;
   padding: 0 1.5em;
 `
+const HeaderTitle = styled.h3`
+  color: white;
+`;
 
 export default function Nav(){
   const [showSidebar,setShowSidebar] = useState(false);
@@ -37,7 +40,7 @@ export default function Nav(){
       alignItems="center"
       >
         <Grid item xs={6}>
-        <h3>Illich</h3>
+        <HeaderTitle>Illich</HeaderTitle>
         </Grid>
         
         <Grid item xs={6} justify="center">
@@ -53,7 +56,7 @@ export default function Nav(){
           <Hidden smUp>
           <Grid direction="row" container justify="flex-end">
             <IconButton style={{color: 'white'}} onClick={handleShowSidebar}>
-            <MenuIcon/>
+            <MenuIcon style={{ fontSize: '1.7em'}}/>
             </IconButton>
             </Grid>
           </Hidden>
