@@ -5,11 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 
-
-// background-color: ${props => props.theme.palette.primary.main};
-
 const Navbar = withTheme(styled(Grid)`
-  background-color: ${props => props.theme.palette.primary.main};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -18,14 +14,14 @@ const Navbar = withTheme(styled(Grid)`
   `
 )
 
-const LinksNavbar = styled.a`
-  color: white;
+const LinksNavbar = withTheme(styled.a`
+  color: ${props => props.theme.palette.primary.main};
   text-decoration: none;
   padding: 0 1.5em;
-`
-const HeaderTitle = styled.h3`
-  color: white;
-`;
+`)
+const HeaderTitle = withTheme(styled.h2`
+  color: ${props => props.theme.palette.primary.main};
+`)
 
 export default function Nav(){
   const [showSidebar,setShowSidebar] = useState(false);
@@ -40,7 +36,7 @@ export default function Nav(){
       alignItems="center"
       >
         <Grid item xs={6}>
-        <HeaderTitle>Illich</HeaderTitle>
+        <HeaderTitle>Illich Rada</HeaderTitle>
         </Grid>
         
         <Grid item xs={6} justify="center">
@@ -55,7 +51,7 @@ export default function Nav(){
           </Hidden>
           <Hidden smUp>
           <Grid direction="row" container justify="flex-end">
-            <IconButton style={{color: 'white'}} onClick={handleShowSidebar}>
+            <IconButton color="primary" onClick={handleShowSidebar}>
             <MenuIcon style={{ fontSize: '1.7em'}}/>
             </IconButton>
             </Grid>
