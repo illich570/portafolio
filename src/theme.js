@@ -22,10 +22,7 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: [
-      'Alegreya',
-      'Poppins'
-    ].join(''),
+    fontFamily: "'Poppins','sans-serif'"
   },
 });
 
