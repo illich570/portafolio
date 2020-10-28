@@ -1,31 +1,34 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-import { Grid, withTheme, IconButton, Typography} from '@material-ui/core';
+import { styled, makeStyles } from '@material-ui/core/styles';
+import { Grid, IconButton, Typography} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 
-const Navbar = withTheme(styled(Grid)`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 4em;
-  align-items: center;
-  `
-)
+const Navbar = styled(Grid)({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  padding: '0 4em',
+  alignItems: 'center'
+})
 
-const LinksNavbar = withTheme(styled.a`
-  color: ${props => props.theme.palette.primary.main};
-  text-decoration: none;
-  padding: 0 1.5em;
-`)
-const HeaderTitle = withTheme(styled.h2`
-  color: ${props => props.theme.palette.primary.main};
-`)
+const useStyles = makeStyles((theme) => ({
+  links: {
+    color: theme.palette.primary.main,
+    textDecoration: 'none',
+    padding: '0 1.5em'
+  },
+  headerTitle:{
+    color: theme.palette.primary.main,
+  },
+  
+}))
+
 
 export default function Nav(){
   const [showSidebar,setShowSidebar] = useState(false);
-
+  const classes = useStyles();
   const handleShowSidebar = () => setShowSidebar(!showSidebar);
 
   return(
@@ -36,16 +39,16 @@ export default function Nav(){
       alignItems="center"
       >
         <Grid item xs={6}>
-        <HeaderTitle>Illich Rada</HeaderTitle>
+        <h2 className={classes.headerTitle}>Illich Rada</h2>
         </Grid>
         
         <Grid item xs={6} justify="center">
           <Hidden xsDown implementation="css">
             <Grid direction="row" container justify="center">
               <span>
-                <LinksNavbar href="#" target="_blank" rel="noopener noreferrer">Home</LinksNavbar>
-                <LinksNavbar href="#" target="_blank" rel="noopener noreferrer">Proyectos</LinksNavbar>
-                <LinksNavbar href="#" target="_blank" rel="noopener noreferrer">About</LinksNavbar>
+                <a className={classes.links}href="#" target="_blank" rel="noopener noreferrer">Proyectos</a>
+                <a className={classes.links}href="#" target="_blank" rel="noopener noreferrer">Home</a>
+                <a className={classes.links}href="#" target="_blank" rel="noopener noreferrer">About</a>
               </span>
             </Grid>
           </Hidden>
