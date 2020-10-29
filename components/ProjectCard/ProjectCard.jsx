@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.4)",
     borderRadius: '15px',
     margin: '1.5em',
-    "@media (min-width: 700px)": {
+    "@media (min-width: 900px)": {
       margin: '0 1.5em',
       marginTop: props => props.index === 1 ? '5em' : '0'
     }
