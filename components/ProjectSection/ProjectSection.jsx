@@ -34,8 +34,8 @@ export default function ProjectSection(props){
       <Grid item xs={12}>
         <Typography variant="h4" className={classes.containerTitle}>Projects</Typography>
       </Grid>
-      <Grid container xs={12} className={classes.containerCards}>
-        {test.map((element,index) => <ProjectCard index={index}/>) }
+      <Grid container item xs={12} className={classes.containerCards}>
+        {test.map((element,index) => <ProjectCard index={index} key={`abc_${index}`}/>) }
       </Grid>
     </Grid>
   )

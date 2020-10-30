@@ -56,7 +56,7 @@ export default function ProjectCard(props){
           <Typography className={classes.titleCard} variant="h5">Lorem.dev</Typography>
         </Grid>
         <Grid item xs={10} className={classes.paragraphCard}>
-          <Typography variant="p">
+          <Typography variant="body2">
             Lorem ipsum dolor sit amet, 
             consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 

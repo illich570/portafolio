@@ -42,7 +42,7 @@ export default function Nav(){
         <h2 className={classes.headerTitle}>Illich Rada</h2>
         </Grid>
         
-        <Grid item xs={6} justify="center">
+        <Grid item xs={6}>
           <Hidden xsDown implementation="css">
             <Grid direction="row" container justify="center">
               <span>
