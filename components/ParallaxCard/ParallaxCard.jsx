@@ -32,7 +32,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '0.5em'
   },
   containerParallax:{
-    padding: '2em 0'
+    padding: '2em 0',
+    marginTop: '4.5em'
   }
 }))
 
