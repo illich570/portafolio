@@ -4,6 +4,9 @@ import { Grid, IconButton, Typography} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
+import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import Slide from '@material-ui/core/Slide';
 
 const Navbar = styled(Grid)({
   display: 'flex',
@@ -25,6 +28,17 @@ const useStyles = makeStyles((theme) => ({
   
 }))
 
+function HideOnScroll(props) {
+  const {children} = props;
+  const trigger = useScrollTrigger();
+
+  return (
+    <Slide appear={false} direction='down' in={!trigger}>
+      {children}
+    </Slide>
+  )
+}
+
 
 export default function Nav(){
   const [showSidebar,setShowSidebar] = useState(false);
@@ -32,6 +46,8 @@ export default function Nav(){
   const handleShowSidebar = () => setShowSidebar(!showSidebar);
 
   return(
+    <HideOnScroll>
+    <AppBar color="white">
     <Navbar
       container
       direction="row"
@@ -71,5 +87,7 @@ export default function Nav(){
           </Grid>
         </Drawer>
     </Navbar>
+    </AppBar>
+    </HideOnScroll>
   )
 }
