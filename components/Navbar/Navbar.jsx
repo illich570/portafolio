@@ -9,7 +9,7 @@ const Navbar = styled(Grid)({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
-  padding: '0 4em',
+  padding: '0 3em',
   alignItems: 'center'
 })
 
@@ -38,11 +38,11 @@ export default function Nav(){
       justify="space-between"
       alignItems="center"
       >
-        <Grid item xs={6}>
+        <Grid item xs={8} md={6} container justify="center" alignItems="center">
         <h2 className={classes.headerTitle}>Illich Rada</h2>
         </Grid>
         
-        <Grid item xs={6}>
+        <Grid item xs={4} md={6}>
           <Hidden xsDown implementation="css">
             <Grid direction="row" container justify="center">
               <span>
@@ -67,7 +67,7 @@ export default function Nav(){
             <Typography color="primary" variant="h5">About</Typography>
           </Grid>
           <Grid container direction="column" justify="center" alignItems="center" style={{padding: '1em'}}>
-            <Typography align="center" color="primary" variant="h6">Illich Rada</Typography>
+            <Typography align="center" color="primary" variant="subtitle2">&copy;2020 Illich Rada</Typography>
           </Grid>
         </Drawer>
     </Navbar>

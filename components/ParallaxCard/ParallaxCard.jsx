@@ -15,25 +15,31 @@ const useStyles = makeStyles((theme) => ({
   },
   paragraphCard:{
     marginBottom: "0.6em",
-    "@media (min-width: 960px)": {
-      marginBottom: "1em"
+    fontSize: '1rem',
+    "@media (min-width: 700px)": {
+      marginBottom: "1em",
+      fontSize: '1.25rem'
     }
   },
   circleButton:{
     backgroundColor: theme.palette.primary.main,
-    height: "60px",
-    width: "60px",
+    height: "45px",
+    width: "45px",
     borderRadius: "50%",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: '0.5em'
+  },
+  containerParallax:{
+    padding: '2em 0'
   }
 }))
 
 
 const ContainerParallax = styled(Grid)({
   backgroundColor: '#C4C4C4',
-  height: "89.8vh",
+  minHeight: "89vh",
   width: "100%"
 })
 
@@ -86,9 +92,9 @@ const ContainerButton= styled(Grid)({
 export default function ParallaxCard(){
   const classes = useStyles();
   return(
-    <ContainerParallax container item xs={12} justify="center" alignItems="center">
+    <ContainerParallax container item xs={12} justify="center" alignItems="center" className={classes.containerParallax}>
       <CardParallax container item xs={10} md={7} justify="center">
-        <WhiteSectionCard item xs={7} md={4}>
+        <WhiteSectionCard item xs={9} md={4}>
           <Typography  variant="h6">Hello,I'm </Typography>
           <Typography align="center" variant="h4" className={classes.nameTitle}>Illich Rada</Typography>
         </WhiteSectionCard>

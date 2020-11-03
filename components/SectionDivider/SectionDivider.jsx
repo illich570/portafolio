@@ -33,13 +33,13 @@ export default function SectionDivider(props){
 
   return(
     <Grid container className={classes.container}>
-      <Grid item xs={3} md={4}>
+      <Grid item xs={3} md={5} lg={4}>
         <hr className={classes.line}/>
       </Grid>
-      <Grid item container xs={3} md={1} justify="center" alignItems="center" >
+      <Grid item container xs={3} md={1} lg={1} justify="center" alignItems="center" >
         <div className={classes.square}/>
       </Grid>
-      <Grid item xs={3} md={4}>
+      <Grid item xs={3} md={5} lg={4}>
         <hr className={classes.line}/>
       </Grid>
     </Grid>

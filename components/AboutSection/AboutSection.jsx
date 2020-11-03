@@ -17,13 +17,20 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: '0.5em'
+    marginBottom: '1em'
   },
   buttonContainer:{
-    margin: '1.5em 0'
+    margin: '1.8em 0'
   },
   containerParagraph:{
-    textAlign: 'right'
+    lineHeight: '30px',
+    letterSpacing: '1.25px'
+  },
+  lastParagraph:{
+    textAlign: 'right',
+    "@media (min-width: 700px)": {
+      marginTop: '7em'
+    }
   }
 }))
 
@@ -35,7 +42,7 @@ export default function AboutSection(props){
         <Typography variant="h4" className={classes.containerTitle}>About me</Typography>
       </Grid>
       <Grid item xs={10} md={4}>
-          <Typography variant="body1">
+          <Typography variant="body1" className={classes.containerParagraph}>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
              Magnam nobis, 
              similique hic dignissimos quo placeat
@@ -47,8 +54,8 @@ export default function AboutSection(props){
             <ButtonIcon icon="code" variant="contained" color="primary" title="See example"/>
           </Grid>
       </Grid>
-      <Grid item xs={10} md={4} className={classes.containerParagraph}>
-          <Typography variant="body1">
+      <Grid item xs={10} md={4} className={classes.lastParagraph}>
+          <Typography variant="body1" className={classes.containerParagraph}>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
              Magnam nobis, 
              similique hic dignissimos quo placeat

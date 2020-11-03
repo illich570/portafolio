@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
   containerTitle:{
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    margin: '1em 0'
   },
   containerCards:{
     display: 'flex',
