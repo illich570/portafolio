@@ -39,7 +39,7 @@ export default function AboutSection(props){
   return(
     <Grid container className={classes.container}>
       <Grid item xs={12}>
-        <Typography variant="h4" className={classes.containerTitle}>About me</Typography>
+        <Typography variant="h4" id="about_me" className={classes.containerTitle}>About me</Typography>
       </Grid>
       <Grid item xs={10} md={4}>
           <Typography variant="body1" className={classes.containerParagraph}>

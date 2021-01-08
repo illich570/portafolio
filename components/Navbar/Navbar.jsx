@@ -47,25 +47,29 @@ export default function Nav(){
 
   return(
     <HideOnScroll>
-    <AppBar color="white">
+    <AppBar color="default">
     <Navbar
       container
       direction="row"
       justify="space-between"
       alignItems="center"
       >
-        <Grid item xs={8} md={6} container justify="center" alignItems="center">
+        <Grid item xs={7} sm={6} md={6} container justify="center" alignItems="center">
         <h2 className={classes.headerTitle}>Illich Rada</h2>
         </Grid>
         
-        <Grid item xs={4} md={6}>
+        <Grid item xs={5} sm={6} md={6}>
           <Hidden xsDown implementation="css">
             <Grid direction="row" container justify="center">
-              <span>
-                <a className={classes.links}href="#" target="_blank" rel="noopener noreferrer">Proyectos</a>
-                <a className={classes.links}href="#" target="_blank" rel="noopener noreferrer">Home</a>
-                <a className={classes.links}href="#" target="_blank" rel="noopener noreferrer">About</a>
-              </span>
+                <a className={classes.links}href="#projects" rel="noopener noreferrer">
+                  <Typography color="primary" variant="h6">Proyectos</Typography>
+                </a>
+                <a className={classes.links}href="#about_me"  rel="noopener noreferrer">
+                  <Typography color="primary" variant="h6">Contacto</Typography>
+                </a>
+                <a className={classes.links}href="#contact_me"  rel="noopener noreferrer">
+                  <Typography color="primary" variant="h6">About</Typography>
+                </a>
             </Grid>
           </Hidden>
           <Hidden smUp>

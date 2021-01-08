@@ -33,7 +33,7 @@ export default function ProjectSection(props){
   return(
     <Grid container className={classes.container}>
       <Grid item xs={12}>
-        <Typography variant="h4" className={classes.containerTitle}>Projects</Typography>
+        <Typography variant="h4" id="projects" className={classes.containerTitle}>Projects</Typography>
       </Grid>
       <Grid container item xs={12} className={classes.containerCards}>
         {test.map((element,index) => <ProjectCard index={index} key={`abc_${index}`}/>) }

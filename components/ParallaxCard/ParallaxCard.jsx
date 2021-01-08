@@ -58,7 +58,7 @@ const RedSectionCard = styled(Grid)(({theme}) => ({
   justifyContent: "center",
   flexDirection: "column",
   "@media (min-width: 960px)": {
-    padding: "1.5em 4.5em",
+    padding: "1.2em 4em",
     minHeight: "410px"
   }
 }));

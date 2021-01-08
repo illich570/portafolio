@@ -9,7 +9,13 @@ const useStyles = makeStyles((theme) => ({
     color: 'white'
   },
   spacingIcon:{
-    margin: ' 0.15em'
+    transition: 'all 0.2s ease-in',
+    margin: ' 0.30em',
+    fontSize: '2.4em',
+    '&:hover':{
+      cursor:'pointer',
+      transform: 'scale(1.5,1.5)'
+    }
   },
   containerGrid:{
     display: 'flex',
@@ -25,8 +31,8 @@ export default function Footer(props){
   return(
     <Grid container className={classes.container}>
     <Grid item xs={6} container className={classes.containerGrid}>
-      <Typography variant="body2">{`Created with <3`}</Typography>
-      <Typography variant="body2"> &copy;2020 Illich Rada</Typography>
+      <Typography variant="body1">{`Created with <3`}</Typography>
+      <Typography variant="body1"> &copy;2020 Illich Rada</Typography>
     </Grid> 
     <Grid item xs={6} container justify="center" alignItems="center">
       <Mail className={classes.spacingIcon}/>
