@@ -54,11 +54,11 @@ export default function Nav(){
       justify="space-between"
       alignItems="center"
       >
-        <Grid item xs={7} sm={6} md={6} container justify="center" alignItems="center">
+        <Grid item xs={3} sm={4} md={6} container justify="center" alignItems="center">
         <h2 className={classes.headerTitle}>Illich Rada</h2>
         </Grid>
         
-        <Grid item xs={5} sm={6} md={6}>
+        <Grid item xs={9} sm={8} md={6}>
           <Hidden xsDown implementation="css">
             <Grid direction="row" container justify="center">
                 <a className={classes.links}href="#projects" rel="noopener noreferrer">
@@ -75,7 +75,7 @@ export default function Nav(){
           <Hidden smUp>
           <Grid direction="row" container justify="flex-end">
             <IconButton color="primary" onClick={handleShowSidebar}>
-            <MenuIcon style={{ fontSize: '1.7em'}}/>
+            <MenuIcon style={{ fontSize: '1.6em'}}/>
             </IconButton>
             </Grid>
           </Hidden>

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Alegreya'
   },
   paragraphCard:{
-    marginBottom: "0.6em",
+    marginBottom: "0.5em",
     fontSize: '1rem',
     "@media (min-width: 700px)": {
       marginBottom: "1em",
@@ -100,10 +100,10 @@ export default function ParallaxCard(){
           <Typography align="center" variant="h4" className={classes.nameTitle}>Illich Rada</Typography>
         </WhiteSectionCard>
         <RedSectionCard item xs={12} md={8}>
-          <Typography className={classes.paragraphCard}  variant="h6" align="justify">I'm a</Typography>
-          <Typography className={classes.paragraphCard} variant="h6" align="justify">Front-end Developer.</Typography>
-          <Typography className={classes.paragraphCard} variant="h6" align="justify">I love coding, and make great websites using front-end technologies.</Typography>
-          <Typography className={classes.paragraphCard} variant="h6" align="justify">I want to tell you a bit more about me.</Typography>
+          <Typography className={classes.paragraphCard}  variant="h6">I'm a</Typography>
+          <Typography className={classes.paragraphCard} variant="h6">Front-end Developer.</Typography>
+          <Typography className={classes.paragraphCard} variant="h6">I love coding, and make great websites using front-end technologies.</Typography>
+          <Typography className={classes.paragraphCard} variant="h6">I want to tell you a bit more about me.</Typography>
           <ContainerButton item xs={12}>
             <Button className={classes.button}  variant="outlined" color="secondary">See my work</Button>
           </ContainerButton>
