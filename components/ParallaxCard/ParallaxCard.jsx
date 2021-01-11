@@ -8,7 +8,17 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     borderColor: 'white',
     border: '2.5px solid',
-    borderRadius: '5px'
+    borderRadius: '5px',
+    background: 'linear-gradient(to right, #fff,#fff)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '0 100%',
+    transition: 'all 0.5s 0s',
+    '&:hover':{
+      backgroundSize: '100% 100%',
+      borderColor: 'black',
+      color: 'black',
+      transform: 'scale(1.1,1.1)'
+    }
   },
   nameTitle:{
     fontFamily: 'Alegreya'
