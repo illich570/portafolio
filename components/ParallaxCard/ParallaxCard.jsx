@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '5px',
     background: 'linear-gradient(to right, #fff,#fff)',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '0 100%',
+    backgroundSize: '100% 0',
     transition: 'all 0.5s 0s',
     '&:hover':{
       backgroundSize: '100% 100%',

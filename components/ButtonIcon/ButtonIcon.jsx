@@ -8,10 +8,35 @@ const useStyles = makeStyles((theme) => ({
     display:'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: '10px'
+    borderRadius: '10px',
+    border: '2px solid',
+    borderColor: theme.palette.primary.main
   },
   buttonOutlined: {
     border: '2.5px solid'
+  },
+  buttonContainedSweep:{
+    background: `linear-gradient(to bottom,${theme.palette.primary.main} 50%, #fff 50%)`,
+    backgroundSize: '100% 200%',
+    transition: 'all 0.5s',
+    '&:hover':{
+      backgroundPosition: '0 -95%',
+      borderColor: 'black',
+      color: 'black',
+      border: '2px solid',
+      transform: 'scale(1.05,1.05)'
+    }
+  },
+  buttonOutlinedSweep:{
+    background: `linear-gradient(to bottom,#fff 50%,${theme.palette.primary.main} 50%)`,
+    backgroundSize: '100% 200%',
+    transition: 'all 0.5s',
+    '&:hover':{
+      backgroundPosition: '0 -95%',
+      color: 'white',
+      border: '2px solid',
+      transform: 'scale(1.05,1.05)'
+    }
   }
 }))
 
@@ -22,7 +47,13 @@ export default function ButtonIcon(props) {
   return(
     <Button
     {...rest}
-    className={`${classes.button} ${rest.variant === 'outlined' ? classes.buttonOutlined : ''}`}
+    className={
+              `
+                ${classes.button} 
+                ${rest.variant === 'outlined' ? classes.buttonOutlined : ''} 
+                ${rest.variant === 'outlined' ? classes.buttonOutlinedSweep : classes.buttonContainedSweep}
+              `
+              }
     >
       {icon && <Icon>{icon}</Icon>}
       {title}

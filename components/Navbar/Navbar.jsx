@@ -20,7 +20,23 @@ const useStyles = makeStyles((theme) => ({
   links: {
     color: theme.palette.primary.main,
     textDecoration: 'none',
-    padding: '0 1.5em'
+    padding: '0 1.5em',
+    position:'relative',
+    '&::before':{
+      content: '""',
+      position: 'absolute',
+      width: '0',
+      height:'0.20em',
+      bottom: '0',
+      left: '0',
+      backgroundColor: '#000',
+      visibility: 'hidden',
+      transition: 'all 0.2s ease-in-out 0s'
+    },
+    '&:hover::before':{
+      visibility:'visible',
+      width: '100%'
+    }
   },
   headerTitle:{
     color: theme.palette.primary.main,
@@ -61,13 +77,13 @@ export default function Nav(){
         <Grid item xs={9} sm={8} md={6}>
           <Hidden xsDown implementation="css">
             <Grid direction="row" container justify="center">
-                <a className={classes.links}href="#projects" rel="noopener noreferrer">
+                <a className={classes.links} href="#projects" rel="noopener noreferrer">
                   <Typography color="primary" variant="h6">Proyectos</Typography>
                 </a>
-                <a className={classes.links}href="#about_me"  rel="noopener noreferrer">
+                <a className={classes.links} href="#about_me"  rel="noopener noreferrer">
                   <Typography color="primary" variant="h6">Contacto</Typography>
                 </a>
-                <a className={classes.links}href="#contact_me"  rel="noopener noreferrer">
+                <a className={classes.links} href="#contact_me"  rel="noopener noreferrer">
                   <Typography color="primary" variant="h6">About</Typography>
                 </a>
             </Grid>
