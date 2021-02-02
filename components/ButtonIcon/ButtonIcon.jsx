@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     borderColor: theme.palette.primary.main
   },
   buttonOutlined: {
-    border: '2.5px solid'
+    border: '2px solid'
   },
   buttonContainedSweep:{
     background: `linear-gradient(to bottom,${theme.palette.primary.main} 50%, #fff 50%)`,
@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
       borderColor: 'black',
       color: 'black',
       border: '2px solid',
-      transform: 'scale(1.05,1.05)'
     }
   },
   buttonOutlinedSweep:{
@@ -35,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
       backgroundPosition: '0 -95%',
       color: 'white',
       border: '2px solid',
-      transform: 'scale(1.05,1.05)'
     }
   }
 }))

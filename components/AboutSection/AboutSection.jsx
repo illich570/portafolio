@@ -5,7 +5,7 @@ import ButtonIcon from '../ButtonIcon/ButtonIcon'
 const useStyles = makeStyles((theme) => ({
   container:{
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     width: '100%',
     flexDirection: 'column',
@@ -41,7 +41,7 @@ export default function AboutSection(props){
       <Grid item xs={12}>
         <Typography variant="h4" id="about_me" className={classes.containerTitle}>About me</Typography>
       </Grid>
-      <Grid item xs={10} md={4}>
+      <Grid item xs={9} md={3}>
           <Typography variant="body1" className={classes.containerParagraph}>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
              Magnam nobis, 
@@ -54,7 +54,7 @@ export default function AboutSection(props){
             <ButtonIcon icon="code" variant="contained" color="primary" title="See example"/>
           </Grid>
       </Grid>
-      <Grid item xs={10} md={4} className={classes.lastParagraph}>
+      <Grid item xs={9} md={3} className={classes.lastParagraph}>
           <Typography variant="body1" className={classes.containerParagraph}>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
              Magnam nobis, 

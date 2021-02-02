@@ -4,6 +4,25 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 
 const useStyles = makeStyles((theme) => ({
+  "@keyframes typing":{
+    "0%":{
+      width: '0'
+    },
+    "100%":{
+      width: '100%'
+    }
+  },
+  "@keyframes blink-caret":{
+    "0%":{
+      borderColor: 'transparent'
+    },
+    "50%":{
+      borderColor: `${theme.palette.primary.main}`
+    },
+    "100%":{
+      borderColor: 'transparent'
+    }
+  },
   button:{
     color: 'white',
     borderColor: 'white',
@@ -17,11 +36,17 @@ const useStyles = makeStyles((theme) => ({
       backgroundSize: '100% 100%',
       borderColor: 'black',
       color: 'black',
-      transform: 'scale(1.1,1.1)'
+      border: '2.5px solid'
     }
   },
   nameTitle:{
-    fontFamily: 'Alegreya'
+    fontFamily: 'Alegreya',
+    overflow: 'hidden',
+    borderRight: `.1em solid ${theme.palette.primary.main}`,
+    whiteSpace: 'nowrap',
+    margin: '0 auto',
+    letterSpacing: '0.15em',
+    animation: '$typing 2.5s steps(21,end) alternate 3, $blink-caret .75s step-end infinite',
   },
   paragraphCard:{
     marginBottom: "0.5em",
@@ -41,9 +66,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginTop: '0.5em'
   },
-  containerParallax:{
-    padding: '2em 0',
-    marginTop: '4.5em'
+  greetingTitle:{
+    "@media(min-width: 650px) and (max-width: 959px)":{
+      textAlign: 'center',
+      paddingRight: '7em'
+    }
   }
 }))
 
@@ -51,7 +78,9 @@ const useStyles = makeStyles((theme) => ({
 const ContainerParallax = styled(Grid)({
   backgroundColor: '#C4C4C4',
   minHeight: "89vh",
-  width: "100%"
+  width: "100%",
+  padding: '2em 0',
+  marginTop: '4.1em'
 })
 
 const CardParallax = styled(Grid)({
@@ -75,7 +104,7 @@ const RedSectionCard = styled(Grid)(({theme}) => ({
 
 
 const WhiteSectionCard = styled(Grid)({
-  padding: "1em",
+  padding: "0.5em",
   "@media (min-width: 960px)": {
     display: "flex",
     justifyContent: "center",
@@ -106,7 +135,7 @@ export default function ParallaxCard(){
     <ContainerParallax container item xs={12} justify="center" alignItems="center" className={classes.containerParallax}>
       <CardParallax container item xs={10} md={7} justify="center">
         <WhiteSectionCard item xs={9} md={4}>
-          <Typography  variant="h6">Hello,I'm </Typography>
+          <Typography className={classes.greetingTitle}  variant="h6">Hello,I'm </Typography>
           <Typography align="center" variant="h4" className={classes.nameTitle}>Illich Rada</Typography>
         </WhiteSectionCard>
         <RedSectionCard item xs={12} md={8}>
