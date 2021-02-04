@@ -1,9 +1,9 @@
-import Layout from '../components/Layout'
-import ParallaxCard from '../components/ParallaxCard/ParallaxCard'
-import ProjectSection from '../components/ProjectSection/ProjectSection'
-import SectionDivider from '../components/SectionDivider/SectionDivider'
-import AboutSection from '../components/AboutSection/AboutSection'
-import ContactSection from '../components/ContactSection/ContactSection'
+import Layout from '../src/components/Layout'
+import ParallaxCard from '../src/components/ParallaxCard/ParallaxCard'
+import ProjectSection from '../src/components/ProjectSection/ProjectSection'
+import SectionDivider from '../src/components/SectionDivider/SectionDivider'
+import AboutSection from '../src/components/AboutSection/AboutSection'
+import ContactSection from '../src/components/ContactSection/ContactSection'
 import Pulse from 'react-reveal/Pulse';
 
 export default function Home() {

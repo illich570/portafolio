@@ -20,11 +20,14 @@ const useStyles = makeStyles((theme) => ({
   containerGrid:{
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column'
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    "@media(min-width: 550px)":{
+      alignItems: 'center'
+    }
   }
 }))
- 
+
 export default function Footer(props){
 
   const classes = useStyles();
@@ -32,7 +35,7 @@ export default function Footer(props){
     <Grid container className={classes.container}>
     <Grid item xs={6} container className={classes.containerGrid}>
       <Typography variant="body1">{`Created with <3`}</Typography>
-      <Typography variant="body1"> &copy;2020 Illich Rada</Typography>
+      <Typography variant="body1"> &copy;2021 Illich Rada</Typography>
     </Grid> 
     <Grid item xs={6} container justify="center" alignItems="center">
       <Mail className={classes.spacingIcon}/>

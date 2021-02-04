@@ -12,6 +12,17 @@ const useStyles = makeStyles((theme) => ({
       width: '100%'
     }
   },
+  "@keyframes moving-arrow":{
+    "0%":{
+      transform: 'translateY(0px)'
+    },
+    "50%":{
+      transform: 'translateY(10px)'
+    },
+    "100%":{
+      transform: 'translateY(0px)'
+    }
+  },
   "@keyframes blink-caret":{
     "0%":{
       borderColor: 'transparent'
@@ -64,12 +75,27 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: '0.5em'
+    marginTop: '0.5em',
+    transition: 'all 0.5s 0s',
+    "&:hover":{
+      transform: 'scale(1.3,1.3)',
+      backgroundColor: 'white',
+    }
   },
   greetingTitle:{
     "@media(min-width: 650px) and (max-width: 959px)":{
       textAlign: 'center',
       paddingRight: '7em'
+    }
+  },
+  arrowButton:{
+    fontSize: "3em",
+    color: "white",
+    transition: 'all 0.5s 0s',
+    "&:hover":{
+      color: theme.palette.primary.main,
+      cursor: 'pointer',
+      animation: '$moving-arrow 1s steps(30,end) infinite',
     }
   }
 }))
@@ -113,13 +139,6 @@ const WhiteSectionCard = styled(Grid)({
   }
 })
 
-
-const ArrowButton = styled(KeyboardArrowDownIcon)({
-  fontSize: "3em",
-  color: "white"
-})
-
-
 const ContainerButton= styled(Grid)({
   display: "flex",
   justifyContent: "center",
@@ -150,7 +169,7 @@ export default function ParallaxCard(){
       </CardParallax>
       <Grid container item xs={12} justify="center">
         <div className={classes.circleButton}>
-          <ArrowButton/>
+          <KeyboardArrowDownIcon className={classes.arrowButton}/>
         </div>
       </Grid>
     </ContainerParallax>
