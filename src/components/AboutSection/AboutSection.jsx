@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     margin: '1.8em 0'
   },
   containerParagraph:{
-    lineHeight: '30px',
-    letterSpacing: '1.25px'
+    lineHeight: 2.8,
+    letterSpacing: '1px'
   },
   lastParagraph:{
     textAlign: 'right',
@@ -39,7 +39,7 @@ export default function AboutSection(props){
   return(
     <Grid container className={classes.container}>
       <Grid item xs={12}>
-        <Typography variant="h4" id="about_me" className={classes.containerTitle}>About me</Typography>
+        <Typography variant="h3" id="about_me" className={classes.containerTitle}>About me</Typography>
       </Grid>
       <Grid item xs={9} md={3}>
           <Typography variant="body1" className={classes.containerParagraph}>

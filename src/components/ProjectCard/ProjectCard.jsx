@@ -29,10 +29,15 @@ const useStyles = makeStyles((theme) => ({
   titleCard:{
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    letterSpacing: '1px'
   },
   paragraphCard:{
-    margin: '1em 0'
+    margin: '1em 0',
+  },
+  paragraph:{
+    lineHeight: 1.80,
+    letterSpacing: '1px',
   },
   buttonContainer:{
     margin: '0.8em 0'
@@ -56,7 +61,7 @@ export default function ProjectCard(props){
           <Typography className={classes.titleCard} variant="h5">Lorem.dev</Typography>
         </Grid>
         <Grid item xs={10} className={classes.paragraphCard}>
-          <Typography variant="body2">
+          <Typography variant="body2" className={classes.paragraph}>
             Lorem ipsum dolor sit amet, 
             consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 

@@ -1,8 +1,9 @@
-import ProjectCard from '../ProjectCard/ProjectCard'
 import { Grid, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import TechCard from '../TechCard/TechCard'
+import Slider from '../Slider/Slider'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   container:{
     display: 'flex',
     justifyContent: 'center',
@@ -17,27 +18,31 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: '0.8em 0',
-    letterSpacing: '1px'
+    margin: '1em 0',
+    marginTop: '0'
   },
   containerCards:{
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    maxWidth: '1000px'
   }
 }))
 
-const test = [1,2,3]
+const test = [1,2,3,4,5,6,7,8]
 
-export default function ProjectSection(props){
+export default function TechSection(props){
   const classes = useStyles();
   return(
     <Grid container className={classes.container}>
       <Grid item xs={12}>
-        <Typography variant="h3" id="projects" className={classes.containerTitle}>Projects</Typography>
+        <Typography variant="h3" id="projects" className={classes.containerTitle}>Tech Stack</Typography>
       </Grid>
       <Grid container item xs={12} className={classes.containerCards}>
-        {test.map((element,index) => <ProjectCard index={index} key={`abc_${index}`}/>) }
+        <Slider>
+        {/* {test.map((element,index) => <TechCard index={index} key={`abc_${index}`}/>) } */}
+        </Slider>
+        
       </Grid>
     </Grid>
   )

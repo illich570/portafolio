@@ -41,6 +41,12 @@ const useStyles = makeStyles((theme) => ({
   headerTitle:{
     color: theme.palette.primary.main,
   },
+  containerMobile:{
+    height: '100%', 
+    display: 'flex', 
+    padding: '1em'
+  },
+
   
 }))
 
@@ -97,10 +103,16 @@ export default function Nav(){
           </Hidden>
         </Grid>
         <Drawer anchor="right" open={showSidebar} onClose={handleShowSidebar}>
-          <Grid container direction="column" justify="center" alignItems="center" style={{height: '100%', display: 'flex', padding: '1em'}}>
-            <Typography color="primary" variant="h5">Proyectos</Typography>
-            <Typography color="primary" variant="h5">Contacto</Typography>
-            <Typography color="primary" variant="h5">About</Typography>
+          <Grid container direction="column" justify="center" alignItems="center" className={classes.containerMobile}>
+          <a className={classes.links} href="#projects" rel="noopener noreferrer">
+                  <Typography color="primary" variant="h5">Proyectos</Typography>
+                </a>
+                <a className={classes.links} href="#about_me"  rel="noopener noreferrer">
+                  <Typography color="primary" variant="h5">Contacto</Typography>
+                </a>
+                <a className={classes.links} href="#contact_me"  rel="noopener noreferrer">
+                  <Typography color="primary" variant="h5">About</Typography>
+                </a>
           </Grid>
           <Grid container direction="column" justify="center" alignItems="center" style={{padding: '1em'}}>
             <Typography align="center" color="primary" variant="subtitle2">&copy;2020 Illich Rada</Typography>

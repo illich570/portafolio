@@ -52,15 +52,16 @@ const useStyles = makeStyles((theme) => ({
   },
   nameTitle:{
     fontFamily: 'Alegreya',
+    letterSpacing: '1px',
     overflow: 'hidden',
     borderRight: `.1em solid ${theme.palette.primary.main}`,
     whiteSpace: 'nowrap',
     margin: '0 auto',
-    letterSpacing: '0.15em',
     animation: '$typing 2.5s steps(21,end) alternate 3, $blink-caret .75s step-end infinite',
   },
   paragraphCard:{
     marginBottom: "0.5em",
+    letterSpacing: '1px',
     fontSize: '1rem',
     "@media (min-width: 700px)": {
       marginBottom: "1em",
@@ -78,11 +79,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '0.5em',
     transition: 'all 0.5s 0s',
     "&:hover":{
-      transform: 'scale(1.3,1.3)',
+      transform: 'scale(1.2,1.2)',
       backgroundColor: 'white',
     }
   },
   greetingTitle:{
+    letterSpacing: '1px',
     "@media(min-width: 650px) and (max-width: 959px)":{
       textAlign: 'center',
       paddingRight: '7em'
