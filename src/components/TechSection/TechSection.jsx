@@ -38,9 +38,9 @@ export default function TechSection(props){
       <Grid item xs={12}>
         <Typography variant="h3" id="projects" className={classes.containerTitle}>Tech Stack</Typography>
       </Grid>
-      <Grid container item xs={12} className={classes.containerCards}>
+      <Grid item xs={12}>
         <Slider>
-        {/* {test.map((element,index) => <TechCard index={index} key={`abc_${index}`}/>) } */}
+        {test.map((element,index) => <TechCard index={index} key={`abc_${index}`}/>) }
         </Slider>
         
       </Grid>

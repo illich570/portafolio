@@ -38,6 +38,12 @@ const useStyles = makeStyles((theme) => ({
   containerBodyCard:{
     paddingBottom: '1.5em'
   },
+  containerCards:{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    maxWidth: '1000px'
+  }
 }))
 
 export default function TechCard(props){
@@ -45,13 +51,15 @@ export default function TechCard(props){
   const classes = useStyles(props);
 
   return(
-    <div className={classes.card}>
-      <img src="/gatsby-icon.svg" className={classes.image}/>
-      <Grid container justify="center">
-        <Grid item xs={6} className={classes.titleCard}>
-          <span className={classes.title}>Gatbsy</span>
+    <div className={classes.containerCards}>
+      <div className={classes.card}>
+        <img src="/gatsby-icon.svg" className={classes.image}/>
+        <Grid container justify="center">
+          <Grid item xs={6} className={classes.titleCard}>
+            <span className={classes.title}>Gatbsy</span>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     </div>
   )
 }

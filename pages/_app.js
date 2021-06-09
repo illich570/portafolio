@@ -2,6 +2,9 @@ import { useEffect } from 'react'
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import './_app.css';
 
 export default function RootApp({ Component, pageProps }) {
 
