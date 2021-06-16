@@ -1,6 +1,7 @@
 import { Grid, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonIcon from '../ButtonIcon/ButtonIcon'
+import {useIntersection} from '../../hooks/UseIntersection';
 
 const useStyles = makeStyles((theme) => ({
   container:{
@@ -31,17 +32,70 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 700px)": {
       marginTop: '7em'
     }
-  }
+  },
+  animationParagraph:{
+    animation: '$appear-paragraph .75s linear forwards',
+  },
+  "@keyframes appear-paragraph":{
+    "0%":{
+      opacity: 0,
+      transform:' translate(0,200px)'
+    },
+    "100%":{
+     opacity: 1,
+     transform:' translate(0)'
+    }
+  },
+  animationParagraphFade:{
+    animation: '$appear-paragraph-fade .75s linear forwards',
+  },
+  "@keyframes appear-paragraph-fade":{
+    "0%":{
+      opacity: 1,
+      transform:' translate(0,0)'
+    },
+    "100%":{
+     opacity: 0,
+     transform:' translate(0,-100px)'
+    }
+  },
+  animationParagraphInverse:{
+    animation: '$appear-paragraph-inverse .75s linear forwards',
+  },
+  "@keyframes appear-paragraph-inverse":{
+    "0%":{
+      opacity: 0,
+      transform:' translate(0,-200px)'
+    },
+    "100%":{
+     opacity: 1,
+     transform:' translate(0)'
+    }
+  },
+  animationParagraphInverseFade:{
+    animation: '$appear-paragraph-inverse-fade .75s linear forwards',
+  },
+  "@keyframes appear-paragraph-inverse-fade":{
+    "0%":{
+      opacity: 1,
+      transform:' translate(0,0)'
+    },
+    "100%":{
+     opacity: 0,
+     transform:' translate(0,200px)'
+    }
+  },
 }))
 
 export default function AboutSection(props){
   const classes = useStyles();
+  const { observerEntry, elRef } = useIntersection({ threshold: 0.35 });
   return(
-    <Grid container className={classes.container}>
+    <Grid container className={classes.container} ref={elRef}>
       <Grid item xs={12}>
         <Typography variant="h3" id="about_me" className={classes.containerTitle}>About me</Typography>
       </Grid>
-      <Grid item xs={9} md={3}>
+      <Grid item xs={9} md={3} className={`${observerEntry.isIntersecting ? classes.animationParagraph : classes.animationParagraphFade}`}>
           <Typography variant="body1" className={classes.containerParagraph}>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
              Magnam nobis, 
@@ -54,7 +108,7 @@ export default function AboutSection(props){
             <ButtonIcon icon="code" variant="contained" color="primary" title="See example"/>
           </Grid>
       </Grid>
-      <Grid item xs={9} md={3} className={classes.lastParagraph}>
+      <Grid item xs={9} md={3} className={`${classes.lastParagraph} ${observerEntry.isIntersecting ? classes.animationParagraphInverse : classes.animationParagraphInverseFade}`}>
           <Typography variant="body1" className={classes.containerParagraph}>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
              Magnam nobis, 

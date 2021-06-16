@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { styled, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Grid, IconButton, Typography} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Hidden from '@material-ui/core/Hidden';
@@ -7,14 +7,6 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from '@material-ui/core/Slide';
-
-const Navbar = styled(Grid)({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  padding: '0 3em',
-  alignItems: 'center'
-})
 
 const useStyles = makeStyles((theme) => ({
   links: {
@@ -46,6 +38,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex', 
     padding: '1em'
   },
+  navbar:{
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: '0 3em',
+    alignItems: 'center'
+  }
 
   
 }))
@@ -70,7 +69,8 @@ export default function Nav(){
   return(
     <HideOnScroll>
     <AppBar color="default">
-    <Navbar
+    <Grid
+      className={classes.navbar}
       container
       direction="row"
       justify="space-between"
@@ -118,7 +118,7 @@ export default function Nav(){
             <Typography align="center" color="primary" variant="subtitle2">&copy;2020 Illich Rada</Typography>
           </Grid>
         </Drawer>
-    </Navbar>
+    </Grid>
     </AppBar>
     </HideOnScroll>
   )

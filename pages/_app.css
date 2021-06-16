@@ -9,3 +9,10 @@
   content: "";
   height: 40px;
 }
+
+body{
+  overflow-x: hidden
+}
+html {
+  scroll-behavior: smooth;
+}

@@ -41,8 +41,6 @@ export default function Footer(props){
       <Mail className={classes.spacingIcon}/>
       <LinkedIn className={classes.spacingIcon}/>
       <GitHub className={classes.spacingIcon}/>
-      <Twitter className={classes.spacingIcon}/>
-      <WhatsApp className={classes.spacingIcon}/>
     </Grid>
     </Grid>
   )

@@ -5,7 +5,6 @@ import SectionDivider from '../src/components/SectionDivider/SectionDivider'
 import AboutSection from '../src/components/AboutSection/AboutSection'
 import ContactSection from '../src/components/ContactSection/ContactSection'
 import TechSection from '../src/components/TechSection/TechSection'
-import Pulse from 'react-reveal/Pulse';
 import Head from "next/head"
 
 export default function Home() {
@@ -25,9 +24,7 @@ export default function Home() {
 		/>
 		</Head>
 			<Layout titleHead="Illich Rada">
-				<Pulse>
 				<ParallaxCard/>
-				</Pulse>
 				<ProjectSection/>
 				<SectionDivider/>
 				<AboutSection/>

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '100% 200%',
     transition: 'all 0.5s',
     '&:hover':{
-      backgroundPosition: '0 -95%',
+      backgroundPosition: '0 -100%',
       borderColor: 'black',
       color: 'black',
       border: '2px solid',
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '100% 200%',
     transition: 'all 0.5s',
     '&:hover':{
-      backgroundPosition: '0 -95%',
+      backgroundPosition: '0 -100%',
       color: 'white',
       border: '2px solid',
     }
