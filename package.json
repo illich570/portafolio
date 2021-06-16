@@ -14,7 +14,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "eslint  . --ext js --ext jsx",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"prepare": "husky install"
 	},
 	"dependencies": {
 		"@material-ui/core": "^4.11.0",
@@ -36,17 +37,16 @@
 		"eslint-plugin-import": "^2.22.0",
 		"eslint-plugin-jsx-a11y": "^6.3.1",
 		"eslint-plugin-react": "^7.20.5",
+		"husky": "^6.0.0",
 		"lint-staged": "^11.0.0",
-		"prettier": "^2.3.1",
-		"simple-git-hooks": "^2.4.1"
+		"prettier": "^2.3.1"
 	},
 	"lint-staged": {
 		"*.@(js|jsx)": [
 			"npx lint",
 			"npx format"
-		]
-	},
-	"simple-git-hooks": {
-		"pre-commit": "npx lint-staged"
+		],
+		"*.{js,jsx}": "eslint --cache --fix",
+		"*.{js,css,md}": "prettier --write"
 	}
 }
