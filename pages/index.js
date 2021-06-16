@@ -5,33 +5,33 @@ import SectionDivider from '../src/components/SectionDivider/SectionDivider'
 import AboutSection from '../src/components/AboutSection/AboutSection'
 import ContactSection from '../src/components/ContactSection/ContactSection'
 import TechSection from '../src/components/TechSection/TechSection'
-import Head from "next/head"
+import Head from 'next/head'
 
 export default function Home() {
 	return (
 		<>
-		<Head>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			charSet="UTF-8"
-			href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.0/slick.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.0/slick-theme.min.css"
-		/>
-		</Head>
+			<Head>
+				<link
+					rel="stylesheet"
+					type="text/css"
+					charSet="UTF-8"
+					href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.0/slick.min.css"
+				/>
+				<link
+					rel="stylesheet"
+					type="text/css"
+					href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.0/slick-theme.min.css"
+				/>
+			</Head>
 			<Layout titleHead="Illich Rada">
-				<ParallaxCard/>
-				<ProjectSection/>
-				<SectionDivider/>
-				<AboutSection/>
-				<SectionDivider/>
-				<TechSection/>
-				<SectionDivider/>
-				<ContactSection/>
+				<ParallaxCard />
+				<ProjectSection />
+				<SectionDivider />
+				<AboutSection />
+				<SectionDivider />
+				<TechSection />
+				<SectionDivider />
+				<ContactSection />
 			</Layout>
 		</>
 	)

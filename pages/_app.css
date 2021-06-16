@@ -1,18 +1,18 @@
-
-.slick-prev::before { 
-  background: url("../public/carousel-left.svg") no-repeat 0 0 !important;
-  content: "";
-  height: 40px;
+.slick-prev::before {
+	background: url('../public/carousel-left.svg') no-repeat 0 0 !important;
+	content: '';
+	height: 40px;
 }
-.slick-next::before { 
-  background: url("/public/carousel-right.svg") no-repeat 0 0 !important;
-  content: "";
-  height: 40px;
+.slick-next::before {
+	background: url('/public/carousel-right.svg') no-repeat 0 0 !important;
+	content: '';
+	height: 40px;
 }
 
-body{
-  overflow-x: hidden
+body {
+	overflow-x: hidden;
 }
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
+	min-width: 360px;
 }
