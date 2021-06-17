@@ -25,18 +25,18 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-export default function SectionDivider(props) {
+export default function SectionDivider() {
 	const classes = useStyles()
 
 	return (
-		<Grid container className={classes.container}>
-			<Grid item xs={3} md={5} lg={4}>
+		<Grid className={classes.container} container>
+			<Grid item lg={4} md={5} xs={3}>
 				<hr className={classes.line} />
 			</Grid>
-			<Grid item container xs={3} md={1} lg={1} justify="center" alignItems="center">
+			<Grid alignItems="center" container item justify="center" lg={1} md={1} xs={3}>
 				<div className={classes.square} />
 			</Grid>
-			<Grid item xs={3} md={5} lg={4}>
+			<Grid item lg={4} md={5} xs={3}>
 				<hr className={classes.line} />
 			</Grid>
 		</Grid>

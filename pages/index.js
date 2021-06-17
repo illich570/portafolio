@@ -1,26 +1,26 @@
-import Layout from '../src/components/Layout'
-import ParallaxCard from '../src/components/ParallaxCard/ParallaxCard'
-import ProjectSection from '../src/components/ProjectSection/ProjectSection'
-import SectionDivider from '../src/components/SectionDivider/SectionDivider'
-import AboutSection from '../src/components/AboutSection/AboutSection'
-import ContactSection from '../src/components/ContactSection/ContactSection'
-import TechSection from '../src/components/TechSection/TechSection'
 import Head from 'next/head'
+import ParallaxCard from '@/components/ParallaxCard'
+import ProjectSection from '@/components/Sections/ProjectSection'
+import SectionDivider from '@/components/SectionDivider'
+import AboutSection from '@/components/Sections/AboutSection'
+import TechSection from '@/components/Sections/TechSection'
+import ContactSection from '@/components/Sections/ContactSection'
+import Layout from '@/components/Layout'
 
 export default function Home() {
 	return (
 		<>
 			<Head>
 				<link
-					rel="stylesheet"
-					type="text/css"
 					charSet="UTF-8"
 					href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.0/slick.min.css"
-				/>
-				<link
 					rel="stylesheet"
 					type="text/css"
+				/>
+				<link
 					href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.0/slick-theme.min.css"
+					rel="stylesheet"
+					type="text/css"
 				/>
 			</Head>
 			<Layout titleHead="Illich Rada">

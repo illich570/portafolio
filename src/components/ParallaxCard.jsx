@@ -150,25 +150,25 @@ export default function ParallaxCard() {
 	const classes = useStyles()
 	return (
 		<Grid
-			container
-			item
-			xs={12}
-			justify="center"
 			alignItems="center"
 			className={classes.containerParallax}
+			container
+			item
+			justify="center"
+			xs={12}
 		>
-			<Grid container item xs={10} md={7} justify="center" className={classes.cardParallax}>
-				<Grid item xs={9} md={4} className={classes.whiteSectionCard}>
+			<Grid className={classes.cardParallax} container item justify="center" md={7} xs={10}>
+				<Grid className={classes.whiteSectionCard} item md={4} xs={9}>
 					<Typography className={classes.greetingTitle} variant="h6">
-						Hello,I'm{' '}
+						Hello,I&apos;m
 					</Typography>
-					<Typography align="center" variant="h4" className={classes.nameTitle}>
+					<Typography align="center" className={classes.nameTitle} variant="h4">
 						Illich Rada
 					</Typography>
 				</Grid>
-				<Grid item xs={12} md={8} className={classes.redSectionCard}>
+				<Grid className={classes.redSectionCard} item md={8} xs={12}>
 					<Typography className={classes.paragraphCard} variant="h6">
-						I'm a
+						I&apos;m a
 					</Typography>
 					<Typography className={classes.paragraphCard} variant="h6">
 						Front-end Developer.
@@ -179,20 +179,20 @@ export default function ParallaxCard() {
 					<Typography className={classes.paragraphCard} variant="h6">
 						I want to tell you a bit more about me.
 					</Typography>
-					<Grid item xs={12} className={classes.containerButton}>
-						<Button className={classes.button} variant="outlined" color="secondary">
+					<Grid className={classes.containerButton} item xs={12}>
+						<Button className={classes.button} color="secondary" variant="outlined">
 							See my work
 						</Button>
 					</Grid>
 				</Grid>
 			</Grid>
-			<Grid container item xs={12} justify="center">
+			<Grid container item justify="center" xs={12}>
 				<div className={classes.circleButton}>
 					<KeyboardArrowDownIcon className={classes.arrowButton} />
 				</div>
 			</Grid>
 			<figure className={classes.wave}>
-				<img src="/wave.svg" alt="waves" />
+				<img alt="waves" src="/wave.svg" />
 			</figure>
 		</Grid>
 	)

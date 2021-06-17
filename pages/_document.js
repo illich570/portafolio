@@ -8,12 +8,12 @@ export default class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
-					<meta name="theme-color" content={theme.palette.primary.main} />
+					<meta content={theme.palette.primary.main} name="theme-color" />
 					<link
-						rel="stylesheet"
 						href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500&family=Poppins:wght@500&display=swap"
+						rel="stylesheet"
 					/>
-					<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+					<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 				</Head>
 				<body>
 					<Main />

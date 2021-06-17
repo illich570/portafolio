@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@material-ui/core'
-import { Mail, LinkedIn, GitHub, Twitter, WhatsApp } from '@material-ui/icons'
+import { Mail, LinkedIn, GitHub } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
@@ -28,15 +28,15 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-export default function Footer(props) {
+export default function Footer() {
 	const classes = useStyles()
 	return (
-		<Grid container className={classes.container}>
-			<Grid item xs={6} container className={classes.containerGrid}>
+		<Grid className={classes.container} container>
+			<Grid className={classes.containerGrid} container item xs={6}>
 				<Typography variant="body1">{`Created with <3`}</Typography>
 				<Typography variant="body1"> &copy;2021 Illich Rada</Typography>
 			</Grid>
-			<Grid item xs={6} container justify="center" alignItems="center">
+			<Grid alignItems="center" container item justify="center" xs={6}>
 				<Mail className={classes.spacingIcon} />
 				<LinkedIn className={classes.spacingIcon} />
 				<GitHub className={classes.spacingIcon} />

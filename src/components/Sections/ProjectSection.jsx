@@ -1,9 +1,9 @@
-import ProjectCard from '../ProjectCard/ProjectCard'
+import ProjectCard from '@/components/ProjectCard'
 import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { useIntersection } from '../../hooks/UseIntersection'
+import useIntersection from '@/hooks/UseIntersection'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	container: {
 		display: 'flex',
 		justifyContent: 'center',
@@ -57,23 +57,23 @@ const useStyles = makeStyles((theme) => ({
 
 const test = [1, 2, 3]
 
-export default function ProjectSection(props) {
+export default function ProjectSection() {
 	const classes = useStyles()
 	const { observerEntry, elRef } = useIntersection({ threshold: 0.2 })
 	return (
-		<Grid container className={`${classes.container}`} ref={elRef}>
+		<Grid className={`${classes.container}`} container ref={elRef}>
 			<Grid item xs={12}>
-				<Typography variant="h3" id="projects" className={classes.containerTitle}>
+				<Typography className={classes.containerTitle} id="projects" variant="h3">
 					Projects
 				</Typography>
 			</Grid>
 			<Grid
-				container
-				item
-				xs={12}
 				className={`${classes.containerCards} ${
 					observerEntry.isIntersecting ? classes.animationContainer : classes.animationContainerFade
 				}`}
+				container
+				item
+				xs={12}
 			>
 				{test.map((element, index) => (
 					<ProjectCard index={index} key={`abc_${index}`} />

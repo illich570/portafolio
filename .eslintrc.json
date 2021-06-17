@@ -1,5 +1,5 @@
 {
-	"root":true,
+	"root": true,
 	"env": {
 		"browser": true,
 		"commonjs": true,
@@ -25,12 +25,12 @@
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }], //should add ".ts" if typescript project
 		"react/display-name": 0,
 		"react/prop-types": 0,
-    "react/jsx-sort-props": 2,
+		"react/jsx-sort-props": 2,
 		"no-console": [
-      2,
-      {
-        "allow": ["warn", "error"]
-      }
-    ]
+			2,
+			{
+				"allow": ["warn", "error"]
+			}
+		]
 	}
 }

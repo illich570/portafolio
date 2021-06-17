@@ -1,7 +1,7 @@
 import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import TechCard from '../TechCard/TechCard'
-import Slider from '../Slider/Slider'
+import TechCard from '@/components/TechCard'
+import Slider from '@/components/Slider'
 
 const useStyles = makeStyles(() => ({
 	container: {
@@ -31,12 +31,12 @@ const useStyles = makeStyles(() => ({
 
 const test = [1, 2, 3, 4, 5, 6, 7, 8]
 
-export default function TechSection(props) {
+export default function TechSection() {
 	const classes = useStyles()
 	return (
-		<Grid container className={classes.container}>
+		<Grid className={classes.container} container>
 			<Grid item xs={12}>
-				<Typography variant="h3" id="projects" className={classes.containerTitle}>
+				<Typography className={classes.containerTitle} id="projects" variant="h3">
 					Tech Stack
 				</Typography>
 			</Grid>

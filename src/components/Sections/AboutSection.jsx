@@ -1,9 +1,9 @@
 import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import ButtonIcon from '../ButtonIcon/ButtonIcon'
-import { useIntersection } from '../../hooks/UseIntersection'
+import ButtonIcon from '@/components/ButtonIcon'
+import useIntersection from '@/hooks/UseIntersection'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	container: {
 		display: 'flex',
 		justifyContent: 'space-around',
@@ -87,64 +87,64 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-export default function AboutSection(props) {
+export default function AboutSection() {
 	const classes = useStyles()
 	const { observerEntry, elRef } = useIntersection({ threshold: 0.35 })
 	return (
-		<Grid container className={classes.container} ref={elRef}>
+		<Grid className={classes.container} container ref={elRef}>
 			<Grid item xs={12}>
-				<Typography variant="h3" id="about_me" className={classes.containerTitle}>
+				<Typography className={classes.containerTitle} id="about_me" variant="h3">
 					About me
 				</Typography>
 			</Grid>
 			<Grid
-				item
-				xs={9}
-				md={3}
 				className={`${
 					observerEntry.isIntersecting ? classes.animationParagraph : classes.animationParagraphFade
 				}`}
+				item
+				md={3}
+				xs={9}
 			>
-				<Typography variant="body1" className={classes.containerParagraph}>
+				<Typography className={classes.containerParagraph} variant="body1">
 					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam nobis, similique hic
 					dignissimos quo placeat nesciunt soluta laudantium veritatis maxime similique hic
 					dignissimos quo placeat nesciunt soluta laudantium veritatis maxime.
 				</Typography>
 				<Grid
-					item
-					xs={12}
-					container
-					justify="center"
 					alignItems="center"
 					className={classes.buttonContainer}
+					container
+					item
+					justify="center"
+					xs={12}
 				>
-					<ButtonIcon icon="code" variant="contained" color="primary" title="See example" />
+					<ButtonIcon color="primary" icon="code" title="See example" variant="contained" />
 				</Grid>
 			</Grid>
 			<Grid
-				item
-				xs={9}
-				md={3}
 				className={`${classes.lastParagraph} ${
 					observerEntry.isIntersecting
 						? classes.animationParagraphInverse
 						: classes.animationParagraphInverseFade
 				}`}
+				item
+				md={3}
+				xs={9}
 			>
-				<Typography variant="body1" className={classes.containerParagraph}>
+				<Typography className={classes.containerParagraph} variant="body1">
 					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam nobis, similique hic
 					dignissimos quo placeat nesciunt soluta laudantium veritatis maxime similique hic
 					dignissimos quo placeat nesciunt soluta laudantium veritatis maxime.
 				</Typography>
 				<Grid
-					item
-					xs={12}
-					container
-					justify="center"
 					alignItems="center"
 					className={classes.buttonContainer}
+					container
+					item
+					justify="center"
+					xs={12}
 				>
-					<ButtonIcon icon="code" variant="contained" color="primary" title="See example" />
+					<ButtonIcon color="primary" icon="code" title="See example" variant="contained" />
 				</Grid>
 			</Grid>
 		</Grid>

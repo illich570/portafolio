@@ -13,7 +13,7 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "eslint  . --ext js --ext jsx",
+		"lint": "eslint --fix",
 		"format": "prettier --write .",
 		"prepare": "husky install"
 	},
@@ -43,10 +43,9 @@
 	},
 	"lint-staged": {
 		"*.@(js|jsx)": [
-			"npx lint",
-			"npx format"
+			"npm run lint",
+			"npm run format"
 		],
-		"*.{js,jsx}": "eslint --cache --fix",
-		"*.{js,css,md}": "prettier --write"
+		"*.{css,md}": "prettier --write"
 	}
 }

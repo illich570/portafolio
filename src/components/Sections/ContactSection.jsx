@@ -11,13 +11,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-export default function ContactSection(props) {
+export default function ContactSection() {
 	const classes = useStyles()
 
 	return (
-		<Grid container justify="center" alignItems="center" className={classes.container}>
+		<Grid alignItems="center" className={classes.container} container justify="center">
 			<Grid item xs={10}>
-				<Typography variant="h4" align="center" id="contact_me">
+				<Typography align="center" id="contact_me" variant="h4">
 					If you want to talk about your next project,
 					<a className={classes.link} href="google.com">
 						Contact me.

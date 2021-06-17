@@ -1,8 +1,8 @@
 import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import ButtonIcon from '../ButtonIcon/ButtonIcon'
+import ButtonIcon from '@/components/ButtonIcon'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	card: {
 		maxWidth: '320px',
 		display: 'flex',
@@ -53,39 +53,39 @@ export default function ProjectCard(props) {
 	return (
 		<div className={classes.card}>
 			<div className={classes.containerImage}>
-				<img src="/testImage.png" className={classes.image} />
+				<img className={classes.image} src="/testImage.png" />
 			</div>
-			<Grid container justify="center" alignItems="center" className={classes.containerBodyCard}>
+			<Grid alignItems="center" className={classes.containerBodyCard} container justify="center">
 				<Grid item xs={10}>
 					<Typography className={classes.titleCard} variant="h5">
 						Lorem.dev
 					</Typography>
 				</Grid>
-				<Grid item xs={10} className={classes.paragraphCard}>
-					<Typography variant="body2" className={classes.paragraph}>
+				<Grid className={classes.paragraphCard} item xs={10}>
+					<Typography className={classes.paragraph} variant="body2">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 						incididunt ut labore et dolore magna aliqua. Ut enim
 					</Typography>
 				</Grid>
 				<Grid
-					item
-					container
-					xs={10}
-					justify="center"
 					alignItems="center"
 					className={classes.buttonContainer}
+					container
+					item
+					justify="center"
+					xs={10}
 				>
-					<ButtonIcon icon="code" variant="contained" color="primary" title="View on Github" />
+					<ButtonIcon color="primary" icon="code" title="View on Github" variant="contained" />
 				</Grid>
 				<Grid
-					item
-					container
-					xs={10}
-					justify="center"
 					alignItems="center"
 					className={classes.buttonContainer}
+					container
+					item
+					justify="center"
+					xs={10}
 				>
-					<ButtonIcon icon="code" variant="outlined" color="primary" title="See example" />
+					<ButtonIcon color="primary" icon="code" title="See example" variant="outlined" />
 				</Grid>
 			</Grid>
 		</div>

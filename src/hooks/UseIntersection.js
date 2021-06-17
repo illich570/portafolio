@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
-function useIntersection(options) {
+export default function useIntersection(options) {
 	const [observerEntry, setEntry] = useState({})
 	const elRef = useRef()
 
@@ -11,5 +11,3 @@ function useIntersection(options) {
 	}, [elRef])
 	return { observerEntry, elRef }
 }
-
-export { useIntersection }
