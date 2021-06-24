@@ -1,0 +1,8 @@
+{
+	"links": [
+		{ "link": "Projectos", "ref": "#proyects" },
+		{ "link": "Sobre mi", "ref": "#about_me" },
+		{ "link": "Contacto", "ref": "#contact_me" }
+	],
+	"header": "Illich Rada"
+}

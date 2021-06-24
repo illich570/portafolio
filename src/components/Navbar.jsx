@@ -7,6 +7,7 @@ import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Slide from '@material-ui/core/Slide'
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles((theme) => ({
 	links: {
@@ -62,6 +63,8 @@ export default function Nav() {
 	const [showSidebar, setShowSidebar] = useState(false)
 	const classes = useStyles()
 	const handleShowSidebar = () => setShowSidebar(!showSidebar)
+	const { t } = useTranslation('navbar')
+	const links = t('links', { returnObjects: true })
 
 	return (
 		<HideOnScroll>
@@ -74,27 +77,26 @@ export default function Nav() {
 					justify="space-between"
 				>
 					<Grid alignItems="center" container item justify="center" md={6} sm={4} xs={6}>
-						<h2 className={classes.headerTitle}>Illich Rada</h2>
+						<h2 className={classes.headerTitle}>{t('header')}</h2>
 					</Grid>
 
 					<Grid item md={6} sm={8} xs={6}>
 						<Hidden implementation="css" xsDown>
 							<Grid container direction="row" justify="center">
-								<a className={classes.links} href="#projects" rel="noopener noreferrer">
-									<Typography color="primary" variant="h6">
-										Proyectos
-									</Typography>
-								</a>
-								<a className={classes.links} href="#about_me" rel="noopener noreferrer">
-									<Typography color="primary" variant="h6">
-										Contacto
-									</Typography>
-								</a>
-								<a className={classes.links} href="#contact_me" rel="noopener noreferrer">
-									<Typography color="primary" variant="h6">
-										About
-									</Typography>
-								</a>
+								{links.map((element, index) => {
+									return (
+										<a
+											className={classes.links}
+											href={element.ref}
+											key={`${element.link}_${index}`}
+											rel="noopener noreferrer"
+										>
+											<Typography color="primary" variant="h6">
+												{element.link}
+											</Typography>
+										</a>
+									)
+								})}
 							</Grid>
 						</Hidden>
 						<Hidden smUp>
@@ -113,21 +115,20 @@ export default function Nav() {
 							direction="column"
 							justify="center"
 						>
-							<a className={classes.links} href="#projects" rel="noopener noreferrer">
-								<Typography color="primary" variant="h5">
-									Proyectos
-								</Typography>
-							</a>
-							<a className={classes.links} href="#about_me" rel="noopener noreferrer">
-								<Typography color="primary" variant="h5">
-									Contacto
-								</Typography>
-							</a>
-							<a className={classes.links} href="#contact_me" rel="noopener noreferrer">
-								<Typography color="primary" variant="h5">
-									About
-								</Typography>
-							</a>
+							{links.map((element, index) => {
+								return (
+									<a
+										className={classes.links}
+										href={element.ref}
+										key={`${element.link}_${index}`}
+										rel="noopener noreferrer"
+									>
+										<Typography color="primary" variant="h5">
+											{element.link}
+										</Typography>
+									</a>
+								)
+							})}
 						</Grid>
 						<Grid
 							alignItems="center"
@@ -137,7 +138,7 @@ export default function Nav() {
 							style={{ padding: '1em' }}
 						>
 							<Typography align="center" color="primary" variant="subtitle2">
-								&copy;2020 Illich Rada
+								&copy;2021 {t('header')}
 							</Typography>
 						</Grid>
 					</Drawer>

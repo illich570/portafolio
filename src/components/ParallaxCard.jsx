@@ -1,6 +1,7 @@
 import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles((theme) => ({
 	'@keyframes typing': {
@@ -61,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
 	paragraphCard: {
 		marginBottom: '0.5em',
 		letterSpacing: '1px',
+		lineHeight: '2em',
 		fontSize: '1rem',
 		'@media (min-width: 700px)': {
 			marginBottom: '1em',
@@ -148,6 +150,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ParallaxCard() {
 	const classes = useStyles()
+	const { t } = useTranslation('parallax')
+
 	return (
 		<Grid
 			alignItems="center"
@@ -160,7 +164,7 @@ export default function ParallaxCard() {
 			<Grid className={classes.cardParallax} container item justify="center" md={7} xs={10}>
 				<Grid className={classes.whiteSectionCard} item md={4} xs={9}>
 					<Typography className={classes.greetingTitle} variant="h6">
-						Hello,I&apos;m
+						{t('greeting')}
 					</Typography>
 					<Typography align="center" className={classes.nameTitle} variant="h4">
 						Illich Rada
@@ -168,20 +172,11 @@ export default function ParallaxCard() {
 				</Grid>
 				<Grid className={classes.redSectionCard} item md={8} xs={12}>
 					<Typography className={classes.paragraphCard} variant="h6">
-						I&apos;m a
-					</Typography>
-					<Typography className={classes.paragraphCard} variant="h6">
-						Front-end Developer.
-					</Typography>
-					<Typography className={classes.paragraphCard} variant="h6">
-						I love coding, and make great websites using front-end technologies.
-					</Typography>
-					<Typography className={classes.paragraphCard} variant="h6">
-						I want to tell you a bit more about me.
+						{t('paragraph')}
 					</Typography>
 					<Grid className={classes.containerButton} item xs={12}>
 						<Button className={classes.button} color="secondary" variant="outlined">
-							See my work
+							{t('buttonParallax')}
 						</Button>
 					</Grid>
 				</Grid>
