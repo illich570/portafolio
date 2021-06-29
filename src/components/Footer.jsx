@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Footer() {
 	const classes = useStyles()
-	const { t } = useTranslation('footer');
+	const { t } = useTranslation('footer')
 	return (
 		<Grid className={classes.container} container>
 			<Grid className={classes.containerGrid} container item xs={6}>

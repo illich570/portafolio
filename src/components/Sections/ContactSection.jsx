@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ContactSection() {
 	const classes = useStyles()
-	const { t } = useTranslation('contact');
+	const { t } = useTranslation('contact')
 
 	return (
 		<Grid alignItems="center" className={classes.container} container justify="center">

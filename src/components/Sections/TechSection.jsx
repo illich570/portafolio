@@ -35,7 +35,7 @@ const test = [1, 2, 3, 4, 5, 6, 7, 8]
 
 export default function TechSection() {
 	const classes = useStyles()
-	const { t } = useTranslation('tech');
+	const { t } = useTranslation('tech')
 	return (
 		<Grid className={classes.container} container>
 			<Grid item xs={12}>

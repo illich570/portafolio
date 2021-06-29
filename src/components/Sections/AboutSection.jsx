@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		width: '100%',
 		flexDirection: 'column',
-		scrollPaddingBottom:'10px',
+		scrollPaddingBottom: '10px',
 		'@media (min-width: 700px)': {
 			flexDirection: 'row',
 		},
@@ -92,7 +92,7 @@ const useStyles = makeStyles(() => ({
 export default function AboutSection() {
 	const classes = useStyles()
 	const { observerEntry, elRef } = useIntersection({ threshold: 0.35 })
-	const { t } = useTranslation('about');
+	const { t } = useTranslation('about')
 	return (
 		<Grid className={classes.container} container id="about_me" ref={elRef}>
 			<Grid item xs={12}>
@@ -133,7 +133,7 @@ export default function AboutSection() {
 				xs={9}
 			>
 				<Typography className={classes.containerParagraph} variant="body1">
-				{t('paragraph2')}
+					{t('paragraph2')}
 				</Typography>
 				<Grid
 					alignItems="center"

@@ -21,13 +21,13 @@ const useStyles = makeStyles(() => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 		margin: '0.8em 0',
-		letterSpacing: '1px'
+		letterSpacing: '1px',
 	},
 	containerCards: {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		overflow: "hidden"
+		overflow: 'hidden',
 	},
 	animationContainer: {
 		animation: '$appear-card .75s linear forwards',
@@ -36,12 +36,12 @@ const useStyles = makeStyles(() => ({
 		'0%': {
 			opacity: 0,
 			transform: ' translate(200px)',
-			overflow: "hidden"
+			overflow: 'hidden',
 		},
 		'100%': {
 			opacity: 1,
 			transform: ' translate(0)',
-			overflow: "hidden"
+			overflow: 'hidden',
 		},
 	},
 	animationContainerFade: {
@@ -64,9 +64,9 @@ const test = [1, 2, 3]
 export default function ProjectSection() {
 	const classes = useStyles()
 	const { observerEntry, elRef } = useIntersection({ threshold: 0.2 })
-	const { t } = useTranslation('projects');
+	const { t } = useTranslation('projects')
 	return (
-		<Grid className={`${classes.container}`}  container  id="projects" ref={elRef}>
+		<Grid className={`${classes.container}`} container id="projects" ref={elRef}>
 			<Grid item xs={12}>
 				<Typography className={classes.containerTitle} variant="h3">
 					{t('title')}

@@ -9,7 +9,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Slide from '@material-ui/core/Slide'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import ChangeLanguage from '@/components/ChangeLanguage';
+import ChangeLanguage from '@/components/ChangeLanguage'
 
 const useStyles = makeStyles((theme) => ({
 	links: {
@@ -99,7 +99,7 @@ export default function Nav() {
 										</a>
 									)
 								})}
-									<ChangeLanguage/>
+								<ChangeLanguage />
 							</Grid>
 						</Hidden>
 						<Hidden smUp>
@@ -140,7 +140,7 @@ export default function Nav() {
 							justify="center"
 							style={{ padding: '1em' }}
 						>
-							<ChangeLanguage/>
+							<ChangeLanguage />
 							<Typography align="center" color="primary" variant="subtitle2">
 								&copy;2021 {t('header')}
 							</Typography>
