@@ -2,6 +2,7 @@ import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import TechCard from '@/components/TechCard'
 import Slider from '@/components/Slider'
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(() => ({
 	container: {
@@ -9,6 +10,7 @@ const useStyles = makeStyles(() => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 		width: '100%',
+		margin: '5em 0',
 		flexDirection: 'column',
 		'@media (min-width: 700px)': {
 			flexDirection: 'row',
@@ -33,11 +35,12 @@ const test = [1, 2, 3, 4, 5, 6, 7, 8]
 
 export default function TechSection() {
 	const classes = useStyles()
+	const { t } = useTranslation('tech');
 	return (
 		<Grid className={classes.container} container>
 			<Grid item xs={12}>
 				<Typography className={classes.containerTitle} id="projects" variant="h3">
-					Tech Stack
+					{t('title')}
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>

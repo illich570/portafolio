@@ -6,6 +6,7 @@ import AboutSection from '@/components/Sections/AboutSection'
 import TechSection from '@/components/Sections/TechSection'
 import ContactSection from '@/components/Sections/ContactSection'
 import Layout from '@/components/Layout'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function Home() {
 	return (
@@ -37,8 +38,6 @@ export default function Home() {
 	)
 }
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
 export async function getStaticProps({ locale }) {
 	return {
 		props: {
@@ -46,7 +45,7 @@ export async function getStaticProps({ locale }) {
 				'navbar',
 				'about',
 				'contact',
-				'navbar',
+				'footer',
 				'parallax',
 				'projects',
 				'tech',

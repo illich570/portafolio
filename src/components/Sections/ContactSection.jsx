@@ -1,5 +1,6 @@
 import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles((theme) => ({
 	link: {
@@ -13,14 +14,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ContactSection() {
 	const classes = useStyles()
+	const { t } = useTranslation('contact');
 
 	return (
 		<Grid alignItems="center" className={classes.container} container justify="center">
 			<Grid item xs={10}>
 				<Typography align="center" id="contact_me" variant="h4">
-					If you want to talk about your next project,
+					{t('contact')}
 					<a className={classes.link} href="google.com">
-						Contact me.
+						{t('action')}
 					</a>
 				</Typography>
 			</Grid>

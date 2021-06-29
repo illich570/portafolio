@@ -2,6 +2,7 @@ import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import ButtonIcon from '@/components/ButtonIcon'
 import useIntersection from '@/hooks/UseIntersection'
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(() => ({
 	container: {
@@ -10,6 +11,7 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		width: '100%',
 		flexDirection: 'column',
+		scrollPaddingBottom:'10px',
 		'@media (min-width: 700px)': {
 			flexDirection: 'row',
 		},
@@ -90,11 +92,12 @@ const useStyles = makeStyles(() => ({
 export default function AboutSection() {
 	const classes = useStyles()
 	const { observerEntry, elRef } = useIntersection({ threshold: 0.35 })
+	const { t } = useTranslation('about');
 	return (
-		<Grid className={classes.container} container ref={elRef}>
+		<Grid className={classes.container} container id="about_me" ref={elRef}>
 			<Grid item xs={12}>
-				<Typography className={classes.containerTitle} id="about_me" variant="h3">
-					About me
+				<Typography className={classes.containerTitle} variant="h3">
+					{t('title')}
 				</Typography>
 			</Grid>
 			<Grid
@@ -102,13 +105,11 @@ export default function AboutSection() {
 					observerEntry.isIntersecting ? classes.animationParagraph : classes.animationParagraphFade
 				}`}
 				item
-				md={3}
+				md={4}
 				xs={9}
 			>
 				<Typography className={classes.containerParagraph} variant="body1">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam nobis, similique hic
-					dignissimos quo placeat nesciunt soluta laudantium veritatis maxime similique hic
-					dignissimos quo placeat nesciunt soluta laudantium veritatis maxime.
+					{t('paragraph1')}
 				</Typography>
 				<Grid
 					alignItems="center"
@@ -118,7 +119,7 @@ export default function AboutSection() {
 					justify="center"
 					xs={12}
 				>
-					<ButtonIcon color="primary" icon="code" title="See example" variant="contained" />
+					<ButtonIcon color="primary" icon="code" title={t('buttonCV')} variant="contained" />
 				</Grid>
 			</Grid>
 			<Grid
@@ -128,13 +129,11 @@ export default function AboutSection() {
 						: classes.animationParagraphInverseFade
 				}`}
 				item
-				md={3}
+				md={4}
 				xs={9}
 			>
 				<Typography className={classes.containerParagraph} variant="body1">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam nobis, similique hic
-					dignissimos quo placeat nesciunt soluta laudantium veritatis maxime similique hic
-					dignissimos quo placeat nesciunt soluta laudantium veritatis maxime.
+				{t('paragraph2')}
 				</Typography>
 				<Grid
 					alignItems="center"
@@ -144,7 +143,7 @@ export default function AboutSection() {
 					justify="center"
 					xs={12}
 				>
-					<ButtonIcon color="primary" icon="code" title="See example" variant="contained" />
+					<ButtonIcon color="primary" icon="code" title={t('buttonLinkedIn')} variant="contained" />
 				</Grid>
 			</Grid>
 		</Grid>

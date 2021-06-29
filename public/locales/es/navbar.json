@@ -1,6 +1,6 @@
 {
 	"links": [
-		{ "link": "Projectos", "ref": "#proyects" },
+		{ "link": "Projectos", "ref": "#projects" },
 		{ "link": "Sobre mi", "ref": "#about_me" },
 		{ "link": "Contacto", "ref": "#contact_me" }
 	],

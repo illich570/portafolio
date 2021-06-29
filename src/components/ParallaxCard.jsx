@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 	paragraphCard: {
 		marginBottom: '0.5em',
 		letterSpacing: '1px',
-		lineHeight: '2em',
+		lineHeight: '1.7em',
 		fontSize: '1rem',
 		'@media (min-width: 700px)': {
 			marginBottom: '1em',
@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
 	wave: {
 		width: '100%',
 		position: 'absolute',
-		bottom: '1%',
+		bottom: '-4%',
 	},
 	containerParallax: {
 		backgroundColor: '#C4C4C4',

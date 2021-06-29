@@ -8,12 +8,14 @@ import AppBar from '@material-ui/core/AppBar'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Slide from '@material-ui/core/Slide'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
+import ChangeLanguage from '@/components/ChangeLanguage';
 
 const useStyles = makeStyles((theme) => ({
 	links: {
 		color: theme.palette.primary.main,
 		textDecoration: 'none',
-		padding: '0 1.5em',
+		padding: '0 1em',
 		position: 'relative',
 		'&::before': {
 			content: '""',
@@ -65,6 +67,7 @@ export default function Nav() {
 	const handleShowSidebar = () => setShowSidebar(!showSidebar)
 	const { t } = useTranslation('navbar')
 	const links = t('links', { returnObjects: true })
+	const router = useRouter()
 
 	return (
 		<HideOnScroll>
@@ -79,7 +82,6 @@ export default function Nav() {
 					<Grid alignItems="center" container item justify="center" md={6} sm={4} xs={6}>
 						<h2 className={classes.headerTitle}>{t('header')}</h2>
 					</Grid>
-
 					<Grid item md={6} sm={8} xs={6}>
 						<Hidden implementation="css" xsDown>
 							<Grid container direction="row" justify="center">
@@ -97,6 +99,7 @@ export default function Nav() {
 										</a>
 									)
 								})}
+									<ChangeLanguage/>
 							</Grid>
 						</Hidden>
 						<Hidden smUp>
@@ -137,6 +140,7 @@ export default function Nav() {
 							justify="center"
 							style={{ padding: '1em' }}
 						>
+							<ChangeLanguage/>
 							<Typography align="center" color="primary" variant="subtitle2">
 								&copy;2021 {t('header')}
 							</Typography>

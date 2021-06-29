@@ -9,11 +9,10 @@ const useStyles = makeStyles(() => ({
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-		boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.4)',
+		boxShadow: '0px 8px 10px rgba(0, 0, 0, 0.4)',
 		borderRadius: '15px',
 		margin: '1.5em',
 		'@media (min-width: 1084px)': {
-			margin: '0 1.5em',
 			marginTop: (props) => (props.index === 1 ? '5em' : '0'),
 		},
 	},

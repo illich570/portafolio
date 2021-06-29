@@ -2,13 +2,14 @@ import ProjectCard from '@/components/ProjectCard'
 import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import useIntersection from '@/hooks/UseIntersection'
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(() => ({
 	container: {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		width: '100%',
+		overflow: 'hidden',
 		flexDirection: 'column',
 		transition: 'all 0.5s ease',
 		'@media (min-width: 700px)': {
@@ -20,12 +21,13 @@ const useStyles = makeStyles(() => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 		margin: '0.8em 0',
-		letterSpacing: '1px',
+		letterSpacing: '1px'
 	},
 	containerCards: {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
+		overflow: "hidden"
 	},
 	animationContainer: {
 		animation: '$appear-card .75s linear forwards',
@@ -34,10 +36,12 @@ const useStyles = makeStyles(() => ({
 		'0%': {
 			opacity: 0,
 			transform: ' translate(200px)',
+			overflow: "hidden"
 		},
 		'100%': {
 			opacity: 1,
 			transform: ' translate(0)',
+			overflow: "hidden"
 		},
 	},
 	animationContainerFade: {
@@ -60,11 +64,12 @@ const test = [1, 2, 3]
 export default function ProjectSection() {
 	const classes = useStyles()
 	const { observerEntry, elRef } = useIntersection({ threshold: 0.2 })
+	const { t } = useTranslation('projects');
 	return (
-		<Grid className={`${classes.container}`} container ref={elRef}>
+		<Grid className={`${classes.container}`}  container  id="projects" ref={elRef}>
 			<Grid item xs={12}>
-				<Typography className={classes.containerTitle} id="projects" variant="h3">
-					Projects
+				<Typography className={classes.containerTitle} variant="h3">
+					{t('title')}
 				</Typography>
 			</Grid>
 			<Grid
