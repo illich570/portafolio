@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
 	wave: {
 		width: '100%',
 		position: 'absolute',
-		bottom: '-4%',
+		bottom: '-1.5%',
 	},
 	containerParallax: {
 		backgroundColor: '#C4C4C4',

@@ -1,5 +1,6 @@
 import { Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import Image from 'next/image'
 
 const useStyles = makeStyles(() => ({
 	card: {
@@ -46,16 +47,22 @@ const useStyles = makeStyles(() => ({
 	},
 }))
 
-export default function TechCard(props) {
-	const classes = useStyles(props)
+export default function TechCard({ data }) {
+	const classes = useStyles()
 
 	return (
 		<div className={classes.containerCards}>
 			<div className={classes.card}>
-				<img className={classes.image} src="/gatsby-icon.svg" />
+				<Image
+					alt={data.title}
+					className={classes.image}
+					height={86}
+					src={data.image.url}
+					width={86}
+				/>
 				<Grid container justify="center">
 					<Grid className={classes.titleCard} item xs={6}>
-						<span className={classes.title}>Gatbsy</span>
+						<span className={classes.title}>{data.title}</span>
 					</Grid>
 				</Grid>
 			</div>

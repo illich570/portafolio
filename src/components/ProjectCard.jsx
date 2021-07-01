@@ -1,13 +1,15 @@
 import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import ButtonIcon from '@/components/ButtonIcon'
+import Image from 'next/image'
 
 const useStyles = makeStyles(() => ({
 	card: {
 		maxWidth: '320px',
+		minHeight: '550px',
+		maxHeight: '550px',
 		display: 'flex',
 		flexDirection: 'column',
-		justifyContent: 'center',
 		alignItems: 'center',
 		boxShadow: '0px 8px 10px rgba(0, 0, 0, 0.4)',
 		borderRadius: '15px',
@@ -30,13 +32,19 @@ const useStyles = makeStyles(() => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 		letterSpacing: '1px',
+		textAlign: 'center',
+		height: '3em',
 	},
 	paragraphCard: {
-		margin: '1em 0',
+		margin: '0.5em 0',
+		height: '7em',
+		display: 'flex',
+		alignItems: 'center',
 	},
 	paragraph: {
 		lineHeight: 1.8,
 		letterSpacing: '1px',
+		textAlign: 'center',
 	},
 	buttonContainer: {
 		margin: '0.8em 0',
@@ -46,24 +54,29 @@ const useStyles = makeStyles(() => ({
 	},
 }))
 
-export default function ProjectCard(props) {
-	const classes = useStyles(props)
+export default function ProjectCard({ data }) {
+	const classes = useStyles()
 
 	return (
 		<div className={classes.card}>
 			<div className={classes.containerImage}>
-				<img className={classes.image} src="/testImage.png" />
+				<Image
+					alt={data.title}
+					className={classes.image}
+					height={220}
+					src={data.image.url}
+					width={320}
+				/>
 			</div>
 			<Grid alignItems="center" className={classes.containerBodyCard} container justify="center">
 				<Grid item xs={10}>
 					<Typography className={classes.titleCard} variant="h5">
-						Lorem.dev
+						{data.title}
 					</Typography>
 				</Grid>
 				<Grid className={classes.paragraphCard} item xs={10}>
 					<Typography className={classes.paragraph} variant="body2">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-						incididunt ut labore et dolore magna aliqua. Ut enim
+						{data.description}
 					</Typography>
 				</Grid>
 				<Grid

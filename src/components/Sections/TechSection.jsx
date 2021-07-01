@@ -19,6 +19,7 @@ const useStyles = makeStyles(() => ({
 	containerTitle: {
 		display: 'flex',
 		justifyContent: 'center',
+		textAlign: 'center',
 		alignItems: 'center',
 		margin: '1em 0',
 		marginTop: '0',
@@ -31,11 +32,11 @@ const useStyles = makeStyles(() => ({
 	},
 }))
 
-const test = [1, 2, 3, 4, 5, 6, 7, 8]
-
-export default function TechSection() {
+export default function TechSection({ dataCards }) {
 	const classes = useStyles()
 	const { t } = useTranslation('tech')
+	//eslint-disable-next-line
+	console.log(dataCards)
 	return (
 		<Grid className={classes.container} container>
 			<Grid item xs={12}>
@@ -45,8 +46,8 @@ export default function TechSection() {
 			</Grid>
 			<Grid item xs={12}>
 				<Slider>
-					{test.map((element, index) => (
-						<TechCard index={index} key={`abc_${index}`} />
+					{dataCards.map((element, index) => (
+						<TechCard data={element} index={index} key={`abc_${index}`} />
 					))}
 				</Slider>
 			</Grid>

@@ -7,8 +7,9 @@ import TechSection from '@/components/Sections/TechSection'
 import ContactSection from '@/components/Sections/ContactSection'
 import Layout from '@/components/Layout'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { GraphQLClient } from 'graphql-request'
 
-export default function Home() {
+export default function Home({ techCards, projectCards }) {
 	return (
 		<>
 			<Head>
@@ -26,11 +27,11 @@ export default function Home() {
 			</Head>
 			<Layout titleHead="Illich Rada">
 				<ParallaxCard />
-				<ProjectSection />
+				<ProjectSection dataCards={projectCards} />
 				<SectionDivider />
 				<AboutSection />
 				<SectionDivider />
-				<TechSection />
+				<TechSection dataCards={techCards} />
 				<SectionDivider />
 				<ContactSection />
 			</Layout>
@@ -39,6 +40,33 @@ export default function Home() {
 }
 
 export async function getStaticProps({ locale }) {
+	const graphcms = new GraphQLClient(process.env.URL_GRAPHCMS, {
+		headers: {
+			authorization: `Bearer ${process.env.TOKEN_GRAPHCMS}`,
+		},
+	})
+
+	const { techCards, projectCards } = await graphcms.request(`
+	{
+		techCards{
+			id
+			title
+			image{
+				url
+			}
+		}
+		projectCards {
+				title
+				description
+				exampleUrl
+				githubUrl
+				image {
+					url
+				}
+		}
+	}
+`)
+
 	return {
 		props: {
 			...(await serverSideTranslations(locale, [
@@ -50,6 +78,8 @@ export async function getStaticProps({ locale }) {
 				'projects',
 				'tech',
 			])),
+			techCards,
+			projectCards,
 			// Will be passed to the page component as props
 		},
 	}

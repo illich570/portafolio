@@ -59,12 +59,12 @@ const useStyles = makeStyles(() => ({
 	},
 }))
 
-const test = [1, 2, 3]
-
-export default function ProjectSection() {
+export default function ProjectSection({ dataCards }) {
 	const classes = useStyles()
 	const { observerEntry, elRef } = useIntersection({ threshold: 0.2 })
 	const { t } = useTranslation('projects')
+	//eslint-disable-next-line
+	console.log(dataCards)
 	return (
 		<Grid className={`${classes.container}`} container id="projects" ref={elRef}>
 			<Grid item xs={12}>
@@ -80,8 +80,8 @@ export default function ProjectSection() {
 				item
 				xs={12}
 			>
-				{test.map((element, index) => (
-					<ProjectCard index={index} key={`abc_${index}`} />
+				{dataCards.map((element, index) => (
+					<ProjectCard data={element} index={index} key={`abc_${index}`} />
 				))}
 			</Grid>
 		</Grid>
