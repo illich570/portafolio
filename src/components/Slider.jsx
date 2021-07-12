@@ -4,7 +4,8 @@ export default function SliderCard({ children }) {
 	const settings = {
 		dots: true,
 		infinite: true,
-		speed: 450,
+		speed: 300,
+		autoplaySpeed: 800,
 		slidesToShow: 3,
 		slidesToScroll: 1,
 		autoplay: true,

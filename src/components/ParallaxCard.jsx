@@ -34,6 +34,14 @@ const useStyles = makeStyles((theme) => ({
 			borderColor: 'transparent',
 		},
 	},
+	'@keyframes waves': {
+		'0%': {
+			transform: 'rotate(0deg)',
+		},
+		'100%': {
+			transform: 'rotate(360deg)',
+		},
+	},
 	button: {
 		color: 'white',
 		borderColor: 'white',
@@ -102,13 +110,26 @@ const useStyles = makeStyles((theme) => ({
 			animation: '$moving-arrow 1s steps(30,end) infinite',
 		},
 	},
-	wave: {
-		width: '100%',
+	squareWave: {
+		width: '2500px',
+		height: '2550px',
+		backgroundColor: '#C4C4C4',
 		position: 'absolute',
-		bottom: '-1.5%',
+		top: '-65%',
+		marginLeft: '-1250px',
+		marginTop: '-1250px',
+		left: '50%',
+		borderRadius: '35%',
+		animation: '$waves 15s linear infinite',
+		'@media (max-width: 762px)': {
+			top: '-90%',
+		},
+		'@media (max-height: 710px)': {
+			top: '-130%',
+		},
 	},
 	containerParallax: {
-		backgroundColor: '#C4C4C4',
+		// backgroundColor: '#C4C4C4',
 		minHeight: '89vh',
 		width: '100%',
 		padding: '2em 0',
@@ -161,6 +182,7 @@ export default function ParallaxCard() {
 			justify="center"
 			xs={12}
 		>
+			<div className={classes.squareWave}></div>
 			<Grid className={classes.cardParallax} container item justify="center" md={7} xs={10}>
 				<Grid className={classes.whiteSectionCard} item md={4} xs={9}>
 					<Typography className={classes.greetingTitle} variant="h6">
@@ -186,9 +208,9 @@ export default function ParallaxCard() {
 					<KeyboardArrowDownIcon className={classes.arrowButton} />
 				</div>
 			</Grid>
-			<figure className={classes.wave}>
+			{/* <figure className={classes.wave}>
 				<img alt="waves" src="/wave.svg" />
-			</figure>
+			</figure> */}
 		</Grid>
 	)
 }

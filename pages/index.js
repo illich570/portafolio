@@ -10,6 +10,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GraphQLClient } from 'graphql-request'
 
 export default function Home({ techCards, projectCards }) {
+	//eslint-disable-next-line
+	console.log(projectCards)
 	return (
 		<>
 			<Head>
@@ -46,8 +48,9 @@ export async function getStaticProps({ locale }) {
 		},
 	})
 
-	const { techCards, projectCards } = await graphcms.request(`
-	{
+	const { techCards, projectCards } = await graphcms.request(
+		`
+	query dataFetching($locale: Locale!){
 		techCards{
 			id
 			title
@@ -55,17 +58,20 @@ export async function getStaticProps({ locale }) {
 				url
 			}
 		}
-		projectCards {
-				title
-				description
-				exampleUrl
-				githubUrl
+		projectCards(locales: [$locale]) {
+			title
+			description
+			exampleUrl
+			githubUrl
+			localizations(includeCurrent: true){
 				image {
 					url
-				}
+				} 
+			}
 		}
-	}
-`)
+	}`,
+		{ locale }
+	)
 
 	return {
 		props: {

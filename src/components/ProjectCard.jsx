@@ -64,7 +64,7 @@ export default function ProjectCard({ data }) {
 					alt={data.title}
 					className={classes.image}
 					height={220}
-					src={data.image.url}
+					src={data.localizations[0].image.url}
 					width={320}
 				/>
 			</div>
