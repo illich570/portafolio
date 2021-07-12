@@ -8,7 +8,6 @@ import AppBar from '@material-ui/core/AppBar'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Slide from '@material-ui/core/Slide'
 import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
 import ChangeLanguage from '@/components/ChangeLanguage'
 
 const useStyles = makeStyles((theme) => ({
@@ -67,7 +66,6 @@ export default function Nav() {
 	const handleShowSidebar = () => setShowSidebar(!showSidebar)
 	const { t } = useTranslation('navbar')
 	const links = t('links', { returnObjects: true })
-	const router = useRouter()
 
 	return (
 		<HideOnScroll>
