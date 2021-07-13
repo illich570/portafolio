@@ -9,6 +9,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Slide from '@material-ui/core/Slide'
 import { useTranslation } from 'next-i18next'
 import ChangeLanguage from '@/components/ChangeLanguage'
+import { Link } from 'react-scroll'
 
 const useStyles = makeStyles((theme) => ({
 	links: {
@@ -26,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
 			backgroundColor: '#000',
 			visibility: 'hidden',
 			transition: 'all 0.2s ease-in-out 0s',
+		},
+		'&:hover': {
+			cursor: 'pointer',
 		},
 		'&:hover::before': {
 			visibility: 'visible',
@@ -85,16 +89,17 @@ export default function Nav() {
 							<Grid container direction="row" justify="center">
 								{links.map((element, index) => {
 									return (
-										<a
+										<Link
 											className={classes.links}
-											href={element.ref}
 											key={`${element.link}_${index}`}
-											rel="noopener noreferrer"
+											smooth
+											spy
+											to={element.ref}
 										>
 											<Typography color="primary" variant="h6">
 												{element.link}
 											</Typography>
-										</a>
+										</Link>
 									)
 								})}
 								<ChangeLanguage />
@@ -118,16 +123,17 @@ export default function Nav() {
 						>
 							{links.map((element, index) => {
 								return (
-									<a
+									<Link
 										className={classes.links}
-										href={element.ref}
 										key={`${element.link}_${index}`}
-										rel="noopener noreferrer"
+										smooth
+										spy
+										to={element.ref}
 									>
-										<Typography color="primary" variant="h5">
+										<Typography color="primary" variant="h6">
 											{element.link}
 										</Typography>
-									</a>
+									</Link>
 								)
 							})}
 						</Grid>

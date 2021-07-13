@@ -11,7 +11,6 @@ import { GraphQLClient } from 'graphql-request'
 
 export default function Home({ techCards, projectCards }) {
 	//eslint-disable-next-line
-	console.log(projectCards)
 	return (
 		<>
 			<Head>

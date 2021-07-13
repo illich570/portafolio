@@ -129,7 +129,6 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	containerParallax: {
-		// backgroundColor: '#C4C4C4',
 		minHeight: '89vh',
 		width: '100%',
 		padding: '2em 0',
@@ -208,9 +207,6 @@ export default function ParallaxCard() {
 					<KeyboardArrowDownIcon className={classes.arrowButton} />
 				</div>
 			</Grid>
-			{/* <figure className={classes.wave}>
-				<img alt="waves" src="/wave.svg" />
-			</figure> */}
 		</Grid>
 	)
 }
