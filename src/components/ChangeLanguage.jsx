@@ -53,6 +53,11 @@ const useStyles = makeStyles((theme) => ({
 			background: theme.palette.primary.main,
 		},
 	},
+	control: {
+		'@media (max-width: 599px)': {
+			width: '100%',
+		},
+	},
 }))
 
 export default function ChangeLanguage() {
@@ -80,7 +85,7 @@ export default function ChangeLanguage() {
 	}
 
 	return (
-		<FormControl>
+		<FormControl className={classes.control}>
 			<Select
 				MenuProps={menuProps}
 				classes={{ root: classes.container }}

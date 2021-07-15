@@ -5,16 +5,17 @@ export default function SliderCard({ children }) {
 		dots: true,
 		infinite: true,
 		speed: 1500,
-		autoplaySpeed: 2500,
-		slidesToShow: 3,
-		slidesToScroll: 1,
+		slidesToShow: 4,
+		slidesToScroll: 2,
 		autoplay: true,
 		arrows: false,
+		pauseOnDotsHover: true,
+		pauseOnFocus: true,
 		responsive: [
 			{
 				breakpoint: 768,
 				settings: {
-					slidesToShow: 2,
+					slidesToShow: 3,
 					slidesToScroll: 1,
 				},
 			},

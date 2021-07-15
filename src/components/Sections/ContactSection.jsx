@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
 	link: {
 		color: theme.palette.primary.main,
 		marginLeft: '0.2em',
+		textDecoration: 'underline',
 	},
 	container: {
 		margin: '10em 0',
@@ -18,12 +19,19 @@ export default function ContactSection() {
 
 	return (
 		<Grid alignItems="center" className={classes.container} container justify="center">
-			<Grid item xs={10}>
+			<Grid item xs={9}>
 				<Typography align="center" id="contact_me" variant="h4">
 					{t('contact')}
-					<a className={classes.link} href="google.com">
-						{t('action')}
-					</a>
+					<adress>
+						<a
+							className={classes.link}
+							href="mailto:illich570@gmail.com"
+							rel="noreferrer noopener"
+							target="_blank"
+						>
+							{t('action')}
+						</a>
+					</adress>
 				</Typography>
 			</Grid>
 		</Grid>

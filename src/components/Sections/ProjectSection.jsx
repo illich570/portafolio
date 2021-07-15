@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react'
 import ProjectCard from '@/components/ProjectCard'
 import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import useIntersection from '@/hooks/UseIntersection'
 import { useTranslation } from 'next-i18next'
+import handleIntersection from '@/utils/handleIntersection'
 
 const useStyles = makeStyles(() => ({
 	container: {
@@ -11,6 +13,7 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		overflow: 'hidden',
 		flexDirection: 'column',
+		scrollPaddingBottom: '100px',
 		transition: 'all 0.5s ease',
 		'@media (min-width: 700px)': {
 			flexDirection: 'row',
@@ -22,62 +25,50 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		margin: '0.8em 0',
 		letterSpacing: '1px',
+		'@media (max-width: 700px)': {
+			fontSize: '2.6em',
+		},
 	},
 	containerCards: {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
 		overflow: 'hidden',
+		transition: '1s',
+		transform: 'translate(200px)',
+		opacity: 0,
 	},
-	animationContainer: {
-		animation: '$appear-card .75s linear forwards',
-	},
-	'@keyframes appear-card': {
-		'0%': {
-			opacity: 0,
-			transform: ' translate(200px)',
-			overflow: 'hidden',
-		},
-		'100%': {
-			opacity: 1,
-			transform: ' translate(0)',
-			overflow: 'hidden',
-		},
-	},
-	animationContainerFade: {
-		animation: '$appear-card-fade .75s linear forwards',
-	},
-	'@keyframes appear-card-fade': {
-		'0%': {
-			opacity: 1,
-			transform: ' translate(0)',
-		},
-		'100%': {
-			opacity: 0,
-			transform: ' translate(-200px)',
-		},
+	containerCardsFadeIn: {
+		transform: 'translate(0)',
+		opacity: 1,
 	},
 }))
 
 export default function ProjectSection({ dataCards }) {
 	const classes = useStyles()
-	const { observerEntry, elRef } = useIntersection({ threshold: 0.2 })
+	const thresholdValue = 0.2
+	const { observerEntry, elRef } = useIntersection({ threshold: thresholdValue })
+	const [animated, setAnimated] = useState(false)
+
+	useEffect(() => {
+		const result = handleIntersection(observerEntry, thresholdValue)
+		if (result !== undefined && result !== animated) {
+			setAnimated(result)
+		}
+	}, [observerEntry, animated])
 	const { t } = useTranslation('projects')
-	//eslint-disable-next-line
-	console.log(dataCards)
 	return (
-		<Grid className={`${classes.container}`} container id="projects" ref={elRef}>
+		<Grid className={`${classes.container}`} container id="projects">
 			<Grid item xs={12}>
 				<Typography className={classes.containerTitle} variant="h3">
 					{t('title')}
 				</Typography>
 			</Grid>
 			<Grid
-				className={`${classes.containerCards} ${
-					observerEntry.isIntersecting ? classes.animationContainer : classes.animationContainerFade
-				}`}
+				className={`${classes.containerCards} ${animated ? classes.containerCardsFadeIn : ''}`}
 				container
 				item
+				ref={elRef}
 				xs={12}
 			>
 				{dataCards.map((element, index) => (

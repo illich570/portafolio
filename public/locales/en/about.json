@@ -1,7 +1,9 @@
 {
 	"title": "About me",
-	"paragraph1": " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam nobis, similique hic dignissimos quo placeat nesciunt soluta laudantium veritatis maxime similique hic dignissimos quo placeat nesciunt soluta laudantium veritatis maxime.",
-	"paragraph2": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam nobis, similique hic dignissimos quo placeat nesciunt soluta laudantium veritatis maxime similique hic dignissimos quo placeat nesciunt soluta laudantium veritatis maxime.",
+	"paragraph1": "Every story has a beginning, which mine begins with an immense curiosity to want to know how these places are made where I spent hours observing, called website pages. After a couple of courses and a career started in Computing, what was curiosity turned into a passion in the world of technology, which I enjoy being constantly learning every day.",
+	"paragraph2": "Punctuality, responsibility and teamwork are vital to me. I have experience in Web Development making multi-company applications and products starting from the best possible solution for the user, currently working with Web Technologies such as Gatbsy, Next.js and Strapi together with content managers such as GraphCMS and Strapi, also having experience in HTML , CSS, Javascript, React, SCSS and Git. In addition to the Web, I have worked with robust and highly dynamic databases made with PostgreSQL, MySQL and Oracle PL / SQL, not to mention the use of Docker for image management and agile methodologies such as SCRUM for successful development.",
 	"buttonCV": "Download CV",
-	"buttonLinkedIn": "See LinkedIn"
+	"buttonLinkedIn": "See LinkedIn",
+	"urlLinkedin": "https://www.linkedin.com/in/illich-rada/",
+	"urlCV": "https://drive.google.com/file/d/1fIav-n-sSYj83UgVsmFCBld5WhUw_IKK/view?usp=sharing"
 }

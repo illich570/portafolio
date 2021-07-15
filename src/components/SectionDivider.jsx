@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 		margin: '2.5em 0',
+		zIndex: -5,
 	},
 	square: {
 		border: '4px solid',

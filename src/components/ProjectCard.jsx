@@ -2,6 +2,7 @@ import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import ButtonIcon from '@/components/ButtonIcon'
 import Image from 'next/image'
+import { useTranslation } from 'next-i18next'
 
 const useStyles = makeStyles(() => ({
 	card: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles(() => ({
 		height: '3em',
 	},
 	paragraphCard: {
-		margin: '0.5em 0',
+		margin: '1em 0',
 		height: '7em',
 		display: 'flex',
 		alignItems: 'center',
@@ -44,10 +45,9 @@ const useStyles = makeStyles(() => ({
 	paragraph: {
 		lineHeight: 1.8,
 		letterSpacing: '1px',
-		textAlign: 'center',
 	},
 	buttonContainer: {
-		margin: '0.8em 0',
+		margin: '0.6em 0',
 	},
 	containerBodyCard: {
 		paddingBottom: '1.5em',
@@ -56,7 +56,7 @@ const useStyles = makeStyles(() => ({
 
 export default function ProjectCard({ data }) {
 	const classes = useStyles()
-
+	const { t } = useTranslation('projects')
 	return (
 		<div className={classes.card}>
 			<div className={classes.containerImage}>
@@ -74,7 +74,7 @@ export default function ProjectCard({ data }) {
 						{data.title}
 					</Typography>
 				</Grid>
-				<Grid className={classes.paragraphCard} item xs={10}>
+				<Grid className={classes.paragraphCard} item xs={9}>
 					<Typography className={classes.paragraph} variant="body2">
 						{data.description}
 					</Typography>
@@ -87,7 +87,9 @@ export default function ProjectCard({ data }) {
 					justify="center"
 					xs={10}
 				>
-					<ButtonIcon color="primary" icon="code" title="View on Github" variant="contained" />
+					<a href={data.exampleUrl} rel="noopener noreferrer" target="_blank">
+						<ButtonIcon color="primary" icon="code" title={t('buttonAction')} variant="contained" />
+					</a>
 				</Grid>
 				<Grid
 					alignItems="center"
@@ -97,7 +99,9 @@ export default function ProjectCard({ data }) {
 					justify="center"
 					xs={10}
 				>
-					<ButtonIcon color="primary" icon="code" title="See example" variant="outlined" />
+					<a href={data.githubUrl} rel="noopener noreferrer" target="_blank">
+						<ButtonIcon color="primary" icon="code" title={t('buttonExample')} variant="outlined" />
+					</a>
 				</Grid>
 			</Grid>
 		</div>

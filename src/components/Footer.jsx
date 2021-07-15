@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
 			alignItems: 'center',
 		},
 	},
+	link: {
+		color: 'white',
+	},
 }))
 
 export default function Footer() {
@@ -39,9 +42,20 @@ export default function Footer() {
 				<Typography variant="body1"> &copy;2021 Illich Rada</Typography>
 			</Grid>
 			<Grid alignItems="center" container item justify="center" xs={6}>
-				<Mail className={classes.spacingIcon} />
-				<LinkedIn className={classes.spacingIcon} />
-				<GitHub className={classes.spacingIcon} />
+				<a className={classes.link} href={t('email')} rel="noreferrer noopener" target="_blank">
+					<Mail className={classes.spacingIcon} />
+				</a>
+				<a
+					className={classes.link}
+					href={t('urlLinkedin')}
+					rel="noreferrer noopener"
+					target="_blank"
+				>
+					<LinkedIn className={classes.spacingIcon} />
+				</a>
+				<a className={classes.link} href={t('urlGithub')} rel="noreferrer noopener" target="_blank">
+					<GitHub className={classes.spacingIcon} />
+				</a>
 			</Grid>
 		</Grid>
 	)

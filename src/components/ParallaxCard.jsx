@@ -2,14 +2,15 @@ import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import { useTranslation } from 'next-i18next'
+import { Link } from 'react-scroll'
 
 const useStyles = makeStyles((theme) => ({
-	'@keyframes typing': {
+	'@keyframes show': {
 		'0%': {
-			width: '0',
+			opacity: 0,
 		},
 		'100%': {
-			width: '85%',
+			opacity: 1,
 		},
 	},
 	'@keyframes moving-arrow': {
@@ -21,17 +22,6 @@ const useStyles = makeStyles((theme) => ({
 		},
 		'100%': {
 			transform: 'translateY(0px)',
-		},
-	},
-	'@keyframes blink-caret': {
-		'0%': {
-			borderColor: 'transparent',
-		},
-		'50%': {
-			borderColor: `${theme.palette.primary.main}`,
-		},
-		'100%': {
-			borderColor: 'transparent',
 		},
 	},
 	'@keyframes waves': {
@@ -51,6 +41,10 @@ const useStyles = makeStyles((theme) => ({
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: '100% 0',
 		transition: 'all 0.5s 0s',
+		userSelect: 'none',
+		webkitUserSelect: 'none',
+		MozUserSelect: 'none',
+		msUserSelect: 'none',
 		'&:hover': {
 			backgroundSize: '100% 100%',
 			borderColor: 'black',
@@ -61,11 +55,9 @@ const useStyles = makeStyles((theme) => ({
 	nameTitle: {
 		fontFamily: 'Alegreya',
 		letterSpacing: '1px',
-		overflow: 'hidden',
-		borderRight: `.1em solid ${theme.palette.primary.main}`,
 		whiteSpace: 'nowrap',
 		margin: '0 auto',
-		animation: '$typing 2.5s steps(15,end) alternate 3, $blink-caret .75s step-end infinite',
+		animation: '$show 3s',
 	},
 	paragraphCard: {
 		marginBottom: '0.5em',
@@ -85,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginTop: '0.5em',
+		marginTop: '1em',
 		transition: 'all 0.5s 0s',
 		zIndex: 2,
 		'&:hover': {
@@ -101,6 +93,10 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	arrowButton: {
+		userSelect: 'none',
+		webkitUserSelect: 'none',
+		MozUserSelect: 'none',
+		msUserSelect: 'none',
 		fontSize: '3em',
 		color: 'white',
 		transition: 'all 0.5s 0s',
@@ -111,28 +107,46 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	squareWave: {
+		zIndex: -1,
+		overflow: 'hidden',
 		width: '2500px',
 		height: '2550px',
 		backgroundColor: '#C4C4C4',
 		position: 'absolute',
-		top: '-65%',
+		top: '-70%',
 		marginLeft: '-1250px',
 		marginTop: '-1250px',
 		left: '50%',
 		borderRadius: '35%',
 		animation: '$waves 15s linear infinite',
-		'@media (max-width: 762px)': {
+		'@media (max-width: 800px)': {
+			top: '-80%',
+			width: '1250px',
+			height: '1300px',
+			left: '-40%',
+			marginLeft: '0px',
+			marginTop: '0px',
+		},
+		'@media (max-width: 600px)': {
+			left: '-60%',
+		},
+		'@media (max-height: 800px)': {
 			top: '-90%',
 		},
-		'@media (max-height: 710px)': {
-			top: '-130%',
+		'@media (max-height: 650px)': {
+			top: '-150%',
+		},
+		'@media (max-height: 500px)': {
+			top: '-170%',
 		},
 	},
 	containerParallax: {
-		minHeight: '89vh',
+		minHeight: '90vh',
 		width: '100%',
 		padding: '2em 0',
 		marginTop: '4.1em',
+		overflow: 'hidden',
+		position: 'relative',
 	},
 	cardParallax: {
 		backgroundColor: 'white',
@@ -196,16 +210,20 @@ export default function ParallaxCard() {
 						{t('paragraph')}
 					</Typography>
 					<Grid className={classes.containerButton} item xs={12}>
-						<Button className={classes.button} color="secondary" variant="outlined">
-							{t('buttonParallax')}
-						</Button>
+						<Link smooth spy to="projects">
+							<Button className={classes.button} color="secondary" variant="outlined">
+								{t('buttonParallax')}
+							</Button>
+						</Link>
 					</Grid>
 				</Grid>
 			</Grid>
 			<Grid container item justify="center" xs={12}>
-				<div className={classes.circleButton}>
-					<KeyboardArrowDownIcon className={classes.arrowButton} />
-				</div>
+				<Link smooth spy to="projects">
+					<div className={classes.circleButton}>
+						<KeyboardArrowDownIcon className={classes.arrowButton} />
+					</div>
+				</Link>
 			</Grid>
 		</Grid>
 	)

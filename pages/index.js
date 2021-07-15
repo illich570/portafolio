@@ -10,7 +10,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GraphQLClient } from 'graphql-request'
 
 export default function Home({ techCards, projectCards }) {
-	//eslint-disable-next-line
 	return (
 		<>
 			<Head>

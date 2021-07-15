@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: '10px',
 		border: '2px solid',
 		borderColor: theme.palette.primary.main,
+		userSelect: 'none',
+		webkitUserSelect: 'none',
+		MozUserSelect: 'none',
+		msUserSelect: 'none',
 	},
 	buttonOutlined: {
 		border: '2px solid',
