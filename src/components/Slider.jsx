@@ -4,7 +4,8 @@ export default function SliderCard({ children }) {
 	const settings = {
 		dots: true,
 		infinite: true,
-		speed: 1500,
+		speed: 1200,
+		autoplaySpeed: 800,
 		slidesToShow: 4,
 		slidesToScroll: 2,
 		autoplay: true,
@@ -15,7 +16,7 @@ export default function SliderCard({ children }) {
 			{
 				breakpoint: 768,
 				settings: {
-					slidesToShow: 3,
+					slidesToShow: 2,
 					slidesToScroll: 1,
 				},
 			},

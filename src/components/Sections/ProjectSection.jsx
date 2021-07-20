@@ -46,7 +46,7 @@ const useStyles = makeStyles(() => ({
 
 export default function ProjectSection({ dataCards }) {
 	const classes = useStyles()
-	const thresholdValue = 0.2
+	const thresholdValue = 0.15
 	const { observerEntry, elRef } = useIntersection({ threshold: thresholdValue })
 	const [animated, setAnimated] = useState(false)
 

@@ -59,7 +59,7 @@ const useStyles = makeStyles(() => ({
 
 export default function AboutSection() {
 	const classes = useStyles()
-	const thresholdValue = 0.35
+	const thresholdValue = 0.19
 	const { observerEntry, elRef } = useIntersection({ threshold: thresholdValue })
 	const { t } = useTranslation('about')
 	const [animated, setAnimated] = useState(false)
