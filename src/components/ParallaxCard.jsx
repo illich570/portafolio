@@ -136,7 +136,6 @@ const useStyles = makeStyles((theme) => ({
 			marginTop: '0px',
 		},
 		'@media (max-width: 450px)': {
-			top: '-35%',
 			width: '65em',
 			height: '66em',
 			left: '-45%',
