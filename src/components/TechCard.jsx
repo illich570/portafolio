@@ -2,7 +2,7 @@ import { Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Image from 'next/image'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
 	card: {
 		width: '180px',
 		height: '180px',
@@ -14,6 +14,21 @@ const useStyles = makeStyles(() => ({
 		borderRadius: '15px',
 		margin: '2em',
 		padding: '1em',
+		transition: '.25s',
+		'&:hover': {
+			borderLeft: `8px solid ${theme.palette.primary.main}`,
+			boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
+		},
+		'@media (max-width: 768px)': {
+			margin: '1em',
+			padding: '.5em',
+		},
+		'@media (max-width: 415px)': {
+			width: '130px',
+			height: '130px',
+			margin: '.75em',
+			padding: '.25em',
+		},
 	},
 	image: {
 		width: '85px',
@@ -43,7 +58,6 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		maxWidth: '1000px',
 	},
 }))
 

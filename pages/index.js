@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import ParallaxCard from '@/components/ParallaxCard'
 import ProjectSection from '@/components/Sections/ProjectSection'
@@ -9,7 +10,14 @@ import Layout from '@/components/Layout'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GraphQLClient } from 'graphql-request'
 
+const isWindow = typeof 'window' !== 'undefined'
+
 export default function Home({ techCards, projectCards }) {
+	useEffect(() => {
+		if (isWindow) {
+			window.history.scrollRestoration = 'manual'
+		}
+	}, [])
 	return (
 		<>
 			<Head>
