@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	paragraphCard: {
 		marginBottom: '0.5em',
-		letterSpacing: '1px',
+		letterSpacing: '0.5px',
 		lineHeight: '1.7em',
 		fontSize: '1rem',
 		'@media (min-width: 700px)': {
@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	greetingTitle: {
-		letterSpacing: '1px',
+		letterSpacing: '0.5px',
 		'@media(min-width: 650px) and (max-width: 959px)': {
 			textAlign: 'center',
 			paddingRight: '7em',
@@ -132,19 +132,25 @@ const useStyles = makeStyles((theme) => ({
 			width: '65em',
 			height: '66em',
 			left: '-28%',
-			marginLeft: '0px',
-			marginTop: '0px',
 		},
 		'@media (max-width: 450px)': {
 			width: '65em',
 			height: '66em',
 			left: '-45%',
-			marginLeft: '0px',
-			marginTop: '0px',
 		},
-		// '@media (max-height: 870px)': {
-		// 	top: '-90%',
-		// },
+		'@media (max-width: 450px) and (max-height: 750px)': {
+			top: '-50%',
+		},
+		'@media (max-width: 380px) and (max-height: 670px)': {
+			top: '-70%',
+			left: '-70%',
+		},
+		'@media (max-width: 330px) and (max-height: 570px)': {
+			width: '45em',
+			height: '46em',
+			top: '-35%',
+			left: '-45%',
+		},
 	},
 	containerParallax: {
 		minHeight: '90vh',

@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import Head from 'next/head'
 import ParallaxCard from '@/components/ParallaxCard'
 import ProjectSection from '@/components/Sections/ProjectSection'
 import SectionDivider from '@/components/SectionDivider'
@@ -20,19 +19,6 @@ export default function Home({ techCards, projectCards }) {
 	}, [])
 	return (
 		<>
-			<Head>
-				<link
-					charSet="UTF-8"
-					href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.0/slick.min.css"
-					rel="stylesheet"
-					type="text/css"
-				/>
-				<link
-					href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.0/slick-theme.min.css"
-					rel="stylesheet"
-					type="text/css"
-				/>
-			</Head>
 			<Layout titleHead="Illich Rada">
 				<ParallaxCard />
 				<ProjectSection dataCards={projectCards} />

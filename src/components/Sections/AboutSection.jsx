@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		width: '100%',
 		flexDirection: 'column',
-		scrollPaddingBottom: '10px',
+		scrollPaddingBottom: '100px',
 		'@media (min-width: 700px)': {
 			flexDirection: 'row',
 		},
@@ -32,7 +32,7 @@ const useStyles = makeStyles(() => ({
 	},
 	containerParagraph: {
 		lineHeight: 2,
-		letterSpacing: '1px',
+		letterSpacing: '0.5px',
 	},
 	lastParagraph: {
 		textAlign: 'right',
@@ -68,6 +68,8 @@ export default function AboutSection() {
 		const result = handleIntersection(observerEntry, thresholdValue)
 		if (result !== undefined && result !== animated) {
 			setAnimated(result)
+			//eslint-disable-next-line
+			console.log(result)
 		}
 	}, [observerEntry, animated])
 

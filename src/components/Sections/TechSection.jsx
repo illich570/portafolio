@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
 		width: '100%',
 		margin: '4em 0',
 		flexDirection: 'column',
+		scrollPaddingBottom: '100px',
 		'@media (min-width: 700px)': {
 			flexDirection: 'row',
 		},
@@ -33,6 +34,9 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		maxWidth: '1000px',
 		flexWrap: 'wrap',
+		'@media (max-width: 450px)': {
+			margin: '1.75em 0',
+		},
 	},
 }))
 
@@ -42,7 +46,7 @@ export default function TechSection({ dataCards }) {
 	return (
 		<Grid className={classes.container} container>
 			<Grid item xs={12}>
-				<Typography className={classes.containerTitle} id="projects" variant="h3">
+				<Typography className={classes.containerTitle} id="tech" variant="h3">
 					{t('title')}
 				</Typography>
 			</Grid>

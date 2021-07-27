@@ -2,6 +2,7 @@
 	"links": [
 		{ "link": "Proyectos", "ref": "projects" },
 		{ "link": "Sobre mí", "ref": "about_me" },
+		{ "link": "Tecnologías", "ref": "tech" },
 		{ "link": "Contacto", "ref": "contact_me" }
 	],
 	"header": "Illich Rada"

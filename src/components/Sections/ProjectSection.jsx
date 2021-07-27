@@ -46,7 +46,7 @@ const useStyles = makeStyles(() => ({
 
 export default function ProjectSection({ dataCards }) {
 	const classes = useStyles()
-	const thresholdValue = 0.15
+	const thresholdValue = 0.12
 	const { observerEntry, elRef } = useIntersection({ threshold: thresholdValue })
 	const [animated, setAnimated] = useState(false)
 
@@ -54,6 +54,8 @@ export default function ProjectSection({ dataCards }) {
 		const result = handleIntersection(observerEntry, thresholdValue)
 		if (result !== undefined && result !== animated) {
 			setAnimated(result)
+			//eslint-disable-next-line
+			console.log(result)
 		}
 	}, [observerEntry, animated])
 	const { t } = useTranslation('projects')

@@ -7,7 +7,6 @@ export default function Layout({ children, titleHead }) {
 		<>
 			<Head>
 				<title>{titleHead}</title>
-				<link href="/favicon.ico" rel="icon" />
 			</Head>
 			<Navbar />
 			{children}

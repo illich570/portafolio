@@ -38,19 +38,24 @@ const useStyles = makeStyles(() => ({
 	},
 	paragraphCard: {
 		margin: '1em 0',
+		'@media (max-width: 330px)': {
+			margin: '2.25em 0',
+		},
 		height: '7em',
 		display: 'flex',
 		alignItems: 'center',
 	},
 	paragraph: {
 		lineHeight: 1.8,
-		letterSpacing: '1px',
+		letterSpacing: '0.5px',
 	},
 	buttonContainer: {
 		margin: '0.6em 0',
 	},
 	containerBodyCard: {
-		paddingBottom: '1.5em',
+		'@media (min-width: 330px)': {
+			paddingBottom: '1.5em',
+		},
 	},
 }))
 
@@ -87,7 +92,7 @@ export default function ProjectCard({ data }) {
 					justify="center"
 					xs={10}
 				>
-					<a href={data.exampleUrl} rel="noopener noreferrer" target="_blank">
+					<a href={data.githubUrl} rel="noopener noreferrer" target="_blank">
 						<ButtonIcon color="primary" icon="code" title={t('buttonAction')} variant="contained" />
 					</a>
 				</Grid>
@@ -99,7 +104,7 @@ export default function ProjectCard({ data }) {
 					justify="center"
 					xs={10}
 				>
-					<a href={data.githubUrl} rel="noopener noreferrer" target="_blank">
+					<a href={data.exampleUrl} rel="noopener noreferrer" target="_blank">
 						<ButtonIcon color="primary" icon="code" title={t('buttonExample')} variant="outlined" />
 					</a>
 				</Grid>

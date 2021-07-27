@@ -2,6 +2,7 @@
 	"links": [
 		{ "link": "Projects", "ref": "projects" },
 		{ "link": "About me", "ref": "about_me" },
+		{ "link": "Tech stack", "ref": "tech" },
 		{ "link": "Contact", "ref": "contact_me" }
 	],
 	"header": "Illich Rada"
