@@ -34,6 +34,7 @@ const useStyles = makeStyles(() => ({
 		alignItems: 'center',
 		maxWidth: '1000px',
 		flexWrap: 'wrap',
+		margin: '0.75em 0',
 		'@media (max-width: 450px)': {
 			margin: '1.75em 0',
 		},

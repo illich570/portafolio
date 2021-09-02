@@ -35,11 +35,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Footer() {
 	const classes = useStyles()
 	const { t } = useTranslation('footer')
+	const date = new Date().getFullYear()
 	return (
 		<Grid className={classes.container} container>
 			<Grid className={classes.containerGrid} container item xs={6}>
-				<Typography variant="body1">{t('side')}</Typography>
-				<Typography variant="body1"> &copy;2021 Illich Rada</Typography>
+				<Typography variant="body1">{`© ${date} Illich Rada. ${t('side')} `}</Typography>
 			</Grid>
 			<Grid alignItems="center" container item justify="center" xs={6}>
 				<a className={classes.link} href={t('email')} rel="noreferrer noopener" target="_blank">

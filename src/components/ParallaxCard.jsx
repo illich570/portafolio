@@ -1,4 +1,4 @@
-import { Grid, Typography, Button } from '@material-ui/core'
+import { Grid, Typography} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import { useTranslation } from 'next-i18next'
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: '1rem',
 		'@media (min-width: 700px)': {
 			marginBottom: '1em',
-			fontSize: '1.25rem',
+			fontSize: '1.10rem',
 		},
 	},
 	circleButton: {
@@ -109,26 +109,26 @@ const useStyles = makeStyles((theme) => ({
 	squareWave: {
 		zIndex: -1,
 		overflow: 'hidden',
-		width: '175em',
-		height: '176em',
+		width: '155em',
+		height: '156em',
 		backgroundColor: '#C4C4C4',
 		position: 'absolute',
 		top: '-80%',
 		marginLeft: '-1250px',
 		marginTop: '-1250px',
-		left: '50%',
+		left: '60%',
 		borderRadius: '35%',
 		animation: '$waves 15s linear infinite',
 		'@media (max-width: 800px)': {
-			top: '-90%',
-			width: '90em',
-			height: '90.5em',
-			left: '-40%',
+			top: '-120%',
+			width: '80em',
+			height: '80.5em',
+			left: '-25%',
 			marginLeft: '0px',
 			marginTop: '0px',
 		},
 		'@media (max-width: 600px)': {
-			top: '-45%',
+			top: '-80%',
 			width: '65em',
 			height: '66em',
 			left: '-28%',
@@ -138,11 +138,8 @@ const useStyles = makeStyles((theme) => ({
 			height: '66em',
 			left: '-45%',
 		},
-		'@media (max-width: 450px) and (max-height: 750px)': {
-			top: '-50%',
-		},
 		'@media (max-width: 380px) and (max-height: 670px)': {
-			top: '-70%',
+			top: '-80%',
 			left: '-70%',
 		},
 		'@media (max-width: 330px) and (max-height: 570px)': {
@@ -164,6 +161,9 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: 'white',
 		boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.4)',
 		zIndex: 2,
+		'@media (max-width: 960px)': {
+			maxWidth: '450px'
+		},
 	},
 	redSectionCard: {
 		backgroundColor: theme.palette.primary.main,
@@ -173,6 +173,7 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		justifyContent: 'center',
 		flexDirection: 'column',
+		alignItems: 'center',
 		'@media (min-width: 960px)': {
 			padding: '1.2em 4em',
 			minHeight: '410px',
@@ -221,13 +222,13 @@ export default function ParallaxCard() {
 					<Typography className={classes.paragraphCard} variant="h6">
 						{t('paragraph')}
 					</Typography>
-					<Grid className={classes.containerButton} item xs={12}>
+					{/* <Grid className={classes.containerButton} item xs={12}>
 						<Link smooth spy to="projects">
 							<Button className={classes.button} color="secondary" variant="outlined">
 								{t('buttonParallax')}
 							</Button>
 						</Link>
-					</Grid>
+					</Grid> */}
 				</Grid>
 			</Grid>
 			<Grid container item justify="center" xs={12}>

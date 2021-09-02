@@ -9,19 +9,24 @@ export default class MyDocument extends Document {
 			<Html lang="en">
 				<Head>
 					<meta content={theme.palette.primary.main} name="theme-color" />
-					<link
-						href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500&family=Poppins:wght@500&display=swap"
-						rel="stylesheet"
-					/>
 					<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 					<link href="/favicon.ico" rel="shorcut icon" />
 					<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
 					<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
 					<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
 					<link href="/site.webmanifest" rel="manifest" />
-					<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon" />
-					<meta content="#da532c" name="msapplication-TileColor" />
-					<meta content="#ffffff" name="theme-color"></meta>
+					<meta content={theme.palette.primary.main} name="msapplication-TileColor" />
+					<meta
+            content="Illich Rada | Frontend Developer"
+            name="apple-mobile-web-app-title"
+          />
+          <meta content="Illich Rada | Frontend Developer" name="application-name" />
+          <meta content={theme.palette.primary.main} name="msapplication-TileColor" />
+          <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
+					<link
+						href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500&family=Poppins:wght@500&display=swap"
+						rel="stylesheet"
+					/>
 				</Head>
 				<body>
 					<Main />

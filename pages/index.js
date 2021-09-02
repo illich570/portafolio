@@ -19,7 +19,7 @@ export default function Home({ techCards, projectCards }) {
 	}, [])
 	return (
 		<>
-			<Layout titleHead="Illich Rada">
+			<Layout titleHead="Illich Rada | Frontend Developer">
 				<ParallaxCard />
 				<ProjectSection dataCards={projectCards} />
 				<SectionDivider />
@@ -78,7 +78,6 @@ export async function getStaticProps({ locale }) {
 			])),
 			techCards,
 			projectCards,
-			// Will be passed to the page component as props
 		},
 	}
 }
