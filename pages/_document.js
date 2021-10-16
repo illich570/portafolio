@@ -15,12 +15,24 @@ export default class MyDocument extends Document {
 					<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
 					<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
 					<link href="/site.webmanifest" rel="manifest" />
+					{/* METADATOS */}
+					<meta content="/og_image.png" name="image"/>
+					<meta content="portfolio, developer, IT, responsive, frontend, backend, programmer, programador, illich" name="keywords" />
+					<meta content="/meta.png" property="og:image"/>
+					<meta content="Illich Rada" name="author" />
+  				<meta content="Illich Rada" name="copyright" />
 					<meta content={theme.palette.primary.main} name="msapplication-TileColor" />
 					<meta
             content="Illich Rada | Frontend Developer"
             name="apple-mobile-web-app-title"
           />
           <meta content="Illich Rada | Frontend Developer" name="application-name" />
+					<meta content="Illich Rada | Frontend Develope" property="og:title"/>
+					<meta
+					content="Illich Rada Frontend Developer. He Realizando proyectos con tecnologias web de alta vanguardia como React, Strapi, GraphCMS, Next.js y Gatbsy. Contactame!"
+					name="description"
+					/>
+					<meta content="Illich Rada Frontend Developer" property="og:description"/>
           <meta content={theme.palette.primary.main} name="msapplication-TileColor" />
           <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
 					<link
