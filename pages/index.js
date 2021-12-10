@@ -50,7 +50,7 @@ export async function getStaticProps({ locale }) {
 				url
 			}
 		}
-		projectCards(locales: [$locale]) {
+		projectCards(locales: [$locale], orderBy: display_order_ASC) {
 			title
 			description
 			exampleUrl
@@ -79,5 +79,6 @@ export async function getStaticProps({ locale }) {
 			techCards,
 			projectCards,
 		},
+		revalidate: 60 * 2, //Validar cada 2 minutos
 	}
 }
