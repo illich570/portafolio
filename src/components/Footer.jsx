@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@material-ui/core'
-import { Mail, LinkedIn, GitHub } from '@material-ui/icons'
+import { Mail, LinkedIn, GitHub, Twitter } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
 import { useTranslation } from 'next-i18next'
 
@@ -55,6 +55,9 @@ export default function Footer() {
 				</a>
 				<a className={classes.link} href={t('urlGithub')} rel="noreferrer noopener" target="_blank">
 					<GitHub className={classes.spacingIcon} />
+				</a>
+				<a className={classes.link} href={t('urlTwitter')} rel="noreferrer noopener" target="_blank">
+					<Twitter className={classes.spacingIcon} />
 				</a>
 			</Grid>
 		</Grid>

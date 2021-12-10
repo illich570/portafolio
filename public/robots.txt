@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.illichrada.com
+
+# Sitemaps
+Sitemap: https://www.illichrada.com/sitemap.xml
