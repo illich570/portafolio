@@ -1,4 +1,4 @@
-import { Grid, Typography} from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import { useTranslation } from 'next-i18next'
@@ -79,7 +79,6 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 		marginTop: '1em',
 		transition: 'all 0.5s 0s',
-		zIndex: 2,
 		'&:hover': {
 			transform: 'scale(1.2,1.2)',
 			backgroundColor: 'white',
@@ -106,49 +105,6 @@ const useStyles = makeStyles((theme) => ({
 			animation: '$moving-arrow 1s steps(30,end) infinite',
 		},
 	},
-	squareWave: {
-		zIndex: -1,
-		overflow: 'hidden',
-		width: '155em',
-		height: '156em',
-		backgroundColor: '#C4C4C4',
-		position: 'absolute',
-		top: '-80%',
-		marginLeft: '-1250px',
-		marginTop: '-1250px',
-		left: '60%',
-		borderRadius: '35%',
-		animation: '$waves 15s linear infinite',
-		'@media (max-width: 800px)': {
-			top: '-120%',
-			width: '80em',
-			height: '80.5em',
-			left: '-25%',
-			marginLeft: '0px',
-			marginTop: '0px',
-		},
-		'@media (max-width: 600px)': {
-			top: '-80%',
-			width: '65em',
-			height: '66em',
-			left: '-28%',
-		},
-		'@media (max-width: 450px)': {
-			width: '65em',
-			height: '66em',
-			left: '-45%',
-		},
-		'@media (max-width: 380px) and (max-height: 670px)': {
-			top: '-80%',
-			left: '-70%',
-		},
-		'@media (max-width: 330px) and (max-height: 570px)': {
-			width: '45em',
-			height: '46em',
-			top: '-35%',
-			left: '-45%',
-		},
-	},
 	containerParallax: {
 		minHeight: '90vh',
 		width: '100%',
@@ -162,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
 		boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.4)',
 		zIndex: 2,
 		'@media (max-width: 960px)': {
-			maxWidth: '450px'
+			maxWidth: '450px',
 		},
 	},
 	redSectionCard: {
@@ -193,6 +149,21 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+	containerWaves:{
+		width: '100%',
+		height: '80%',
+		position: 'absolute',
+		zIndex: -1,
+		left: '0%',
+		top: '5%',
+		'@media (max-width: 450px)': {
+			width: '300%'
+		},
+	},
+	waves:{
+		width: '100%',
+		height: '100%'
+	}
 }))
 
 export default function ParallaxCard() {
@@ -208,7 +179,9 @@ export default function ParallaxCard() {
 			justify="center"
 			xs={12}
 		>
-			<div className={classes.squareWave}></div>
+				<div className={classes.containerWaves}>
+					<img alt="" className={classes.waves} src="/waves.svg"/>
+				</div>
 			<Grid className={classes.cardParallax} container item justify="center" md={7} xs={10}>
 				<Grid className={classes.whiteSectionCard} item md={4} xs={9}>
 					<Typography className={classes.greetingTitle} variant="h6">
@@ -222,13 +195,6 @@ export default function ParallaxCard() {
 					<Typography className={classes.paragraphCard} variant="h6">
 						{t('paragraph')}
 					</Typography>
-					{/* <Grid className={classes.containerButton} item xs={12}>
-						<Link smooth spy to="projects">
-							<Button className={classes.button} color="secondary" variant="outlined">
-								{t('buttonParallax')}
-							</Button>
-						</Link>
-					</Grid> */}
 				</Grid>
 			</Grid>
 			<Grid container item justify="center" xs={12}>

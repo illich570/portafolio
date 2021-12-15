@@ -68,8 +68,6 @@ export default function AboutSection() {
 		const result = handleIntersection(observerEntry, thresholdValue)
 		if (result !== undefined && result !== animated) {
 			setAnimated(result)
-			//eslint-disable-next-line
-			console.log(result)
 		}
 	}, [observerEntry, animated])
 

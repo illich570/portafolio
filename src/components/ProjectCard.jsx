@@ -92,9 +92,18 @@ export default function ProjectCard({ data }) {
 					justify="center"
 					xs={10}
 				>
-					<a href={data.githubUrl} rel="noopener noreferrer" target="_blank">
-						<ButtonIcon color="primary" icon="code" title={t('buttonAction')} variant="contained" />
-					</a>
+					{data.githubUrl !== 'N' && (
+						<>
+							<a href={data.githubUrl} rel="noopener noreferrer" target="_blank">
+								<ButtonIcon
+									color="primary"
+									icon="code"
+									title={t('buttonAction')}
+									variant="contained"
+								/>
+							</a>
+						</>
+					)}
 				</Grid>
 				<Grid
 					alignItems="center"
