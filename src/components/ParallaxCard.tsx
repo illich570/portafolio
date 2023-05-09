@@ -149,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-	containerWaves:{
+	containerWaves: {
 		width: '100%',
 		height: '80%',
 		position: 'absolute',
@@ -157,13 +157,13 @@ const useStyles = makeStyles((theme) => ({
 		left: '0%',
 		top: '5%',
 		'@media (max-width: 450px)': {
-			width: '300%'
+			width: '300%',
 		},
 	},
-	waves:{
+	waves: {
 		width: '100%',
-		height: '100%'
-	}
+		height: '100%',
+	},
 }))
 
 export default function ParallaxCard() {
@@ -179,9 +179,9 @@ export default function ParallaxCard() {
 			justify="center"
 			xs={12}
 		>
-				<div className={classes.containerWaves}>
-					<img alt="" className={classes.waves} src="/waves.svg"/>
-				</div>
+			<div className={classes.containerWaves}>
+				<img alt="" className={classes.waves} src="/waves.svg" />
+			</div>
 			<Grid className={classes.cardParallax} container item justify="center" md={7} xs={10}>
 				<Grid className={classes.whiteSectionCard} item md={4} xs={9}>
 					<Typography className={classes.greetingTitle} variant="h6">
