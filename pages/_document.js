@@ -16,25 +16,28 @@ export default class MyDocument extends Document {
 					<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
 					<link href="/site.webmanifest" rel="manifest" />
 					{/* METADATOS */}
-					<meta content="portfolio, developer, IT, responsive, frontend, backend, programmer, programador, illich" name="keywords" />
-					<meta content="https://www.illichrada.com/og_image.png" name="image"/>
-					<meta content="https://www.illichrada.com/og_image.png" property="og:image"/>
-					<meta content="Illich Rada" name="author" />
-  				<meta content="Illich Rada" name="copyright" />
-					<meta content={theme.palette.primary.main} name="msapplication-TileColor" />
 					<meta
-            content="Illich Rada | Frontend Developer"
-            name="apple-mobile-web-app-title"
-          />
-          <meta content="Illich Rada | Frontend Developer" name="application-name" />
-					<meta content="Illich Rada | Frontend Developer" property="og:title"/>
-					<meta
-					content="Illich Rada Frontend Developer. He Realizado proyectos con tecnologias web de alta vanguardia como React, Strapi, GraphCMS, Next.js y Gatbsy. Sientete libre de contactame!"
-					name="description"
+						content="portfolio, developer, IT, responsive, frontend, backend, programmer, programador, illich"
+						name="keywords"
 					/>
-					<meta content="Illich Rada Frontend Developer. He Realizado proyectos con tecnologias web de alta vanguardia como React, Strapi, GraphCMS, Next.js y Gatbsy. Sientete libre de contactame!" property="og:description"/>
-          <meta content={theme.palette.primary.main} name="msapplication-TileColor" />
-          <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
+					<meta content="https://www.illichrada.com/og_image.png" name="image" />
+					<meta content="https://www.illichrada.com/og_image.png" property="og:image" />
+					<meta content="Illich Rada" name="author" />
+					<meta content="Illich Rada" name="copyright" />
+					<meta content={theme.palette.primary.main} name="msapplication-TileColor" />
+					<meta content="Illich Rada | Fullstack Developer" name="apple-mobile-web-app-title" />
+					<meta content="Illich Rada | Fullstack Developer" name="application-name" />
+					<meta content="Illich Rada | Fullstack Developer" property="og:title" />
+					<meta
+						content="Illich Rada Fullstack Developer. He Realizado proyectos con tecnologias web de alta vanguardia como React, Strapi, GraphCMS, Next.js y Gatbsy. Sientete libre de contactame!"
+						name="description"
+					/>
+					<meta
+						content="Illich Rada Fullstack Developer. He Realizado proyectos con tecnologias web de alta vanguardia como React, Strapi, GraphCMS, Next.js y Gatbsy. Sientete libre de contactame!"
+						property="og:description"
+					/>
+					<meta content={theme.palette.primary.main} name="msapplication-TileColor" />
+					<link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
 					<link
 						href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500&family=Poppins:wght@500&display=swap"
 						rel="stylesheet"

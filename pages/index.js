@@ -19,7 +19,7 @@ export default function Home({ techCards, projectCards }) {
 	}, [])
 	return (
 		<>
-			<Layout titleHead="Illich Rada | Frontend Developer">
+			<Layout titleHead="Illich Rada | Fullstack Developer">
 				<ParallaxCard />
 				<ProjectSection dataCards={projectCards} />
 				<SectionDivider />
