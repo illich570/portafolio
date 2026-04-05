@@ -14,7 +14,12 @@ const useStyles = makeStyles()((theme) => ({
 	},
 }))
 
-export default function ContactSection({ preamble, actionLabel }) {
+export type ContactSectionProps = {
+	preamble: string
+	actionLabel: string
+}
+
+export default function ContactSection({ preamble, actionLabel }: ContactSectionProps) {
 	const { classes } = useStyles()
 
 	return (

@@ -2,8 +2,14 @@
 
 import { Box, Typography } from '@mui/material'
 import TechCard from '@/components/TechCard'
+import type { TechCardDTO } from '@/types/portfolio'
 
-export default function TechSection({ dataCards, title }) {
+export type TechSectionProps = {
+	dataCards: TechCardDTO[]
+	title: string
+}
+
+export default function TechSection({ dataCards, title }: TechSectionProps) {
 	return (
 		<Box
 			sx={{
@@ -53,7 +59,7 @@ export default function TechSection({ dataCards, title }) {
 				}}
 			>
 				{dataCards.map((element, index) => (
-					<TechCard data={element} index={index} key={`abc_${index}`} />
+					<TechCard data={element} key={`abc_${index}`} />
 				))}
 			</Box>
 		</Box>

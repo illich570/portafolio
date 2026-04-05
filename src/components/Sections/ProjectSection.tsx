@@ -1,10 +1,11 @@
 'use client'
 
 import ProjectCard from '@/components/ProjectCard'
-import { Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { makeStyles } from 'tss-react/mui'
-import useIntersection from '@/hooks/UseIntersection'
+import useIntersection from '@/hooks/useIntersection'
 import { useTranslations } from 'next-intl'
+import type { ProjectCardDTO } from '@/types/portfolio'
 
 const useStyles = makeStyles()(() => ({
 	container: {
@@ -44,7 +45,11 @@ const useStyles = makeStyles()(() => ({
 	},
 }))
 
-export default function ProjectSection({ dataCards }) {
+export type ProjectSectionProps = {
+	dataCards: ProjectCardDTO[]
+}
+
+export default function ProjectSection({ dataCards }: ProjectSectionProps) {
 	const { classes, cx } = useStyles()
 	const thresholdValue = 0.12
 	const { animated, elRef } = useIntersection({ threshold: thresholdValue })
@@ -56,15 +61,16 @@ export default function ProjectSection({ dataCards }) {
 					{t('title')}
 				</Typography>
 			</Grid>
-			<Grid
-				className={cx(classes.containerCards, animated && classes.containerCardsFadeIn)}
-				container
-				ref={elRef}
-				size={{ xs: 12 }}
-			>
-				{dataCards.map((element, index) => (
-					<ProjectCard data={element} index={index} key={`abc_${index}`} />
-				))}
+			<Grid size={{ xs: 12 }}>
+				<Box
+					ref={elRef}
+					className={cx(classes.containerCards, animated && classes.containerCardsFadeIn)}
+					sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}
+				>
+					{dataCards.map((element, index) => (
+						<ProjectCard data={element} index={index} key={`abc_${index}`} />
+					))}
+				</Box>
 			</Grid>
 		</Grid>
 	)

@@ -3,9 +3,10 @@ import { Alegreya, Poppins } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
+import { isSupportedLocale, routing } from '@/i18n/routing'
 import Providers from '@/components/Providers'
 import '@/app/globals.css'
+import type { ReactNode } from 'react'
 
 const alegreya = Alegreya({
 	subsets: ['latin'],
@@ -31,9 +32,15 @@ export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
 }
 
-export default async function LocaleLayout({ children, params }) {
+export default async function LocaleLayout({
+	children,
+	params,
+}: {
+	children: ReactNode
+	params: Promise<{ locale: string }>
+}) {
 	const { locale } = await params
-	if (!routing.locales.includes(locale)) {
+	if (!isSupportedLocale(locale)) {
 		notFound()
 	}
 	setRequestLocale(locale)

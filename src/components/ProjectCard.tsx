@@ -5,8 +5,9 @@ import { makeStyles } from 'tss-react/mui'
 import ButtonIcon from '@/components/ButtonIcon'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import type { ProjectCardDTO } from '@/types/portfolio'
 
-const useStyles = makeStyles()((_theme, { index }) => ({
+const useStyles = makeStyles<{ index: number }>()((_theme, { index }) => ({
 	card: {
 		maxWidth: '320px',
 		minHeight: '550px',
@@ -61,7 +62,12 @@ const useStyles = makeStyles()((_theme, { index }) => ({
 	},
 }))
 
-export default function ProjectCard({ data, index = 0 }) {
+export type ProjectCardProps = {
+	data: ProjectCardDTO
+	index?: number
+}
+
+export default function ProjectCard({ data, index = 0 }: ProjectCardProps) {
 	const { classes } = useStyles({ index })
 	const t = useTranslations('projects')
 	const imgUrl = data.localizations?.[0]?.image?.url

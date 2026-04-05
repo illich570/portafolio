@@ -2,6 +2,7 @@
 
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
+import type { SelectChangeEvent } from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import { makeStyles } from 'tss-react/mui'
 import { useLocale } from 'next-intl'
@@ -78,16 +79,16 @@ export default function ChangeLanguage() {
 			className: classes.list,
 		},
 		anchorOrigin: {
-			vertical: 'bottom',
-			horizontal: 'left',
+			vertical: 'bottom' as const,
+			horizontal: 'left' as const,
 		},
 		transformOrigin: {
-			vertical: 'top',
-			horizontal: 'left',
+			vertical: 'top' as const,
+			horizontal: 'left' as const,
 		},
 	}
 
-	const handleChangeLanguage = (event) => {
+	const handleChangeLanguage = (event: SelectChangeEvent<string>) => {
 		const newLocale = event.target.value
 		startTransition(() => {
 			router.replace(pathname, { locale: newLocale })
