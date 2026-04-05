@@ -6,6 +6,7 @@ import theme from '../src/theme'
 import './_app.css'
 import { appWithTranslation } from 'next-i18next'
 import Head from 'next/head'
+import { Analytics } from '@vercel/analytics/react'
 
 function MyApp(props) {
 	const { Component, pageProps } = props
@@ -26,6 +27,7 @@ function MyApp(props) {
 				{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 				<CssBaseline />
 				<Component {...pageProps} />
+				<Analytics />
 			</ThemeProvider>
 		</React.Fragment>
 	)
