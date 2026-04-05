@@ -4,6 +4,9 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.js')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	typescript: {
+		ignoreBuildErrors: true,
+	},
 	images: {
 		dangerouslyAllowSVG: true,
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

@@ -1,6 +1,7 @@
 'use client'
 
-import { Box, Grid, Typography } from '@mui/material'
+import Image from 'next/image'
+import { Grid, Typography } from '@mui/material'
 import { makeStyles } from 'tss-react/mui'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { useTranslations } from 'next-intl'
@@ -47,7 +48,7 @@ const useStyles = makeStyles()((theme) => ({
 		},
 	},
 	nameTitle: {
-		fontFamily: 'Alegreya, serif',
+		fontFamily: 'var(--font-alegreya), serif',
 		letterSpacing: '1px',
 		whiteSpace: 'nowrap',
 		margin: '0 auto',
@@ -169,7 +170,7 @@ export default function ParallaxCard() {
 			size={{ xs: 12 }}
 		>
 			<div className={classes.containerWaves}>
-				<img alt="" className={classes.waves} src="/waves.svg" />
+				<Image alt="" className={classes.waves} fill priority sizes="100vw" src="/waves.svg" />
 			</div>
 			<Grid
 				className={classes.cardParallax}

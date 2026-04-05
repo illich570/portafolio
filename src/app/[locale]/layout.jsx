@@ -1,10 +1,25 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter'
+import { Alegreya, Poppins } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import Providers from '@/components/Providers'
 import '@/app/globals.css'
+
+const alegreya = Alegreya({
+	subsets: ['latin'],
+	weight: '500',
+	display: 'swap',
+	variable: '--font-alegreya',
+})
+
+const poppins = Poppins({
+	subsets: ['latin'],
+	weight: '500',
+	display: 'swap',
+	variable: '--font-poppins',
+})
 
 export const viewport = {
 	width: 'device-width',
@@ -26,7 +41,7 @@ export default async function LocaleLayout({ children, params }) {
 	const messages = await getMessages()
 
 	return (
-		<html lang={locale}>
+		<html className={`${alegreya.variable} ${poppins.variable}`} lang={locale}>
 			<head>
 				<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 				<link href="/favicon.ico" rel="shortcut icon" />
@@ -38,11 +53,6 @@ export default async function LocaleLayout({ children, params }) {
 				<meta content="Illich Rada | Fullstack Developer" name="apple-mobile-web-app-title" />
 				<meta content="Illich Rada | Fullstack Developer" name="application-name" />
 				<meta content="https://www.illichrada.com/og_image.png" name="image" />
-				<link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
-				<link
-					href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500&family=Poppins:wght@500&display=swap"
-					rel="stylesheet"
-				/>
 			</head>
 			<body>
 				<NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">

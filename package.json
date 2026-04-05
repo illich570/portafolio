@@ -2,10 +2,6 @@
 	"name": "illich570-portfolio",
 	"version": "1.0.0",
 	"description": "Portfolio of @illich570",
-	"repository": {
-		"type": "git",
-		"url": ""
-	},
 	"private": true,
 	"author": "Illich Rada <illich570@gmail.com>",
 	"license": "MIT",
@@ -15,8 +11,9 @@
 		"build": "next build",
 		"postbuild": "next-sitemap --config next-sitemap.config.js",
 		"start": "next start",
-		"lint": "eslint . --fix",
-		"format": "prettier --write .",
+		"lint": "oxlint --fix .",
+		"format": "oxfmt --write .",
+		"typecheck": "tsc --noEmit",
 		"prepare": "husky"
 	},
 	"dependencies": {
@@ -36,19 +33,21 @@
 		"tss-react": "^4.9.20"
 	},
 	"devDependencies": {
-		"eslint": "^9.39.4",
-		"eslint-config-next": "^16.2.2",
-		"eslint-config-prettier": "^10.1.8",
+		"@types/node": "^22",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
 		"husky": "^9.1.7",
 		"lint-staged": "^16.4.0",
 		"next-sitemap": "^4.2.3",
-		"prettier": "^3.8.1"
+		"oxfmt": "^0.43.0",
+		"oxlint": "^1.58.0",
+		"typescript": "^5.7.0"
 	},
 	"lint-staged": {
-		"*.{js,jsx}": [
-			"eslint --fix",
-			"prettier --write"
+		"*.{js,jsx,ts,tsx}": [
+			"oxlint --fix",
+			"oxfmt --write"
 		],
-		"*.{css,md,json}": "prettier --write"
+		"*.{css,md,json}": "oxfmt --write"
 	}
 }
