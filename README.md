@@ -1,30 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# illich570-portfolio
 
-## Getting Started
+Next.js 15 (App Router), React 19, MUI 6, `next-intl`, `pnpm`.
 
-First, run the development server:
+## Requisitos
+
+- Node **>= 20.9** (ver [.nvmrc](.nvmrc))
+- Corepack activado para respetar `packageManager` en `package.json`
+
+## Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
+corepack enable
+pnpm install
+cp .env.example .env.local
+# URL_GRAPHCMS + TOKEN_GRAPHCMS para datos de GraphCMS
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+pnpm build
+pnpm start
+pnpm lint
+pnpm format
+```
 
-## Learn More
+## i18n
 
-To learn more about Next.js, take a look at the following resources:
+Traducciones en [`messages/`](messages/) (`es.json`, `en.json`). Rutas bajo `app/[locale]`; middleware en [`src/middleware.js`](src/middleware.js).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Nota:** Los JSON en `public/locales/` son legado de `next-i18next`; la fuente actual es `messages/`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deploy
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Compatible con Vercel / cualquier host Node. Definir variables de entorno de producción según `.env.example`.

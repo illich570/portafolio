@@ -1,13 +1,19 @@
-import { Grid, Typography } from '@material-ui/core'
-import { Mail, LinkedIn, GitHub, Twitter } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/core/styles'
-import { useTranslation } from 'next-i18next'
+'use client'
 
-const useStyles = makeStyles((theme) => ({
+import { Box, Typography } from '@mui/material'
+import { Mail, LinkedIn, GitHub, Twitter } from '@mui/icons-material'
+import { makeStyles } from 'tss-react/mui'
+import { useTranslations } from 'next-intl'
+
+const useStyles = makeStyles()((theme) => ({
 	container: {
 		backgroundColor: theme.palette.primary.main,
 		padding: '1em 2em',
 		color: 'white',
+		display: 'flex',
+		flexWrap: 'wrap',
+		alignItems: 'center',
+		justifyContent: 'space-between',
 	},
 	spacingIcon: {
 		transition: 'all 0.2s ease-in',
@@ -23,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center',
 		alignItems: 'flex-start',
 		flexDirection: 'column',
+		flex: '1 1 280px',
 		'@media(min-width: 550px)': {
 			alignItems: 'center',
 		},
@@ -30,18 +37,24 @@ const useStyles = makeStyles((theme) => ({
 	link: {
 		color: 'white',
 	},
+	icons: {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		flex: '1 1 200px',
+	},
 }))
 
 export default function Footer() {
-	const classes = useStyles()
-	const { t } = useTranslation('footer')
+	const { classes } = useStyles()
+	const t = useTranslations('footer')
 	const date = new Date().getFullYear()
 	return (
-		<Grid className={classes.container} container>
-			<Grid className={classes.containerGrid} container item xs={6}>
+		<Box className={classes.container} component="footer">
+			<Box className={classes.containerGrid}>
 				<Typography variant="body1">{`© ${date} Illich Rada. ${t('side')} `}</Typography>
-			</Grid>
-			<Grid alignItems="center" container item justify="center" xs={6}>
+			</Box>
+			<Box className={classes.icons}>
 				<a className={classes.link} href={t('email')} rel="noreferrer noopener" target="_blank">
 					<Mail className={classes.spacingIcon} />
 				</a>
@@ -56,10 +69,15 @@ export default function Footer() {
 				<a className={classes.link} href={t('urlGithub')} rel="noreferrer noopener" target="_blank">
 					<GitHub className={classes.spacingIcon} />
 				</a>
-				<a className={classes.link} href={t('urlTwitter')} rel="noreferrer noopener" target="_blank">
+				<a
+					className={classes.link}
+					href={t('urlTwitter')}
+					rel="noreferrer noopener"
+					target="_blank"
+				>
 					<Twitter className={classes.spacingIcon} />
 				</a>
-			</Grid>
-		</Grid>
+			</Box>
+		</Box>
 	)
 }

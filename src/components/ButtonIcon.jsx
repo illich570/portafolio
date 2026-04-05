@@ -1,8 +1,9 @@
-import { Button } from '@material-ui/core'
-import Icon from '@material-ui/core/Icon'
-import { makeStyles } from '@material-ui/core/styles'
+'use client'
 
-const useStyles = makeStyles((theme) => ({
+import { Button, Icon } from '@mui/material'
+import { makeStyles } from 'tss-react/mui'
+
+const useStyles = makeStyles()((theme) => ({
 	button: {
 		display: 'flex',
 		justifyContent: 'space-between',
@@ -11,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 		border: '2px solid',
 		borderColor: theme.palette.primary.main,
 		userSelect: 'none',
-		webkitUserSelect: 'none',
+		WebkitUserSelect: 'none',
 		MozUserSelect: 'none',
 		msUserSelect: 'none',
 	},
@@ -42,22 +43,19 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function ButtonIcon(props) {
-	const { icon, title, ...rest } = props
-	const classes = useStyles()
+	const { icon, title, variant = 'contained', ...rest } = props
+	const { classes, cx } = useStyles()
 	return (
 		<Button
 			{...rest}
-			className={`
-                ${classes.button} 
-                ${rest.variant === 'outlined' ? classes.buttonOutlined : ''} 
-                ${
-									rest.variant === 'outlined'
-										? classes.buttonOutlinedSweep
-										: classes.buttonContainedSweep
-								}
-              `}
+			variant={variant}
+			className={cx(
+				classes.button,
+				variant === 'outlined' ? classes.buttonOutlined : null,
+				variant === 'outlined' ? classes.buttonOutlinedSweep : classes.buttonContainedSweep
+			)}
 		>
-			{icon && <Icon>{icon}</Icon>}
+			{icon ? <Icon>{icon}</Icon> : null}
 			{title}
 		</Button>
 	)

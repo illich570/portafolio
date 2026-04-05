@@ -2,10 +2,9 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"i18n": ["i18n"]
+			"@/*": ["src/*"]
 		}
 	},
 	"exclude": ["node_modules", "public"],
-	"include": ["**/.*.js", "**/*.jsx"]
+	"include": ["src/**/*", "messages/**/*.json", "*.js", "*.mjs"]
 }

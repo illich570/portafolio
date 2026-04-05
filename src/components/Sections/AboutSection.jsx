@@ -1,11 +1,14 @@
+'use client'
+
 import { useState, useEffect } from 'react'
-import { Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Box, Grid, Typography } from '@mui/material'
+import { makeStyles } from 'tss-react/mui'
 import ButtonIcon from '@/components/ButtonIcon'
 import useIntersection from '@/hooks/UseIntersection'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 import handleIntersection from '@/utils/handleIntersection'
-const useStyles = makeStyles(() => ({
+
+const useStyles = makeStyles()(() => ({
 	container: {
 		overflow: 'hidden',
 		display: 'flex',
@@ -16,6 +19,7 @@ const useStyles = makeStyles(() => ({
 		scrollPaddingBottom: '100px',
 		'@media (min-width: 700px)': {
 			flexDirection: 'row',
+			flexWrap: 'wrap',
 		},
 	},
 	containerTitle: {
@@ -23,6 +27,7 @@ const useStyles = makeStyles(() => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginBottom: '1em',
+		width: '100%',
 		'@media (max-width: 700px)': {
 			fontSize: '2.6em',
 		},
@@ -58,10 +63,10 @@ const useStyles = makeStyles(() => ({
 }))
 
 export default function AboutSection() {
-	const classes = useStyles()
+	const { classes } = useStyles()
 	const thresholdValue = 0.19
 	const { observerEntry, elRef } = useIntersection({ threshold: thresholdValue })
-	const { t } = useTranslation('about')
+	const t = useTranslations('aboutSection')
 	const [animated, setAnimated] = useState(false)
 
 	useEffect(() => {
@@ -72,17 +77,13 @@ export default function AboutSection() {
 	}, [observerEntry, animated])
 
 	return (
-		<Grid className={classes.container} container id="about_me" ref={elRef}>
-			<Grid item xs={12}>
-				<Typography className={classes.containerTitle} variant="h3">
-					{t('title')}
-				</Typography>
-			</Grid>
+		<Box className={classes.container} id="about_me" ref={elRef}>
+			<Typography className={classes.containerTitle} variant="h3">
+				{t('title')}
+			</Typography>
 			<Grid
-				className={` ${classes.firstParagraph} ${animated ? classes.animationParagraph : ''}`}
-				item
-				md={4}
-				xs={9}
+				className={`${classes.firstParagraph} ${animated ? classes.animationParagraph : ''}`}
+				size={{ xs: 9, md: 4 }}
 			>
 				<Typography className={classes.containerParagraph} variant="body1">
 					{t('paragraph1')}
@@ -91,9 +92,8 @@ export default function AboutSection() {
 					alignItems="center"
 					className={classes.buttonContainer}
 					container
-					item
-					justify="center"
-					xs={12}
+					justifyContent="center"
+					size={{ xs: 12 }}
 				>
 					<a href={t('urlCV')} rel="noopener noreferrer" target="_blank">
 						<ButtonIcon color="primary" icon="code" title={t('buttonCV')} variant="contained" />
@@ -102,9 +102,7 @@ export default function AboutSection() {
 			</Grid>
 			<Grid
 				className={`${classes.lastParagraph} ${animated ? classes.animationParagraph : ''}`}
-				item
-				md={4}
-				xs={9}
+				size={{ xs: 9, md: 4 }}
 			>
 				<Typography className={classes.containerParagraph} variant="body1">
 					{t('paragraph2')}
@@ -113,9 +111,8 @@ export default function AboutSection() {
 					alignItems="center"
 					className={classes.buttonContainer}
 					container
-					item
-					justify="center"
-					xs={12}
+					justifyContent="center"
+					size={{ xs: 12 }}
 				>
 					<a href={t('urlLinkedin')} rel="noopener noreferrer" target="_blank">
 						<ButtonIcon
@@ -127,6 +124,6 @@ export default function AboutSection() {
 					</a>
 				</Grid>
 			</Grid>
-		</Grid>
+		</Box>
 	)
 }

@@ -1,8 +1,9 @@
-import { Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { useTranslation } from 'next-i18next'
+'use client'
 
-const useStyles = makeStyles((theme) => ({
+import { Grid, Typography } from '@mui/material'
+import { makeStyles } from 'tss-react/mui'
+
+const useStyles = makeStyles()((theme) => ({
 	link: {
 		color: theme.palette.primary.main,
 		marginLeft: '0.2em',
@@ -13,25 +14,24 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-export default function ContactSection() {
-	const classes = useStyles()
-	const { t } = useTranslation('contact')
+export default function ContactSection({ preamble, actionLabel }) {
+	const { classes } = useStyles()
 
 	return (
-		<Grid alignItems="center" className={classes.container} container justify="center">
-			<Grid item xs={10}>
+		<Grid alignItems="center" className={classes.container} container justifyContent="center">
+			<Grid size={{ xs: 10 }}>
 				<Typography align="center" id="contact_me" variant="h4">
-					{t('contact')}
-					<adress>
+					{preamble}
+					<address style={{ display: 'inline' }}>
 						<a
 							className={classes.link}
 							href="mailto:illich570@gmail.com"
 							rel="noreferrer noopener"
 							target="_blank"
 						>
-							{t('action')}
+							{actionLabel}
 						</a>
-					</adress>
+					</address>
 				</Typography>
 			</Grid>
 		</Grid>

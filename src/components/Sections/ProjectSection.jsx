@@ -1,12 +1,14 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 import ProjectCard from '@/components/ProjectCard'
-import { Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Grid, Typography } from '@mui/material'
+import { makeStyles } from 'tss-react/mui'
 import useIntersection from '@/hooks/UseIntersection'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 import handleIntersection from '@/utils/handleIntersection'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles()(() => ({
 	container: {
 		display: 'flex',
 		justifyContent: 'center',
@@ -45,7 +47,7 @@ const useStyles = makeStyles(() => ({
 }))
 
 export default function ProjectSection({ dataCards }) {
-	const classes = useStyles()
+	const { classes, cx } = useStyles()
 	const thresholdValue = 0.12
 	const { observerEntry, elRef } = useIntersection({ threshold: thresholdValue })
 	const [animated, setAnimated] = useState(false)
@@ -54,24 +56,21 @@ export default function ProjectSection({ dataCards }) {
 		const result = handleIntersection(observerEntry, thresholdValue)
 		if (result !== undefined && result !== animated) {
 			setAnimated(result)
-			//eslint-disable-next-line
-			console.log(result)
 		}
 	}, [observerEntry, animated])
-	const { t } = useTranslation('projects')
+	const t = useTranslations('projects')
 	return (
-		<Grid className={`${classes.container}`} container id="projects">
-			<Grid item xs={12}>
+		<Grid className={classes.container} container id="projects">
+			<Grid size={{ xs: 12 }}>
 				<Typography className={classes.containerTitle} variant="h3">
 					{t('title')}
 				</Typography>
 			</Grid>
 			<Grid
-				className={`${classes.containerCards} ${animated ? classes.containerCardsFadeIn : ''}`}
+				className={cx(classes.containerCards, animated && classes.containerCardsFadeIn)}
 				container
-				item
 				ref={elRef}
-				xs={12}
+				size={{ xs: 12 }}
 			>
 				{dataCards.map((element, index) => (
 					<ProjectCard data={element} index={index} key={`abc_${index}`} />

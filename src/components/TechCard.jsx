@@ -1,8 +1,10 @@
-import { Grid } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+'use client'
+
+import { Grid, Typography } from '@mui/material'
+import { makeStyles } from 'tss-react/mui'
 import Image from 'next/image'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
 	card: {
 		width: '180px',
 		height: '180px',
@@ -48,12 +50,6 @@ const useStyles = makeStyles((theme) => ({
 			fontSize: '1.25rem',
 		},
 	},
-	buttonContainer: {
-		margin: '0.8em 0',
-	},
-	containerBodyCard: {
-		paddingBottom: '1.5em',
-	},
 	containerCards: {
 		display: 'flex',
 		justifyContent: 'center',
@@ -62,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function TechCard({ data }) {
-	const classes = useStyles()
+	const { classes } = useStyles()
 
 	return (
 		<div className={classes.containerCards}>
@@ -74,9 +70,11 @@ export default function TechCard({ data }) {
 					src={data.image.url}
 					width={86}
 				/>
-				<Grid container justify="center">
-					<Grid className={classes.titleCard} item xs={6}>
-						<span className={classes.title}>{data.title}</span>
+				<Grid container justifyContent="center">
+					<Grid className={classes.titleCard} size={{ xs: 6 }}>
+						<Typography component="span" className={classes.title}>
+							{data.title}
+						</Typography>
 					</Grid>
 				</Grid>
 			</div>
