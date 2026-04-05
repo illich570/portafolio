@@ -3,6 +3,7 @@
 import { Grid, Typography } from '@mui/material'
 import { makeStyles } from 'tss-react/mui'
 import Image from 'next/image'
+import type { TechCardDTO } from '@/types/portfolio'
 
 const useStyles = makeStyles()((theme) => ({
 	card: {
@@ -57,7 +58,11 @@ const useStyles = makeStyles()((theme) => ({
 	},
 }))
 
-export default function TechCard({ data }) {
+export type TechCardProps = {
+	data: TechCardDTO
+}
+
+export default function TechCard({ data }: TechCardProps) {
 	const { classes } = useStyles()
 
 	return (

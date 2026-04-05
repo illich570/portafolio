@@ -1,5 +1,6 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import { useState } from 'react'
 import { makeStyles } from 'tss-react/mui'
 import {
@@ -58,8 +59,13 @@ const useStyles = makeStyles()((theme) => ({
 	},
 }))
 
-function HideOnScroll(props) {
-	const { children } = props
+type NavbarMessages = {
+	navbar: {
+		links: Array<{ link: string; ref: string }>
+	}
+}
+
+function HideOnScroll({ children }: { children: ReactNode }) {
 	const trigger = useScrollTrigger()
 
 	return (
@@ -74,7 +80,7 @@ export default function Nav() {
 	const { classes } = useStyles()
 	const handleShowSidebar = () => setShowSidebar(!showSidebar)
 	const t = useTranslations('navbar')
-	const messages = useMessages()
+	const messages = useMessages() as NavbarMessages
 	const links = messages.navbar.links
 
 	return (

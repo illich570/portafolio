@@ -1,6 +1,7 @@
 'use client'
 
 import { Button, Icon } from '@mui/material'
+import type { ButtonProps } from '@mui/material/Button'
 import { makeStyles } from 'tss-react/mui'
 
 const useStyles = makeStyles()((theme) => ({
@@ -42,8 +43,17 @@ const useStyles = makeStyles()((theme) => ({
 	},
 }))
 
-export default function ButtonIcon(props) {
-	const { icon, title, variant = 'contained', ...rest } = props
+export type ButtonIconProps = Omit<ButtonProps, 'children'> & {
+	icon?: string
+	title: string
+}
+
+export default function ButtonIcon({
+	icon,
+	title,
+	variant = 'contained',
+	...rest
+}: ButtonIconProps) {
 	const { classes, cx } = useStyles()
 	return (
 		<Button

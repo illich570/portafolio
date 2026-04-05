@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import handleIntersection from '@/utils/handleIntersection'
 
-export default function useIntersection({ threshold: thresholdValue }) {
+export default function useIntersection({ threshold: thresholdValue }: { threshold: number }) {
 	const [animated, setAnimated] = useState(false)
-	const elRef = useRef(null)
+	const elRef = useRef<HTMLDivElement | null>(null)
 
 	useEffect(() => {
 		const el = elRef.current

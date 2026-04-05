@@ -28,7 +28,7 @@ pnpm format
 
 ## i18n
 
-Traducciones en [`messages/`](messages/) (`es.json`, `en.json`). Rutas bajo `app/[locale]`; middleware en [`src/middleware.js`](src/middleware.js).
+Traducciones en [`messages/`](messages/) (`es.json`, `en.json`). Rutas bajo `app/[locale]`; proxy de Next en [`src/proxy.ts`](src/proxy.ts) (`next-intl`).
 
 **Nota:** Los JSON en `public/locales/` son legado de `next-i18next`; la fuente actual es `messages/`.
 

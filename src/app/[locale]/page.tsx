@@ -12,7 +12,7 @@ import { fetchPortfolioData } from '@/lib/graphcms'
 
 export const revalidate = 120
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
 	const { locale } = await params
 	setRequestLocale(locale)
 	const t = await getTranslations({ locale, namespace: 'metadata' })
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
 	}
 }
 
-export default async function HomePage({ params }) {
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
 	const { locale } = await params
 	setRequestLocale(locale)
 

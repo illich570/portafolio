@@ -3,7 +3,7 @@
 import { Box, Grid, Typography } from '@mui/material'
 import { makeStyles } from 'tss-react/mui'
 import ButtonIcon from '@/components/ButtonIcon'
-import useIntersection from '@/hooks/UseIntersection'
+import useIntersection from '@/hooks/useIntersection'
 import { useTranslations } from 'next-intl'
 
 const useStyles = makeStyles()(() => ({

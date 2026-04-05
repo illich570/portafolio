@@ -1,4 +1,5 @@
 import { GraphQLClient } from 'graphql-request'
+import type { PortfolioQueryResult } from '@/types/portfolio'
 
 const QUERY = `
 	query dataFetching($locale: Locale!){
@@ -23,7 +24,7 @@ const QUERY = `
 	}
 `
 
-export async function fetchPortfolioData(locale) {
+export async function fetchPortfolioData(locale: string): Promise<PortfolioQueryResult> {
 	const url = process.env.URL_GRAPHCMS
 	const token = process.env.TOKEN_GRAPHCMS
 
@@ -38,8 +39,8 @@ export async function fetchPortfolioData(locale) {
 			},
 		})
 
-		const { techCards, projectCards } = await graphcms.request(QUERY, { locale })
-		return { techCards, projectCards }
+		const data = await graphcms.request<PortfolioQueryResult>(QUERY, { locale })
+		return data
 	} catch {
 		return { techCards: [], projectCards: [] }
 	}
