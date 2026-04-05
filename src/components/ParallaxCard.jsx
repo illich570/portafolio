@@ -1,10 +1,13 @@
-import { Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
-import { useTranslation } from 'next-i18next'
+'use client'
+
+import Image from 'next/image'
+import { Grid, Typography } from '@mui/material'
+import { makeStyles } from 'tss-react/mui'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import { useTranslations } from 'next-intl'
 import { Link } from 'react-scroll'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
 	'@keyframes show': {
 		'0%': {
 			opacity: 0,
@@ -24,14 +27,6 @@ const useStyles = makeStyles((theme) => ({
 			transform: 'translateY(0px)',
 		},
 	},
-	'@keyframes waves': {
-		'0%': {
-			transform: 'rotate(0deg)',
-		},
-		'100%': {
-			transform: 'rotate(360deg)',
-		},
-	},
 	button: {
 		color: 'white',
 		borderColor: 'white',
@@ -42,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundSize: '100% 0',
 		transition: 'all 0.5s 0s',
 		userSelect: 'none',
-		webkitUserSelect: 'none',
+		WebkitUserSelect: 'none',
 		MozUserSelect: 'none',
 		msUserSelect: 'none',
 		'&:hover': {
@@ -53,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	nameTitle: {
-		fontFamily: 'Alegreya',
+		fontFamily: 'var(--font-alegreya), serif',
 		letterSpacing: '1px',
 		whiteSpace: 'nowrap',
 		margin: '0 auto',
@@ -93,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	arrowButton: {
 		userSelect: 'none',
-		webkitUserSelect: 'none',
+		WebkitUserSelect: 'none',
 		MozUserSelect: 'none',
 		msUserSelect: 'none',
 		fontSize: '3em',
@@ -144,12 +139,7 @@ const useStyles = makeStyles((theme) => ({
 			flexDirection: 'column',
 		},
 	},
-	containerButton: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	containerWaves:{
+	containerWaves: {
 		width: '100%',
 		height: '80%',
 		position: 'absolute',
@@ -157,33 +147,39 @@ const useStyles = makeStyles((theme) => ({
 		left: '0%',
 		top: '5%',
 		'@media (max-width: 450px)': {
-			width: '300%'
+			width: '300%',
 		},
 	},
-	waves:{
+	waves: {
 		width: '100%',
-		height: '100%'
-	}
+		height: '100%',
+	},
 }))
 
 export default function ParallaxCard() {
-	const classes = useStyles()
-	const { t } = useTranslation('parallax')
+	const { classes } = useStyles()
+	const t = useTranslations('parallax')
 
 	return (
 		<Grid
 			alignItems="center"
 			className={classes.containerParallax}
 			container
-			item
-			justify="center"
-			xs={12}
+			direction="column"
+			justifyContent="center"
+			size={{ xs: 12 }}
 		>
-				<div className={classes.containerWaves}>
-					<img alt="" className={classes.waves} src="/waves.svg"/>
-				</div>
-			<Grid className={classes.cardParallax} container item justify="center" md={7} xs={10}>
-				<Grid className={classes.whiteSectionCard} item md={4} xs={9}>
+			<div className={classes.containerWaves}>
+				<Image alt="" className={classes.waves} fill priority sizes="100vw" src="/waves.svg" />
+			</div>
+			<Grid
+				className={classes.cardParallax}
+				container
+				justifyContent="center"
+				size={{ xs: 10, md: 7 }}
+				spacing={0}
+			>
+				<Grid className={classes.whiteSectionCard} size={{ xs: 9, md: 4 }}>
 					<Typography className={classes.greetingTitle} variant="h6">
 						{t('greeting')}
 					</Typography>
@@ -191,13 +187,13 @@ export default function ParallaxCard() {
 						Illich Rada
 					</Typography>
 				</Grid>
-				<Grid className={classes.redSectionCard} item md={8} xs={12}>
+				<Grid className={classes.redSectionCard} size={{ xs: 12, md: 8 }}>
 					<Typography className={classes.paragraphCard} variant="h6">
 						{t('paragraph')}
 					</Typography>
 				</Grid>
 			</Grid>
-			<Grid container item justify="center" xs={12}>
+			<Grid container justifyContent="center" size={{ xs: 12 }}>
 				<Link smooth spy to="projects">
 					<div className={classes.circleButton}>
 						<KeyboardArrowDownIcon className={classes.arrowButton} />

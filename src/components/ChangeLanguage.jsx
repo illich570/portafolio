@@ -1,13 +1,16 @@
-import React from 'react'
-import FormControl from '@material-ui/core/FormControl'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-import { makeStyles } from '@material-ui/core/styles'
-import { useRouter } from 'next/router'
+'use client'
 
-const useStyles = makeStyles((theme) => ({
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
+import { makeStyles } from 'tss-react/mui'
+import { useLocale } from 'next-intl'
+import { useRouter, usePathname } from '@/i18n/navigation'
+import { routing } from '@/i18n/routing'
+import { useTransition } from 'react'
+
+const useStyles = makeStyles()((theme) => ({
 	container: {
-		// minWidth: 200,
 		color: theme.palette.primary.main,
 		fontWeight: 200,
 		borderStyle: 'none',
@@ -61,13 +64,18 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function ChangeLanguage() {
-	const classes = useStyles()
-	const { locale, locales, push, route, asPath } = useRouter()
+	const { classes } = useStyles()
+	const locale = useLocale()
+	const router = useRouter()
+	const pathname = usePathname()
+	const [isPending, startTransition] = useTransition()
 
 	const menuProps = {
-		classes: {
-			paper: classes.paper,
-			list: classes.list,
+		PaperProps: {
+			className: classes.paper,
+		},
+		MenuListProps: {
+			className: classes.list,
 		},
 		anchorOrigin: {
 			vertical: 'bottom',
@@ -77,25 +85,28 @@ export default function ChangeLanguage() {
 			vertical: 'top',
 			horizontal: 'left',
 		},
-		getContentAnchorEl: null,
 	}
 
 	const handleChangeLanguage = (event) => {
-		return push(route, asPath, { locale: event.target.value })
+		const newLocale = event.target.value
+		startTransition(() => {
+			router.replace(pathname, { locale: newLocale })
+		})
 	}
 
 	return (
-		<FormControl className={classes.control}>
+		<FormControl className={classes.control} disabled={isPending}>
 			<Select
 				MenuProps={menuProps}
-				classes={{ root: classes.container }}
+				className={classes.container}
 				disableUnderline
+				value={locale}
+				variant="standard"
 				onChange={handleChangeLanguage}
-				value={locale || 'es'}
 			>
-				{locales.map((local, index) => (
-					<MenuItem key={`${local}_${index}`} value={local}>
-						{local}
+				{routing.locales.map((loc, index) => (
+					<MenuItem key={`${loc}_${index}`} value={loc}>
+						{loc}
 					</MenuItem>
 				))}
 			</Select>

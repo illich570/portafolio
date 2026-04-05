@@ -1,0 +1,55 @@
+{
+	"navbar": {
+		"links": [
+			{ "link": "Proyectos", "ref": "projects" },
+			{ "link": "Sobre mí", "ref": "about_me" },
+			{ "link": "Tecnologías", "ref": "tech" },
+			{ "link": "Contacto", "ref": "contact_me" }
+		],
+		"header": "Illich Rada"
+	},
+	"aboutSection": {
+		"title": "Acerca de mí",
+		"paragraph1": "Toda historia tiene un comienzo, en el que la mía inicia con una inmensa curiosidad al querer saber como se hacen estos lugares en donde pasaba horas observando, llamadas páginas web. Después de un par de cursos y una carrera comenzada en Informatica, lo que era curiosidad se convirtió en una pasión en el mundo de la tecnología, el cual disfruto estar todos los días en constante aprendizaje.",
+		"paragraph2": "La puntualidad, responsabilidad y el trabajo en equipo son vitales para mí. Cuento con experiencia en Desarrollo Web realizando aplicaciones multicompañias y productos partiendo desde la mejor solución posible para el usuario, trabajando actualmente con Tecnologías Web como Gatbsy, Next.js y Strapi junto con manejadores de contenido como GraphCMS y Strapi, contando con experiencia también en HTML, CSS, Javascript, React, SCSS y Git. Además de la Web, he trabajado con bases de datos robustas y de alto dinamismo hechas con PostgreSQL, MySQL y Oracle PL/SQL. Sin dejar de mencionar, el uso de Docker para el manejo de imágenes y metodologías ágiles como SCRUM para un desarrollo exitoso.",
+		"buttonCV": "Descargar CV",
+		"buttonLinkedIn": "Ver LinkedIn",
+		"urlLinkedin": "https://www.linkedin.com/in/illich-rada/",
+		"urlCV": "https://drive.google.com/file/d/1c5L16euh6XSFc4pbX2fEod1TOJWrQz73/view?usp=sharing"
+	},
+	"projects": {
+		"title": "Proyectos",
+		"buttonAction": "Ver en Github",
+		"buttonExample": "Ver ejemplo"
+	},
+	"contact": {
+		"contact": "Si quieres hablar de tu próximo proyecto, ",
+		"action": "Contáctame"
+	},
+	"footer": {
+		"side": "Todos los derechos reservados.",
+		"email": "mailto:illich570@gmail.com",
+		"urlLinkedin": "https://www.linkedin.com/in/illich-rada/",
+		"urlGithub": "https://github.com/illich570",
+		"urlTwitter": "https://twitter.com/IllichR"
+	},
+	"parallax": {
+		"greeting": "Hola, soy",
+		"paragraph": "Soy un desarrollador fullstack. Amo programar y hacer geniales sitios web utilizando tecnología del lado del cliente. Quiero contarte un poco más acerca de mí.",
+		"buttonParallax": "Ve mi trabajo"
+	},
+	"illich_tech": {
+		"title": "Tecnologías favoritas"
+	},
+	"common": {
+		"links": {
+			"link1": "Proyectos",
+			"link2": "Sobre mi",
+			"link3": "Contacto"
+		}
+	},
+	"metadata": {
+		"title": "Illich Rada | Fullstack Developer",
+		"description": "Illich Rada Fullstack Developer. Portafolio con proyectos React, Next.js, GraphCMS y más."
+	}
+}

@@ -1,12 +1,27 @@
-const { i18n } = require('./next-i18next.config')
+const createNextIntlPlugin = require('next-intl/plugin')
 
-//I saw this config first in this repository: https://github.com/danestves/website/blob/main/next.config.js
-//Thanks @danestves.
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.js')
 
-module.exports = {
-	i18n,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+	typescript: {
+		ignoreBuildErrors: true,
+	},
 	images: {
-		domains: ['media.graphassets.com'],
+		dangerouslyAllowSVG: true,
+		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'media.graphassets.com',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'us-east-1.graphassets.com',
+				pathname: '/**',
+			},
+		],
 	},
 	async headers() {
 		return [
@@ -20,50 +35,54 @@ module.exports = {
 			},
 		]
 	},
-	webpack: (config, { dev, isServer }) => {
-		// Replace React with Preact only in client production build
-		if (!dev && !isServer) {
-			Object.assign(config.resolve.alias, {
-				react: 'preact/compat',
-				'react-dom/test-utils': 'preact/test-utils',
-				'react-dom': 'preact/compat',
-			})
-		}
-
-		return config
-	},
 }
 
-const securityHeaders = [
+/** Next 16 sets TURBOPACK during build; next-intl then injects legacy `experimental.turbo`. Move aliases to `turbopack` and drop the invalid key. */
+function finalizeNextConfig(config) {
+	const turbo = config.experimental?.turbo
+	if (turbo?.resolveAlias && Object.keys(turbo.resolveAlias).length > 0) {
+		config.turbopack = {
+			...config.turbopack,
+			resolveAlias: {
+				...config.turbopack?.resolveAlias,
+				...turbo.resolveAlias,
+			},
+		}
+		const { turbo: _drop, ...experimentalRest } = config.experimental
+		if (Object.keys(experimentalRest).length > 0) {
+			config.experimental = experimentalRest
+		} else {
+			delete config.experimental
+		}
+	}
+	return config
+}
 
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
-  {
-    key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
-  {
-    key: 'X-Frame-Options',
-    value: 'DENY',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
-  {
-    key: 'X-Content-Type-Options',
-    value: 'nosniff',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
-  {
-    key: 'X-DNS-Prefetch-Control',
-    value: 'on',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
-  {
-    key: 'Strict-Transport-Security',
-    value: 'max-age=31536000; includeSubDomains; preload',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
-  {
-    key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=()',
-  },
+module.exports = finalizeNextConfig(withNextIntl(nextConfig))
+
+const securityHeaders = [
+	{
+		key: 'Referrer-Policy',
+		value: 'origin-when-cross-origin',
+	},
+	{
+		key: 'X-Frame-Options',
+		value: 'DENY',
+	},
+	{
+		key: 'X-Content-Type-Options',
+		value: 'nosniff',
+	},
+	{
+		key: 'X-DNS-Prefetch-Control',
+		value: 'on',
+	},
+	{
+		key: 'Strict-Transport-Security',
+		value: 'max-age=31536000; includeSubDomains; preload',
+	},
+	{
+		key: 'Permissions-Policy',
+		value: 'camera=(), microphone=(), geolocation=()',
+	},
 ]

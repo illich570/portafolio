@@ -1,10 +1,12 @@
-import { Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+'use client'
+
+import { Grid, Typography } from '@mui/material'
+import { makeStyles } from 'tss-react/mui'
 import ButtonIcon from '@/components/ButtonIcon'
 import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles()((_theme, { index }) => ({
 	card: {
 		maxWidth: '320px',
 		minHeight: '550px',
@@ -16,7 +18,7 @@ const useStyles = makeStyles(() => ({
 		borderRadius: '15px',
 		margin: '1.5em',
 		'@media (min-width: 1084px)': {
-			marginTop: (props) => (props.index === 1 ? '5em' : '0'),
+			marginTop: index === 1 ? '5em' : '0',
 		},
 	},
 	containerImage: {
@@ -59,27 +61,31 @@ const useStyles = makeStyles(() => ({
 	},
 }))
 
-export default function ProjectCard({ data }) {
-	const classes = useStyles()
-	const { t } = useTranslation('projects')
+export default function ProjectCard({ data, index = 0 }) {
+	const { classes } = useStyles({ index })
+	const t = useTranslations('projects')
+	const imgUrl = data.localizations?.[0]?.image?.url
+
 	return (
 		<div className={classes.card}>
-			<div className={classes.containerImage}>
-				<Image
-					alt={data.title}
-					className={classes.image}
-					height={220}
-					src={data.localizations[0].image.url}
-					width={320}
-				/>
-			</div>
-			<Grid alignItems="center" className={classes.containerBodyCard} container justify="center">
-				<Grid item xs={10}>
+			{imgUrl ? (
+				<div className={classes.containerImage}>
+					<Image alt={data.title} className={classes.image} height={220} src={imgUrl} width={320} />
+				</div>
+			) : null}
+			<Grid
+				alignItems="center"
+				className={classes.containerBodyCard}
+				container
+				direction="column"
+				justifyContent="center"
+			>
+				<Grid size={{ xs: 10 }}>
 					<Typography className={classes.titleCard} variant="h5">
 						{data.title}
 					</Typography>
 				</Grid>
-				<Grid className={classes.paragraphCard} item xs={9}>
+				<Grid className={classes.paragraphCard} size={{ xs: 9 }}>
 					<Typography className={classes.paragraph} variant="body2">
 						{data.description}
 					</Typography>
@@ -88,30 +94,26 @@ export default function ProjectCard({ data }) {
 					alignItems="center"
 					className={classes.buttonContainer}
 					container
-					item
-					justify="center"
-					xs={10}
+					justifyContent="center"
+					size={{ xs: 10 }}
 				>
 					{data.githubUrl !== 'N' && (
-						<>
-							<a href={data.githubUrl} rel="noopener noreferrer" target="_blank">
-								<ButtonIcon
-									color="primary"
-									icon="code"
-									title={t('buttonAction')}
-									variant="contained"
-								/>
-							</a>
-						</>
+						<a href={data.githubUrl} rel="noopener noreferrer" target="_blank">
+							<ButtonIcon
+								color="primary"
+								icon="code"
+								title={t('buttonAction')}
+								variant="contained"
+							/>
+						</a>
 					)}
 				</Grid>
 				<Grid
 					alignItems="center"
 					className={classes.buttonContainer}
 					container
-					item
-					justify="center"
-					xs={10}
+					justifyContent="center"
+					size={{ xs: 10 }}
 				>
 					<a href={data.exampleUrl} rel="noopener noreferrer" target="_blank">
 						<ButtonIcon color="primary" icon="code" title={t('buttonExample')} variant="outlined" />

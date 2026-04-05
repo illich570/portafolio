@@ -1,0 +1,55 @@
+{
+	"navbar": {
+		"links": [
+			{ "link": "Projects", "ref": "projects" },
+			{ "link": "About me", "ref": "about_me" },
+			{ "link": "Tech stack", "ref": "tech" },
+			{ "link": "Contact", "ref": "contact_me" }
+		],
+		"header": "Illich Rada"
+	},
+	"aboutSection": {
+		"title": "About me",
+		"paragraph1": "Every story has a beginning, which mine begins with an immense curiosity to want to know how these places are made where I spent hours observing, called website pages. After a couple of courses and a career started in Computing, what was curiosity turned into a passion in the world of technology, which I enjoy being constantly learning every day.",
+		"paragraph2": "Punctuality, responsibility and teamwork are vital to me. I have experience in Web Development making multi-company applications and products starting from the best possible solution for the user, currently working with Web Technologies such as Gatbsy, Next.js and Strapi together with content managers such as GraphCMS and Strapi, also having experience in HTML , CSS, Javascript, React, SCSS and Git. In addition to the Web, I have worked with robust and highly dynamic databases made with PostgreSQL, MySQL and Oracle PL / SQL, not to mention the use of Docker for image management and agile methodologies such as SCRUM for successful development.",
+		"buttonCV": "Download CV",
+		"buttonLinkedIn": "See LinkedIn",
+		"urlLinkedin": "https://www.linkedin.com/in/illich-rada/",
+		"urlCV": "https://drive.google.com/file/d/16upYh4nLqV8ZeBqIUOpKv9LjFonoy_64/view?usp=sharing"
+	},
+	"projects": {
+		"title": "Projects",
+		"buttonAction": "See GitHub",
+		"buttonExample": "See example"
+	},
+	"contact": {
+		"contact": "If you want to talk about your next project,",
+		"action": "Contact me"
+	},
+	"footer": {
+		"side": "All rights reserved",
+		"email": "mailto:illich570@gmail.com",
+		"urlLinkedin": "https://www.linkedin.com/in/illich-rada/",
+		"urlGithub": "https://github.com/illich570",
+		"urlTwitter": "https://twitter.com/IllichR"
+	},
+	"parallax": {
+		"greeting": "Hello, I'm",
+		"paragraph": "I'm a fullstack Developer. I love to code, and make great websites using web technologies. I want to tell you a few more about me.",
+		"buttonParallax": "See my work"
+	},
+	"illich_tech": {
+		"title": "Tech Stack"
+	},
+	"common": {
+		"links": {
+			"link1": "Projects",
+			"link2": "About me",
+			"link3": "Contact"
+		}
+	},
+	"metadata": {
+		"title": "Illich Rada | Fullstack Developer",
+		"description": "Illich Rada Fullstack Developer. Portfolio with React, Next.js, GraphCMS and more."
+	}
+}

@@ -1,7 +1,9 @@
-import { Grid } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+'use client'
 
-const useStyles = makeStyles((theme) => ({
+import { Grid } from '@mui/material'
+import { makeStyles } from 'tss-react/mui'
+
+const useStyles = makeStyles()((theme) => ({
 	line: {
 		border: '2px solid',
 		borderColor: theme.palette.primary.main,
@@ -27,17 +29,17 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function SectionDivider() {
-	const classes = useStyles()
+	const { classes } = useStyles()
 
 	return (
 		<Grid className={classes.container} container>
-			<Grid item lg={4} md={5} xs={3}>
+			<Grid size={{ xs: 3, md: 5, lg: 4 }}>
 				<hr className={classes.line} />
 			</Grid>
-			<Grid alignItems="center" container item justify="center" lg={1} md={1} xs={3}>
+			<Grid alignItems="center" container justifyContent="center" size={{ xs: 3, md: 1, lg: 1 }}>
 				<div className={classes.square} />
 			</Grid>
-			<Grid item lg={4} md={5} xs={3}>
+			<Grid size={{ xs: 3, md: 5, lg: 4 }}>
 				<hr className={classes.line} />
 			</Grid>
 		</Grid>

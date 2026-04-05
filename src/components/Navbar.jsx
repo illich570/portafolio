@@ -1,17 +1,22 @@
+'use client'
+
 import { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Grid, IconButton, Typography } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
-import Hidden from '@material-ui/core/Hidden'
-import Drawer from '@material-ui/core/Drawer'
-import AppBar from '@material-ui/core/AppBar'
-import useScrollTrigger from '@material-ui/core/useScrollTrigger'
-import Slide from '@material-ui/core/Slide'
-import { useTranslation } from 'next-i18next'
+import { makeStyles } from 'tss-react/mui'
+import {
+	AppBar,
+	Drawer,
+	Grid,
+	IconButton,
+	Slide,
+	Typography,
+	useScrollTrigger,
+} from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
+import { useMessages, useTranslations } from 'next-intl'
 import ChangeLanguage from '@/components/ChangeLanguage'
 import { Link } from 'react-scroll'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
 	links: {
 		color: theme.palette.primary.main,
 		textDecoration: 'none',
@@ -59,17 +64,18 @@ function HideOnScroll(props) {
 
 	return (
 		<Slide appear={false} direction="down" in={!trigger}>
-			{children}
+			<div>{children}</div>
 		</Slide>
 	)
 }
 
 export default function Nav() {
 	const [showSidebar, setShowSidebar] = useState(false)
-	const classes = useStyles()
+	const { classes } = useStyles()
 	const handleShowSidebar = () => setShowSidebar(!showSidebar)
-	const { t } = useTranslation('navbar')
-	const links = t('links', { returnObjects: true })
+	const t = useTranslations('navbar')
+	const messages = useMessages()
+	const links = messages.navbar.links
 
 	return (
 		<HideOnScroll>
@@ -79,70 +85,77 @@ export default function Nav() {
 					className={classes.navbar}
 					container
 					direction="row"
-					justify="space-between"
+					justifyContent="space-between"
 				>
-					<Grid alignItems="center" container item justify="center" md={6} sm={4} xs={6}>
+					<Grid
+						alignItems="center"
+						container
+						justifyContent="center"
+						size={{ xs: 6, sm: 4, md: 6 }}
+					>
 						<h2 className={classes.headerTitle}>{t('header')}</h2>
 					</Grid>
-					<Grid item md={6} sm={8} xs={6}>
-						<Hidden implementation="css" xsDown>
-							<Grid container direction="row" justify="center">
-								{links.map((element, index) => {
-									return (
-										<Link
-											className={classes.links}
-											key={`${element.link}_${index}`}
-											smooth
-											spy
-											to={element.ref}
-										>
-											<Typography color="primary" variant="h6">
-												{element.link}
-											</Typography>
-										</Link>
-									)
-								})}
-								<ChangeLanguage />
-							</Grid>
-						</Hidden>
-						<Hidden smUp>
-							<Grid container direction="row" justify="flex-end">
-								<IconButton color="primary" onClick={handleShowSidebar}>
-									<MenuIcon style={{ fontSize: '1.6em' }} />
-								</IconButton>
-							</Grid>
-						</Hidden>
+					<Grid size={{ xs: 6, sm: 8, md: 6 }}>
+						<Grid
+							container
+							direction="row"
+							justifyContent="center"
+							sx={{ display: { xs: 'none', sm: 'flex' } }}
+						>
+							{links.map((element, index) => (
+								<Link
+									className={classes.links}
+									key={`${element.link}_${index}`}
+									smooth
+									spy
+									to={element.ref}
+								>
+									<Typography color="primary" variant="h6">
+										{element.link}
+									</Typography>
+								</Link>
+							))}
+							<ChangeLanguage />
+						</Grid>
+						<Grid
+							container
+							direction="row"
+							justifyContent="flex-end"
+							sx={{ display: { xs: 'flex', sm: 'none' } }}
+						>
+							<IconButton color="primary" onClick={handleShowSidebar}>
+								<MenuIcon sx={{ fontSize: '1.6em' }} />
+							</IconButton>
+						</Grid>
 					</Grid>
-					<Drawer anchor="right" onClose={handleShowSidebar} open={showSidebar}>
+					<Drawer anchor="right" open={showSidebar} onClose={handleShowSidebar}>
 						<Grid
 							alignItems="center"
 							className={classes.containerMobile}
 							container
 							direction="column"
-							justify="center"
+							justifyContent="center"
 						>
-							{links.map((element, index) => {
-								return (
-									<Link
-										className={classes.links}
-										key={`${element.link}_${index}`}
-										smooth
-										spy
-										to={element.ref}
-									>
-										<Typography color="primary" variant="h6">
-											{element.link}
-										</Typography>
-									</Link>
-								)
-							})}
+							{links.map((element, index) => (
+								<Link
+									className={classes.links}
+									key={`${element.link}_${index}`}
+									smooth
+									spy
+									to={element.ref}
+								>
+									<Typography color="primary" variant="h6">
+										{element.link}
+									</Typography>
+								</Link>
+							))}
 						</Grid>
 						<Grid
 							alignItems="center"
 							container
 							direction="column"
-							justify="center"
-							style={{ padding: '1em' }}
+							justifyContent="center"
+							sx={{ padding: '1em' }}
 						>
 							<ChangeLanguage />
 							<Typography align="center" color="primary" variant="subtitle2">
