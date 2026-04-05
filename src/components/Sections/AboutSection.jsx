@@ -1,12 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { Box, Grid, Typography } from '@mui/material'
 import { makeStyles } from 'tss-react/mui'
 import ButtonIcon from '@/components/ButtonIcon'
 import useIntersection from '@/hooks/UseIntersection'
 import { useTranslations } from 'next-intl'
-import handleIntersection from '@/utils/handleIntersection'
 
 const useStyles = makeStyles()(() => ({
 	container: {
@@ -65,16 +63,8 @@ const useStyles = makeStyles()(() => ({
 export default function AboutSection() {
 	const { classes } = useStyles()
 	const thresholdValue = 0.19
-	const { observerEntry, elRef } = useIntersection({ threshold: thresholdValue })
+	const { animated, elRef } = useIntersection({ threshold: thresholdValue })
 	const t = useTranslations('aboutSection')
-	const [animated, setAnimated] = useState(false)
-
-	useEffect(() => {
-		const result = handleIntersection(observerEntry, thresholdValue)
-		if (result !== undefined && result !== animated) {
-			setAnimated(result)
-		}
-	}, [observerEntry, animated])
 
 	return (
 		<Box className={classes.container} id="about_me" ref={elRef}>

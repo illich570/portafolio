@@ -72,7 +72,7 @@ export default function TechCard({ data }) {
 				/>
 				<Grid container justifyContent="center">
 					<Grid className={classes.titleCard} size={{ xs: 6 }}>
-						<Typography component="span" className={classes.title}>
+						<Typography className={classes.title} component="span">
 							{data.title}
 						</Typography>
 					</Grid>

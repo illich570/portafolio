@@ -175,8 +175,8 @@ export default function ParallaxCard() {
 				className={classes.cardParallax}
 				container
 				justifyContent="center"
-				spacing={0}
 				size={{ xs: 10, md: 7 }}
+				spacing={0}
 			>
 				<Grid className={classes.whiteSectionCard} size={{ xs: 9, md: 4 }}>
 					<Typography className={classes.greetingTitle} variant="h6">

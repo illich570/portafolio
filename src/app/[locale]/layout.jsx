@@ -1,5 +1,6 @@
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter'
 import { notFound } from 'next/navigation'
+import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import Providers from '@/components/Providers'
@@ -27,15 +28,15 @@ export default async function LocaleLayout({ children, params }) {
 	return (
 		<html lang={locale}>
 			<head>
-				<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-				<link rel="shortcut icon" href="/favicon.ico" />
-				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-				<link rel="icon" sizes="32x32" type="image/png" href="/favicon-32x32.png" />
-				<link rel="icon" sizes="16x16" type="image/png" href="/favicon-16x16.png" />
-				<link rel="manifest" href="/site.webmanifest" />
-				<meta name="msapplication-TileColor" content="#860000" />
-				<meta name="apple-mobile-web-app-title" content="Illich Rada | Fullstack Developer" />
-				<meta name="application-name" content="Illich Rada | Fullstack Developer" />
+				<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+				<link href="/favicon.ico" rel="shortcut icon" />
+				<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+				<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+				<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+				<link href="/site.webmanifest" rel="manifest" />
+				<meta content="#860000" name="msapplication-TileColor" />
+				<meta content="Illich Rada | Fullstack Developer" name="apple-mobile-web-app-title" />
+				<meta content="Illich Rada | Fullstack Developer" name="application-name" />
 				<meta content="https://www.illichrada.com/og_image.png" name="image" />
 				<link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
 				<link
@@ -44,11 +45,11 @@ export default async function LocaleLayout({ children, params }) {
 				/>
 			</head>
 			<body>
-				<AppRouterCacheProvider options={{ enableCssLayer: true }}>
-					<Providers locale={locale} messages={messages}>
-						{children}
-					</Providers>
-				</AppRouterCacheProvider>
+				<NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
+					<AppRouterCacheProvider options={{ enableCssLayer: true }}>
+						<Providers>{children}</Providers>
+					</AppRouterCacheProvider>
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	)

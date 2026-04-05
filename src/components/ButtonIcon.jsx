@@ -48,12 +48,12 @@ export default function ButtonIcon(props) {
 	return (
 		<Button
 			{...rest}
-			variant={variant}
 			className={cx(
 				classes.button,
 				variant === 'outlined' ? classes.buttonOutlined : null,
 				variant === 'outlined' ? classes.buttonOutlinedSweep : classes.buttonContainedSweep
 			)}
+			variant={variant}
 		>
 			{icon ? <Icon>{icon}</Icon> : null}
 			{title}

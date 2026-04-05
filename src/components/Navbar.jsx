@@ -10,8 +10,6 @@ import {
 	Slide,
 	Typography,
 	useScrollTrigger,
-	useTheme,
-	useMediaQuery,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import { useMessages, useTranslations } from 'next-intl'
@@ -74,8 +72,6 @@ function HideOnScroll(props) {
 export default function Nav() {
 	const [showSidebar, setShowSidebar] = useState(false)
 	const { classes } = useStyles()
-	const theme = useTheme()
-	const isDesktop = useMediaQuery(theme.breakpoints.up('sm'))
 	const handleShowSidebar = () => setShowSidebar(!showSidebar)
 	const t = useTranslations('navbar')
 	const messages = useMessages()
@@ -94,38 +90,45 @@ export default function Nav() {
 					<Grid
 						alignItems="center"
 						container
-						size={{ xs: 6, sm: 4, md: 6 }}
 						justifyContent="center"
+						size={{ xs: 6, sm: 4, md: 6 }}
 					>
 						<h2 className={classes.headerTitle}>{t('header')}</h2>
 					</Grid>
 					<Grid size={{ xs: 6, sm: 8, md: 6 }}>
-						{isDesktop ? (
-							<Grid container direction="row" justifyContent="center">
-								{links.map((element, index) => (
-									<Link
-										className={classes.links}
-										key={`${element.link}_${index}`}
-										smooth
-										spy
-										to={element.ref}
-									>
-										<Typography color="primary" variant="h6">
-											{element.link}
-										</Typography>
-									</Link>
-								))}
-								<ChangeLanguage />
-							</Grid>
-						) : (
-							<Grid container direction="row" justifyContent="flex-end">
-								<IconButton color="primary" onClick={handleShowSidebar}>
-									<MenuIcon sx={{ fontSize: '1.6em' }} />
-								</IconButton>
-							</Grid>
-						)}
+						<Grid
+							container
+							direction="row"
+							justifyContent="center"
+							sx={{ display: { xs: 'none', sm: 'flex' } }}
+						>
+							{links.map((element, index) => (
+								<Link
+									className={classes.links}
+									key={`${element.link}_${index}`}
+									smooth
+									spy
+									to={element.ref}
+								>
+									<Typography color="primary" variant="h6">
+										{element.link}
+									</Typography>
+								</Link>
+							))}
+							<ChangeLanguage />
+						</Grid>
+						<Grid
+							container
+							direction="row"
+							justifyContent="flex-end"
+							sx={{ display: { xs: 'flex', sm: 'none' } }}
+						>
+							<IconButton color="primary" onClick={handleShowSidebar}>
+								<MenuIcon sx={{ fontSize: '1.6em' }} />
+							</IconButton>
+						</Grid>
 					</Grid>
-					<Drawer anchor="right" onClose={handleShowSidebar} open={showSidebar}>
+					<Drawer anchor="right" open={showSidebar} onClose={handleShowSidebar}>
 						<Grid
 							alignItems="center"
 							className={classes.containerMobile}

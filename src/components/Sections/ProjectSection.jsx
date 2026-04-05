@@ -1,12 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import ProjectCard from '@/components/ProjectCard'
 import { Grid, Typography } from '@mui/material'
 import { makeStyles } from 'tss-react/mui'
 import useIntersection from '@/hooks/UseIntersection'
 import { useTranslations } from 'next-intl'
-import handleIntersection from '@/utils/handleIntersection'
 
 const useStyles = makeStyles()(() => ({
 	container: {
@@ -49,15 +47,7 @@ const useStyles = makeStyles()(() => ({
 export default function ProjectSection({ dataCards }) {
 	const { classes, cx } = useStyles()
 	const thresholdValue = 0.12
-	const { observerEntry, elRef } = useIntersection({ threshold: thresholdValue })
-	const [animated, setAnimated] = useState(false)
-
-	useEffect(() => {
-		const result = handleIntersection(observerEntry, thresholdValue)
-		if (result !== undefined && result !== animated) {
-			setAnimated(result)
-		}
-	}, [observerEntry, animated])
+	const { animated, elRef } = useIntersection({ threshold: thresholdValue })
 	const t = useTranslations('projects')
 	return (
 		<Grid className={classes.container} container id="projects">

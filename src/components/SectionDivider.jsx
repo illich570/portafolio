@@ -36,7 +36,7 @@ export default function SectionDivider() {
 			<Grid size={{ xs: 3, md: 5, lg: 4 }}>
 				<hr className={classes.line} />
 			</Grid>
-			<Grid container alignItems="center" justifyContent="center" size={{ xs: 3, md: 1, lg: 1 }}>
+			<Grid alignItems="center" container justifyContent="center" size={{ xs: 3, md: 1, lg: 1 }}>
 				<div className={classes.square} />
 			</Grid>
 			<Grid size={{ xs: 3, md: 5, lg: 4 }}>

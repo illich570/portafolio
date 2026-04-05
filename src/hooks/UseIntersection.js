@@ -1,19 +1,26 @@
 import { useState, useEffect, useRef } from 'react'
+import handleIntersection from '@/utils/handleIntersection'
 
-export default function useIntersection(options) {
-	const threshold = options?.threshold ?? 0
-	const [observerEntry, setObserverEntry] = useState({})
-	const elRef = useRef()
+export default function useIntersection({ threshold: thresholdValue }) {
+	const [animated, setAnimated] = useState(false)
+	const elRef = useRef(null)
 
 	useEffect(() => {
 		const el = elRef.current
 		if (!el) return undefined
-		const observer = new IntersectionObserver((entries) => setObserverEntry(entries[0]), {
-			threshold,
-		})
+		const observer = new IntersectionObserver(
+			(entries) => {
+				const entry = entries[0]
+				const result = handleIntersection(entry, thresholdValue)
+				if (result !== undefined) {
+					setAnimated((prev) => (result !== prev ? result : prev))
+				}
+			},
+			{ threshold: thresholdValue }
+		)
 		observer.observe(el)
 		return () => observer.disconnect()
-	}, [threshold])
+	}, [thresholdValue])
 
-	return { observerEntry, elRef }
+	return { animated, elRef }
 }

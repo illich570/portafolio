@@ -23,7 +23,6 @@ export default function TechSection({ dataCards, title }) {
 		>
 			<Typography
 				id="tech"
-				variant="h3"
 				sx={{
 					display: 'flex',
 					justifyContent: 'center',
@@ -36,6 +35,7 @@ export default function TechSection({ dataCards, title }) {
 						fontSize: '2.6em',
 					},
 				}}
+				variant="h3"
 			>
 				{title}
 			</Typography>

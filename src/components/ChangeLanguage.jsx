@@ -100,9 +100,9 @@ export default function ChangeLanguage() {
 				MenuProps={menuProps}
 				className={classes.container}
 				disableUnderline
-				onChange={handleChangeLanguage}
 				value={locale}
 				variant="standard"
+				onChange={handleChangeLanguage}
 			>
 				{routing.locales.map((loc, index) => (
 					<MenuItem key={`${loc}_${index}`} value={loc}>

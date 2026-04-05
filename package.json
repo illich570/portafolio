@@ -11,7 +11,7 @@
 	"license": "MIT",
 	"packageManager": "pnpm@9.15.4",
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next dev --webpack",
 		"build": "next build",
 		"postbuild": "next-sitemap --config next-sitemap.config.js",
 		"start": "next start",
@@ -22,28 +22,27 @@
 	"dependencies": {
 		"@emotion/react": "^11.14.0",
 		"@emotion/styled": "^11.14.0",
-		"@mui/icons-material": "^6.4.5",
-		"@mui/material": "^6.4.5",
-		"@mui/material-nextjs": "^6.4.5",
-		"graphql": "^16.10.0",
-		"graphql-request": "^6.1.0",
-		"next": "^15.2.3",
-		"next-intl": "^3.26.5",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0",
+		"@mui/icons-material": "^7.3.9",
+		"@mui/material": "^7.3.9",
+		"@mui/material-nextjs": "^7.3.9",
+		"graphql": "^16.13.2",
+		"graphql-request": "^7.4.0",
+		"next": "^16.2.2",
+		"next-intl": "^4.9.0",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
 		"react-scroll": "^1.9.3",
-		"sharp": "^0.33.5",
-		"tss-react": "^4.9.18"
+		"sharp": "^0.34.5",
+		"tss-react": "^4.9.20"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "^3.2.0",
-		"eslint": "^9.21.0",
-		"eslint-config-next": "^15.2.3",
-		"eslint-config-prettier": "^10.0.1",
+		"eslint": "^9.39.4",
+		"eslint-config-next": "^16.2.2",
+		"eslint-config-prettier": "^10.1.8",
 		"husky": "^9.1.7",
-		"lint-staged": "^15.4.3",
+		"lint-staged": "^16.4.0",
 		"next-sitemap": "^4.2.3",
-		"prettier": "^3.5.2"
+		"prettier": "^3.8.1"
 	},
 	"lint-staged": {
 		"*.{js,jsx}": [

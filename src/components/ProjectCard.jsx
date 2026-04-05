@@ -77,8 +77,8 @@ export default function ProjectCard({ data, index = 0 }) {
 				alignItems="center"
 				className={classes.containerBodyCard}
 				container
-				justifyContent="center"
 				direction="column"
+				justifyContent="center"
 			>
 				<Grid size={{ xs: 10 }}>
 					<Typography className={classes.titleCard} variant="h5">

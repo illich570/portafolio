@@ -12,27 +12,39 @@ The plan is intentionally split so the app stays runnable after each phase.
 
 ## Current State
 
-Current important versions detected in the repo:
-
-- `next`: `15.5.14` installed, `16.2.2` latest
-- `eslint-config-next`: `15.5.14` installed, `16.2.2` latest
-- `next-intl`: `3.26.5` installed, `4.9.0` latest
-- `@mui/material`: `6.5.0` installed, `7.3.9` latest
-- `@mui/icons-material`: `6.5.0` installed, `7.3.9` latest
-- `@mui/material-nextjs`: `6.5.0` installed, `7.3.9` latest
-- `graphql-request`: `6.1.0` installed, `7.4.0` latest
-- `sharp`: `0.33.5` installed, `0.34.5` latest
+Refresh with `pnpm outdated` before each phase; approximate targets below.
 
 ## Target Strategy
 
 Use this final target, but do not jump to it in one PR:
 
-- `next` -> `16.2.2`
-- `eslint-config-next` -> `16.2.2`
-- `react` / `react-dom` -> versions resolved by Next 16
+- `next` -> `16.x` (align `eslint-config-next`)
+- `react` / `react-dom` -> versions required by that Next release
 - `next-intl` -> `4.x`
 - `@mui/material`, `@mui/icons-material`, `@mui/material-nextjs` -> `7.x`
-- safe minor dependencies upgraded first
+- `graphql-request` -> `7.x` (done before Phase 2 in this repo)
+- safe minors / non-major bumps first where listed in Phase 1
+
+## Full major-version matrix (dependency ↔ latest major)
+
+Everything in the project that still has a **newer major** on npm (or that was upgraded explicitly), and what to watch when you get there.
+
+| Package                | Role         | Target major           | Phase             | Breaking / migration notes                                                                                                                                                                                                                                                                                                                                                       |
+| ---------------------- | ------------ | ---------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `next`                 | framework    | 16.x                   | 2                 | Turbopack defaults, config deprecations, caching/middleware semantics; verify [`next.config.js`](next.config.js), [`middleware.js`](middleware.js).                                                                                                                                                                                                                              |
+| `eslint-config-next`   | lint         | 16.x                   | 2                 | Must match Next major; may surface new rules — fix or extend [`eslint.config.mjs`](eslint.config.mjs).                                                                                                                                                                                                                                                                           |
+| `react`, `react-dom`   | runtime      | whatever Next 16 peers | 2                 | Do not float independently; use versions `pnpm` resolves with `next@16`.                                                                                                                                                                                                                                                                                                         |
+| `next-intl`            | i18n         | 4.x                    | 3                 | Replace deprecated navigation helpers; `createSharedPathnamesNavigation` → `createNavigation` where required; [`src/i18n/navigation.js`](src/i18n/navigation.js), [`middleware.js`](middleware.js), [`src/components/Providers.jsx`](src/components/Providers.jsx), [`ChangeLanguage`](src/components/ChangeLanguage.jsx); re-test default locale + `localePrefix: 'as-needed'`. |
+| `@mui/material`        | UI           | 7.x                    | 4                 | `AppRouterCacheProvider` in `src/app/[locale]/layout.jsx`: import path must match Next + MUI docs (e.g. v15-appRouter → v16 after Next 16); theme/component deprecations; validate [tss-react](https://github.com/garronej/tss-react) with MUI 7.                                                                                                                                |
+| `@mui/icons-material`  | UI           | 7.x                    | 4                 | Keep version-aligned with `@mui/material`.                                                                                                                                                                                                                                                                                                                                       |
+| `@mui/material-nextjs` | SSR cache    | 7.x                    | 4                 | Same as MUI core; Next integration entry must match installed Next + MUI docs.                                                                                                                                                                                                                                                                                                   |
+| `graphql-request`      | GraphQL HTTP | 7.x                    | **1 (extension)** | Package is **ESM-first** (`"type": "module"`) but publishes **dual CJS** for `require`. [`GraphQLClient`](src/lib/graphcms.js) + `.request(doc, vars)` remains supported (legacy API). Optional style: top-level `request({ url, document, variables, requestHeaders })`. Peer **`graphql` 14–16** only — stay on `graphql@16` until upstream widens peers.                      |
+| `eslint`               | lint         | 10.x                   | 5                 | ESLint 10 config/CLI changes — re-read release notes; [`eslint.config.mjs`](eslint.config.mjs), hooks.                                                                                                                                                                                                                                                                           |
+| `lint-staged`          | git hooks    | 16.x                   | 5                 | Check release notes for CLI/config differences; [`package.json`](package.json) `lint-staged` block.                                                                                                                                                                                                                                                                              |
+
+**Already on latest major (no extra major jump planned here):** `@emotion/react`, `@emotion/styled`, `graphql` (npm `latest` is 16.x), `husky`, `next-sitemap`, `prettier`, `react-scroll`, `sharp`, `tss-react`, `@eslint/eslintrc`, `eslint-config-prettier` — still run `pnpm outdated` occasionally for minors.
+
+**Intentionally not in matrix:** anything listed under [Non-Goals](#non-goals).
 
 ## Non-Goals
 
@@ -85,8 +97,7 @@ Freeze a clean and reproducible starting point before upgrades.
 
 ### Files to Review
 
-- `middleware.js`
-- `src/middleware.js`
+- `middleware.js` (project root only)
 - `next.config.js`
 - `src/app/[locale]/layout.jsx`
 - `src/app/[locale]/page.jsx`
@@ -121,9 +132,9 @@ pnpm dev
 
 ### Goal
 
-Upgrade low-risk packages first to reduce noise later.
+Upgrade low-risk packages first to reduce noise later, then **`graphql-request` v7** before touching Next (Phase 2).
 
-### Packages
+### Packages (minors / safe bumps)
 
 - `sharp`
 - `graphql`
@@ -133,18 +144,38 @@ Upgrade low-risk packages first to reduce noise later.
 - `tss-react`
 - optionally `husky`, `next-sitemap`, `react-scroll`
 
-### Commands
+### Commands (safe bumps)
 
 ```bash
 pnpm up sharp graphql prettier eslint-config-prettier @eslint/eslintrc tss-react
 pnpm up husky next-sitemap react-scroll
 ```
 
+To force latest in range: append `@latest` per package as needed.
+
+### Phase 1 extension: `graphql-request` v6 → v7 (before Phase 2)
+
+**Command:**
+
+```bash
+pnpm add graphql-request@latest
+```
+
+**Code in this repo:** [`src/lib/graphcms.js`](src/lib/graphcms.js) uses `GraphQLClient` and `.request(QUERY, { locale })` — **still valid in v7** (legacy class API unchanged for this usage).
+
+**Upstream breaking themes (if something breaks in another project):**
+
+- ESM-first package; TypeScript projects need `moduleResolution` `bundler` or `node16`/`nodenext`.
+- Peer dependency **`graphql` versions 14–16** only (do not upgrade to a hypothetical `graphql@17` until `graphql-request` widens peers).
+- Prefer `request({ url, document, variables, requestHeaders })` for tree-shaking if you drop the class.
+
+**Verification:** same as Phase 1 — `pnpm lint`, `pnpm build` (SSG must still hydrate Hygraph data).
+
 ### Risks
 
 - formatter diffs
 - minor config drift in lint tooling
-- GraphQL typing/runtime changes if helper APIs shifted
+- `graphql-request` v7: rare bundler edge cases with pure ESM (Next 15 resolves this repo fine via dual `exports`)
 
 ### Verification
 
@@ -405,7 +436,7 @@ Then test a staged commit locally to confirm hooks still execute correctly.
 
 ## Suggested PR Split
 
-1. `baseline-cleanup-and-safe-minors`
+1. `baseline-cleanup-and-safe-minors` (include `graphql-request@7` here or a tiny follow-up PR before Phase 2)
 2. `upgrade-next-16-runtime`
 3. `migrate-next-intl-v4`
 4. `upgrade-mui-v7`
@@ -417,11 +448,12 @@ This is the exact order to follow:
 
 1. stabilize current app
 2. remove ambiguous migration leftovers
-3. upgrade safe minors
-4. upgrade `next` + `react` runtime
-5. migrate `next-intl`
-6. upgrade MUI
-7. upgrade tooling majors
+3. upgrade safe minors (Phase 1)
+4. upgrade `graphql-request` to v7 (Phase 1 extension — before Next)
+5. upgrade `next` + `react` runtime (Phase 2)
+6. migrate `next-intl` (Phase 3)
+7. upgrade MUI (Phase 4)
+8. upgrade tooling majors (Phase 5)
 
 ## Rollback Policy
 
