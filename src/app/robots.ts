@@ -1,11 +1,8 @@
 import type { MetadataRoute } from 'next'
-
-function baseUrl(): string {
-	return (process.env.SITE_URL ?? 'https://www.illichrada.com').replace(/\/$/, '')
-}
+import { getSiteBaseUrl } from '@/lib/site-url'
 
 export default function robots(): MetadataRoute.Robots {
-	const base = baseUrl()
+	const base = getSiteBaseUrl()
 	return {
 		rules: {
 			userAgent: '*',

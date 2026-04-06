@@ -1,12 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { routing } from '@/i18n/routing'
-
-function baseUrl(): string {
-	return (process.env.SITE_URL ?? 'https://www.illichrada.com').replace(/\/$/, '')
-}
+import { getSiteBaseUrl } from '@/lib/site-url'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-	const base = baseUrl()
+	const base = getSiteBaseUrl()
 
 	return routing.locales.map((locale) => {
 		const path = locale === routing.defaultLocale ? '' : `/${locale}`
