@@ -14,15 +14,18 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.15.4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '25'
           cache: 'pnpm'
 
       - name: Install
         run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint:ci
 
       - name: Typecheck
         run: pnpm typecheck

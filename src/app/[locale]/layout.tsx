@@ -1,5 +1,6 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter'
 import { Alegreya, Poppins } from 'next/font/google'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
@@ -32,6 +33,32 @@ export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
 }
 
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+	await params
+	return {
+		icons: {
+			icon: [
+				{ url: '/favicon.ico' },
+				{ url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+				{ url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+			],
+			apple: '/apple-touch-icon.png',
+		},
+		manifest: '/site.webmanifest',
+		applicationName: 'Illich Rada | Fullstack Developer',
+		appleWebApp: {
+			title: 'Illich Rada | Fullstack Developer',
+		},
+		other: {
+			'msapplication-TileColor': '#860000',
+		},
+	}
+}
+
 export default async function LocaleLayout({
 	children,
 	params,
@@ -49,18 +76,6 @@ export default async function LocaleLayout({
 
 	return (
 		<html className={`${alegreya.variable} ${poppins.variable}`} lang={locale}>
-			<head>
-				<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-				<link href="/favicon.ico" rel="shortcut icon" />
-				<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
-				<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
-				<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
-				<link href="/site.webmanifest" rel="manifest" />
-				<meta content="#860000" name="msapplication-TileColor" />
-				<meta content="Illich Rada | Fullstack Developer" name="apple-mobile-web-app-title" />
-				<meta content="Illich Rada | Fullstack Developer" name="application-name" />
-				<meta content="https://www.illichrada.com/og_image.png" name="image" />
-			</head>
 			<body>
 				<NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
 					<AppRouterCacheProvider options={{ enableCssLayer: true }}>
