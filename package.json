@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"packageManager": "pnpm@9.15.4",
 	"engines": {
-		"node": "25.x",
+		"node": "24.x",
 		"pnpm": ">=9.15.4"
 	},
 	"scripts": {
@@ -37,7 +37,7 @@
 		"tss-react": "^4.9.20"
 	},
 	"devDependencies": {
-		"@types/node": "^25",
+		"@types/node": "^24",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"husky": "^9.1.7",
