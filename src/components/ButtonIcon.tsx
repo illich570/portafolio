@@ -1,8 +1,14 @@
 'use client'
 
-import { Button, Icon } from '@mui/material'
+import CodeIcon from '@mui/icons-material/Code'
+import { Button } from '@mui/material'
 import type { ButtonProps } from '@mui/material/Button'
 import { makeStyles } from 'tss-react/mui'
+import type { SvgIconComponent } from '@mui/icons-material'
+
+const ICONS = {
+	code: CodeIcon,
+} as const satisfies Record<string, SvgIconComponent>
 
 const useStyles = makeStyles()((theme) => ({
 	button: {
@@ -44,7 +50,7 @@ const useStyles = makeStyles()((theme) => ({
 }))
 
 export type ButtonIconProps = Omit<ButtonProps, 'children'> & {
-	icon?: string
+	icon?: keyof typeof ICONS
 	title: string
 }
 
@@ -55,6 +61,7 @@ export default function ButtonIcon({
 	...rest
 }: ButtonIconProps) {
 	const { classes, cx } = useStyles()
+	const IconComponent = icon ? ICONS[icon] : null
 	return (
 		<Button
 			{...rest}
@@ -65,7 +72,7 @@ export default function ButtonIcon({
 			)}
 			variant={variant}
 		>
-			{icon ? <Icon>{icon}</Icon> : null}
+			{IconComponent ? <IconComponent fontSize="small" sx={{ mr: 0.5 }} /> : null}
 			{title}
 		</Button>
 	)
