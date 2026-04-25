@@ -1,35 +1,29 @@
-'use client'
-
-import { Button } from '@base-ui/react/button'
-import type { ComponentPropsWithoutRef } from 'react'
+import type { AnchorHTMLAttributes, ReactNode } from 'react'
 import { CodeIcon } from '@/components/icons'
 import { cn } from '@/lib/cn'
 
-const ICONS = {
-	code: CodeIcon,
-} as const
+type ButtonLinkVariant = 'contained' | 'outlined'
 
-export type ButtonIconProps = Omit<
-	ComponentPropsWithoutRef<typeof Button>,
-	'children' | 'className'
-> & {
-	className?: string
-	icon?: keyof typeof ICONS
+export type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+	icon?: ReactNode
+	iconName?: 'code'
 	title: string
-	variant?: 'contained' | 'outlined'
+	variant?: ButtonLinkVariant
 }
 
-export default function ButtonIcon({
+export default function ButtonLink({
 	className,
 	icon,
+	iconName,
 	title,
 	variant = 'contained',
-	...rest
-}: ButtonIconProps) {
-	const IconComponent = icon ? ICONS[icon] : null
+	...props
+}: ButtonLinkProps) {
+	const renderedIcon = icon ?? (iconName === 'code' ? <CodeIcon className="size-4" /> : null)
+
 	return (
-		<Button
-			{...rest}
+		<a
+			{...props}
 			className={cn(
 				'inline-flex select-none items-center justify-center gap-1 rounded-[10px] border-2 border-primary px-4 py-2 font-medium uppercase transition-all duration-500',
 				variant === 'contained' &&
@@ -39,8 +33,8 @@ export default function ButtonIcon({
 				className
 			)}
 		>
-			{IconComponent ? <IconComponent className="size-4" /> : null}
+			{renderedIcon}
 			{title}
-		</Button>
+		</a>
 	)
 }

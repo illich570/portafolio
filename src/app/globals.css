@@ -1,6 +1,51 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-primary: #860000;
+	--color-secondary: #19857b;
+	--color-background: #fff;
+	--color-foreground: #000;
+	--color-inverted: #fff;
+	--font-poppins: var(--font-poppins), sans-serif;
+	--font-alegreya: var(--font-alegreya), serif;
+	--animate-show: show 3s;
+	--animate-moving-arrow: moving-arrow 1s steps(30, end) infinite;
+}
+
+:root {
+	--color-primary: #860000;
+	--color-secondary: #19857b;
+	--color-background: #fff;
+	--color-foreground: #000;
+	--color-inverted: #fff;
+}
+
 body {
 	overflow-x: hidden;
+	background: var(--color-background);
+	color: var(--color-foreground);
+	font-family: var(--font-poppins), sans-serif;
 }
+
 a {
 	text-decoration: none;
+}
+
+@keyframes show {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes moving-arrow {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(10px);
+	}
 }

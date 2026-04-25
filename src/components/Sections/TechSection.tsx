@@ -1,6 +1,5 @@
 'use client'
 
-import { Box, Typography } from '@mui/material'
 import TechCard from '@/components/TechCard'
 import type { TechCardDTO } from '@/types/portfolio'
 
@@ -11,57 +10,18 @@ export type TechSectionProps = {
 
 export default function TechSection({ dataCards, title }: TechSectionProps) {
 	return (
-		<Box
-			sx={{
-				overflow: 'hidden',
-				display: 'flex',
-				justifyContent: 'center',
-				alignItems: 'center',
-				width: '100%',
-				margin: '4em 0',
-				flexDirection: 'column',
-				scrollPaddingBottom: '100px',
-				'@media (min-width: 700px)': {
-					flexDirection: 'row',
-					flexWrap: 'wrap',
-				},
-			}}
-		>
-			<Typography
+		<section className="my-16 flex w-full scroll-pb-[100px] flex-col items-center justify-center overflow-hidden min-[700px]:flex-row min-[700px]:flex-wrap">
+			<h2
+				className="mt-0 mb-4 flex w-full items-center justify-center text-center text-[2.6em] font-medium min-[701px]:text-5xl"
 				id="tech"
-				sx={{
-					display: 'flex',
-					justifyContent: 'center',
-					textAlign: 'center',
-					alignItems: 'center',
-					margin: '1em 0',
-					marginTop: 0,
-					width: '100%',
-					'@media (max-width: 700px)': {
-						fontSize: '2.6em',
-					},
-				}}
-				variant="h3"
 			>
 				{title}
-			</Typography>
-			<Box
-				sx={{
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
-					maxWidth: '1000px',
-					flexWrap: 'wrap',
-					margin: '0.75em 0',
-					'@media (max-width: 450px)': {
-						margin: '1.75em 0',
-					},
-				}}
-			>
+			</h2>
+			<div className="my-7 flex max-w-[1000px] flex-wrap items-center justify-center min-[451px]:my-3">
 				{dataCards.map((element, index) => (
 					<TechCard data={element} key={`abc_${index}`} />
 				))}
-			</Box>
-		</Box>
+			</div>
+		</section>
 	)
 }

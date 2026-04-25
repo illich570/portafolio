@@ -1,116 +1,55 @@
 'use client'
 
-import FormControl from '@mui/material/FormControl'
-import Select from '@mui/material/Select'
-import type { SelectChangeEvent } from '@mui/material/Select'
-import MenuItem from '@mui/material/MenuItem'
-import { makeStyles } from 'tss-react/mui'
+import { Select } from '@base-ui/react/select'
 import { useLocale } from 'next-intl'
 import { useRouter, usePathname } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 import { useTransition } from 'react'
-
-const useStyles = makeStyles()((theme) => ({
-	container: {
-		color: theme.palette.primary.main,
-		fontWeight: 200,
-		borderStyle: 'none',
-		borderWidth: 2,
-		borderRadius: 12,
-		paddingLeft: '.6em',
-		textTransform: 'uppercase',
-		'&:focus': {
-			borderRadius: 12,
-			borderColor: theme.palette.primary.main,
-		},
-	},
-	icon: {
-		color: theme.palette.primary.main,
-		right: 12,
-		position: 'absolute',
-		userSelect: 'none',
-		pointerEvents: 'none',
-	},
-	paper: {
-		borderRadius: 12,
-		marginTop: 8,
-	},
-	list: {
-		paddingTop: 0,
-		paddingBottom: 0,
-		background: 'white',
-		textTransform: 'uppercase',
-		'& li': {
-			fontWeight: 200,
-			paddingTop: 12,
-			paddingBottom: 12,
-		},
-		'& li:hover': {
-			background: theme.palette.primary.main,
-			color: 'white',
-		},
-		'& li.Mui-selected': {
-			color: 'white',
-			background: theme.palette.primary.main,
-		},
-		'& li.Mui-selected:hover': {
-			background: theme.palette.primary.main,
-		},
-	},
-	control: {
-		'@media (max-width: 599px)': {
-			width: '100%',
-		},
-	},
-}))
+import { ChevronDownIcon } from '@/components/icons'
 
 export default function ChangeLanguage() {
-	const { classes } = useStyles()
 	const locale = useLocale()
 	const router = useRouter()
 	const pathname = usePathname()
 	const [isPending, startTransition] = useTransition()
 
-	const menuProps = {
-		PaperProps: {
-			className: classes.paper,
-		},
-		MenuListProps: {
-			className: classes.list,
-		},
-		anchorOrigin: {
-			vertical: 'bottom' as const,
-			horizontal: 'left' as const,
-		},
-		transformOrigin: {
-			vertical: 'top' as const,
-			horizontal: 'left' as const,
-		},
-	}
+	const handleChangeLanguage = (newLocale: string | null) => {
+		if (!newLocale || newLocale === locale) {
+			return
+		}
 
-	const handleChangeLanguage = (event: SelectChangeEvent<string>) => {
-		const newLocale = event.target.value
 		startTransition(() => {
 			router.replace(pathname, { locale: newLocale })
 		})
 	}
 
 	return (
-		<FormControl className={classes.control} disabled={isPending}>
-			<Select
-				MenuProps={menuProps}
-				className={classes.container}
-				disableUnderline
-				value={locale}
-				variant="standard"
-				onChange={handleChangeLanguage}
-			>
-				{routing.locales.map((loc, index) => (
-					<MenuItem key={`${loc}_${index}`} value={loc}>
-						{loc}
-					</MenuItem>
-				))}
-			</Select>
-		</FormControl>
+		<div className="w-full sm:w-auto">
+			<Select.Root disabled={isPending} value={locale} onValueChange={handleChangeLanguage}>
+				<Select.Trigger className="relative inline-flex w-full items-center justify-between rounded-xl border-0 py-2 pr-8 pl-2 font-light text-primary uppercase outline-2 outline-offset-2 outline-primary disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto">
+					<Select.Value />
+					<Select.Icon>
+						<ChevronDownIcon className="pointer-events-none absolute right-3 size-4 text-primary" />
+					</Select.Icon>
+				</Select.Trigger>
+				<Select.Portal>
+					<Select.Positioner sideOffset={8}>
+						<Select.Popup className="z-60 overflow-hidden rounded-xl bg-white shadow-lg">
+							<Select.List className="p-0 uppercase">
+								{routing.locales.map((loc, index) => (
+									<Select.Item
+										className="cursor-pointer px-5 py-3 font-light outline-none data-[highlighted]:bg-primary data-[highlighted]:text-white data-[selected]:bg-primary data-[selected]:text-white"
+										key={`${loc}_${index}`}
+										value={loc}
+									>
+										<Select.ItemText>{loc}</Select.ItemText>
+									</Select.Item>
+								))}
+							</Select.List>
+						</Select.Popup>
+					</Select.Positioner>
+				</Select.Portal>
+			</Select.Root>
+		</div>
 	)
 }

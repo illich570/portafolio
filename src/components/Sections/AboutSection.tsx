@@ -1,119 +1,51 @@
 'use client'
 
-import { Box, Grid, Typography } from '@mui/material'
-import { makeStyles } from 'tss-react/mui'
-import ButtonIcon from '@/components/ButtonIcon'
+import ButtonLink from '@/components/ui/ButtonLink'
 import useIntersection from '@/hooks/useIntersection'
 import { useTranslations } from 'next-intl'
-
-const useStyles = makeStyles()(() => ({
-	container: {
-		overflow: 'hidden',
-		display: 'flex',
-		justifyContent: 'space-evenly',
-		alignItems: 'center',
-		width: '100%',
-		flexDirection: 'column',
-		scrollPaddingBottom: '100px',
-		'@media (min-width: 700px)': {
-			flexDirection: 'row',
-			flexWrap: 'wrap',
-		},
-	},
-	containerTitle: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginBottom: '1em',
-		width: '100%',
-		'@media (max-width: 700px)': {
-			fontSize: '2.6em',
-		},
-	},
-	buttonContainer: {
-		margin: '1.8em 0',
-	},
-	containerParagraph: {
-		lineHeight: 2,
-		letterSpacing: '0.5px',
-	},
-	lastParagraph: {
-		textAlign: 'right',
-		opacity: 0,
-		transition: '1.5s',
-		transform: ' translate(0,-150px)',
-		'@media (min-width: 700px)': {
-			marginTop: '7em',
-		},
-	},
-	firstParagraph: {
-		opacity: 0,
-		transform: ' translate(0,150px)',
-		transition: '1.5s',
-		'@media (min-width: 700px)': {
-			marginBottom: '7em',
-		},
-	},
-	animationParagraph: {
-		opacity: 1,
-		transform: ' translate(0)',
-	},
-}))
+import { cn } from '@/lib/cn'
 
 export default function AboutSection() {
-	const { classes } = useStyles()
 	const thresholdValue = 0.19
 	const { animated, elRef } = useIntersection({ threshold: thresholdValue })
 	const t = useTranslations('aboutSection')
 
 	return (
-		<Box className={classes.container} id="about_me" ref={elRef}>
-			<Typography className={classes.containerTitle} variant="h3">
+		<section
+			className="flex w-full scroll-pb-[100px] flex-col items-center justify-evenly overflow-hidden min-[700px]:flex-row min-[700px]:flex-wrap"
+			id="about_me"
+			ref={elRef}
+		>
+			<h2 className="mb-[1em] flex w-full items-center justify-center text-[2.6em] font-medium min-[701px]:text-5xl">
 				{t('title')}
-			</Typography>
-			<Grid
-				className={`${classes.firstParagraph} ${animated ? classes.animationParagraph : ''}`}
-				size={{ xs: 9, md: 4 }}
+			</h2>
+			<div
+				className={cn(
+					'w-9/12 opacity-0 transition-[opacity,transform] duration-[1500ms] min-[700px]:mb-[7em] md:w-4/12',
+					animated ? 'translate-y-0 opacity-100' : 'translate-y-[150px]'
+				)}
 			>
-				<Typography className={classes.containerParagraph} variant="body1">
-					{t('paragraph1')}
-				</Typography>
-				<Grid
-					alignItems="center"
-					className={classes.buttonContainer}
-					container
-					justifyContent="center"
-					size={{ xs: 12 }}
-				>
-					<a href={t('urlCV')} rel="noopener noreferrer" target="_blank">
-						<ButtonIcon color="primary" icon="code" title={t('buttonCV')} variant="contained" />
-					</a>
-				</Grid>
-			</Grid>
-			<Grid
-				className={`${classes.lastParagraph} ${animated ? classes.animationParagraph : ''}`}
-				size={{ xs: 9, md: 4 }}
+				<p className="leading-[2] tracking-[0.5px]">{t('paragraph1')}</p>
+				<div className="my-[1.8em] flex w-full items-center justify-center">
+					<ButtonLink href={t('urlCV')} iconName="code" title={t('buttonCV')} variant="contained" />
+				</div>
+			</div>
+			<div
+				className={cn(
+					'w-9/12 text-right opacity-0 transition-[opacity,transform] duration-[1500ms] min-[700px]:mt-[7em] md:w-4/12',
+					animated ? 'translate-y-0 opacity-100' : '-translate-y-[150px]'
+				)}
 			>
-				<Typography className={classes.containerParagraph} variant="body1">
-					{t('paragraph2')}
-				</Typography>
-				<Grid
-					alignItems="center"
-					className={classes.buttonContainer}
-					container
-					justifyContent="center"
-					size={{ xs: 12 }}
-				>
-					<a href={t('urlLinkedin')} rel="noopener noreferrer" target="_blank">
-						<ButtonIcon
-							color="primary"
-							icon="code"
-							title={t('buttonLinkedIn')}
-							variant="contained"
-						/>
-					</a>
-				</Grid>
-			</Grid>
-		</Box>
+				<p className="leading-[2] tracking-[0.5px]">{t('paragraph2')}</p>
+				<div className="my-[1.8em] flex w-full items-center justify-center">
+					<ButtonLink
+						href={t('urlLinkedin')}
+						iconName="code"
+						title={t('buttonLinkedIn')}
+						variant="contained"
+					/>
+				</div>
+			</div>
+		</section>
 	)
 }
