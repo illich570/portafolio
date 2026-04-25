@@ -1,66 +1,10 @@
 'use client'
 
-import { Grid, Typography } from '@mui/material'
-import { makeStyles } from 'tss-react/mui'
-import ButtonIcon from '@/components/ButtonIcon'
 import Image from 'next/image'
+import ButtonLink from '@/components/ui/ButtonLink'
+import { cn } from '@/lib/cn'
 import { useTranslations } from 'next-intl'
 import type { ProjectCardDTO } from '@/types/portfolio'
-
-const useStyles = makeStyles<{ index: number }>()((_theme, { index }) => ({
-	card: {
-		maxWidth: '320px',
-		minHeight: '550px',
-		maxHeight: '550px',
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		boxShadow: '0px 8px 10px rgba(0, 0, 0, 0.4)',
-		borderRadius: '15px',
-		margin: '1.5em',
-		'@media (min-width: 1084px)': {
-			marginTop: index === 1 ? '5em' : '0',
-		},
-	},
-	containerImage: {
-		width: '100%',
-	},
-	image: {
-		width: '100%',
-		maxHeight: '220px',
-		borderTopLeftRadius: '15px',
-		borderTopRightRadius: '15px',
-	},
-	titleCard: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		letterSpacing: '1px',
-		textAlign: 'center',
-		height: '3em',
-	},
-	paragraphCard: {
-		margin: '1em 0',
-		'@media (max-width: 330px)': {
-			margin: '2.25em 0',
-		},
-		height: '7em',
-		display: 'flex',
-		alignItems: 'center',
-	},
-	paragraph: {
-		lineHeight: 1.8,
-		letterSpacing: '0.5px',
-	},
-	buttonContainer: {
-		margin: '0.6em 0',
-	},
-	containerBodyCard: {
-		'@media (min-width: 330px)': {
-			paddingBottom: '1.5em',
-		},
-	},
-}))
 
 export type ProjectCardProps = {
 	data: ProjectCardDTO
@@ -68,64 +12,59 @@ export type ProjectCardProps = {
 }
 
 export default function ProjectCard({ data, index = 0 }: ProjectCardProps) {
-	const { classes } = useStyles({ index })
 	const t = useTranslations('projects')
 	const imgUrl = data.localizations?.[0]?.image?.url
 
 	return (
-		<div className={classes.card}>
+		<article
+			className={cn(
+				'm-6 flex max-h-[550px] min-h-[550px] max-w-[320px] flex-col items-center rounded-[15px] shadow-[0_8px_10px_rgba(0,0,0,0.4)]',
+				index === 1 && 'min-[1084px]:mt-20'
+			)}
+		>
 			{imgUrl ? (
-				<div className={classes.containerImage}>
-					<Image alt={data.title} className={classes.image} height={220} src={imgUrl} width={320} />
+				<div className="w-full">
+					<Image
+						alt={data.title}
+						className="max-h-[220px] w-full rounded-t-[15px]"
+						height={220}
+						src={imgUrl}
+						width={320}
+					/>
 				</div>
 			) : null}
-			<Grid
-				alignItems="center"
-				className={classes.containerBodyCard}
-				container
-				direction="column"
-				justifyContent="center"
-			>
-				<Grid size={{ xs: 10 }}>
-					<Typography className={classes.titleCard} variant="h5">
+			<div className="flex flex-col items-center justify-center min-[330px]:pb-6">
+				<div className="w-10/12">
+					<h3 className="flex h-12 items-center justify-center text-center text-2xl tracking-[1px]">
 						{data.title}
-					</Typography>
-				</Grid>
-				<Grid className={classes.paragraphCard} size={{ xs: 9 }}>
-					<Typography className={classes.paragraph} variant="body2">
-						{data.description}
-					</Typography>
-				</Grid>
-				<Grid
-					alignItems="center"
-					className={classes.buttonContainer}
-					container
-					justifyContent="center"
-					size={{ xs: 10 }}
-				>
+					</h3>
+				</div>
+				<div className="my-4 flex h-28 w-9/12 items-center max-[330px]:my-9">
+					<p className="text-sm leading-[1.8] tracking-[0.5px]">{data.description}</p>
+				</div>
+				<div className="my-2 flex w-10/12 items-center justify-center">
 					{data.githubUrl !== 'N' && (
-						<a href={data.githubUrl} rel="noopener noreferrer" target="_blank">
-							<ButtonIcon
-								color="primary"
-								icon="code"
-								title={t('buttonAction')}
-								variant="contained"
-							/>
-						</a>
+						<ButtonLink
+							href={data.githubUrl}
+							iconName="code"
+							rel="noopener noreferrer"
+							target="_blank"
+							title={t('buttonAction')}
+							variant="contained"
+						/>
 					)}
-				</Grid>
-				<Grid
-					alignItems="center"
-					className={classes.buttonContainer}
-					container
-					justifyContent="center"
-					size={{ xs: 10 }}
-				>
-					<a href={data.exampleUrl} rel="noopener noreferrer" target="_blank">
-						<ButtonIcon color="primary" icon="code" title={t('buttonExample')} variant="outlined" />
-					</a>
-				</Grid>
-			</Grid>
-		</div>
+				</div>
+				<div className="my-2 flex w-10/12 items-center justify-center">
+					<ButtonLink
+						href={data.exampleUrl}
+						iconName="code"
+						rel="noopener noreferrer"
+						target="_blank"
+						title={t('buttonExample')}
+						variant="outlined"
+					/>
+				</div>
+			</div>
+		</article>
 	)
 }

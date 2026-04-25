@@ -1,47 +1,15 @@
-'use client'
-
-import { Grid } from '@mui/material'
-import { makeStyles } from 'tss-react/mui'
-
-const useStyles = makeStyles()((theme) => ({
-	line: {
-		border: '2px solid',
-		borderColor: theme.palette.primary.main,
-		backgroundColor: theme.palette.primary.main,
-		width: '100%',
-		display: 'flex',
-	},
-	container: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		margin: '2.5em 0',
-		zIndex: -5,
-	},
-	square: {
-		border: '4px solid',
-		borderColor: theme.palette.primary.main,
-		boxSizing: 'border-box',
-		transform: 'rotate(-45deg)',
-		width: '40px',
-		height: '40px',
-	},
-}))
-
 export default function SectionDivider() {
-	const { classes } = useStyles()
-
 	return (
-		<Grid className={classes.container} container>
-			<Grid size={{ xs: 3, md: 5, lg: 4 }}>
-				<hr className={classes.line} />
-			</Grid>
-			<Grid alignItems="center" container justifyContent="center" size={{ xs: 3, md: 1, lg: 1 }}>
-				<div className={classes.square} />
-			</Grid>
-			<Grid size={{ xs: 3, md: 5, lg: 4 }}>
-				<hr className={classes.line} />
-			</Grid>
-		</Grid>
+		<div className="z-[-5] my-10 flex items-center justify-center">
+			<div className="w-3/12 md:w-5/12 lg:w-4/12">
+				<hr className="flex w-full border-2 border-primary bg-primary" />
+			</div>
+			<div className="flex w-3/12 items-center justify-center md:w-1/12 lg:w-1/12">
+				<div className="h-10 w-10 -rotate-45 border-4 border-primary" />
+			</div>
+			<div className="w-3/12 md:w-5/12 lg:w-4/12">
+				<hr className="flex w-full border-2 border-primary bg-primary" />
+			</div>
+		</div>
 	)
 }

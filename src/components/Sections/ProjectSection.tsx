@@ -1,77 +1,42 @@
 'use client'
 
 import ProjectCard from '@/components/ProjectCard'
-import { Box, Grid, Typography } from '@mui/material'
-import { makeStyles } from 'tss-react/mui'
 import useIntersection from '@/hooks/useIntersection'
 import { useTranslations } from 'next-intl'
+import { cn } from '@/lib/cn'
 import type { ProjectCardDTO } from '@/types/portfolio'
-
-const useStyles = makeStyles()(() => ({
-	container: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		overflow: 'hidden',
-		flexDirection: 'column',
-		scrollPaddingBottom: '100px',
-		transition: 'all 0.5s ease',
-		'@media (min-width: 700px)': {
-			flexDirection: 'row',
-		},
-	},
-	containerTitle: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		margin: '0.8em 0',
-		letterSpacing: '1px',
-		'@media (max-width: 700px)': {
-			fontSize: '2.6em',
-		},
-	},
-	containerCards: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		overflow: 'hidden',
-		transition: '1s',
-		transform: 'translate(200px)',
-		opacity: 0,
-	},
-	containerCardsFadeIn: {
-		transform: 'translate(0)',
-		opacity: 1,
-	},
-}))
 
 export type ProjectSectionProps = {
 	dataCards: ProjectCardDTO[]
 }
 
 export default function ProjectSection({ dataCards }: ProjectSectionProps) {
-	const { classes, cx } = useStyles()
 	const thresholdValue = 0.12
 	const { animated, elRef } = useIntersection({ threshold: thresholdValue })
 	const t = useTranslations('projects')
 	return (
-		<Grid className={classes.container} container id="projects">
-			<Grid size={{ xs: 12 }}>
-				<Typography className={classes.containerTitle} variant="h3">
+		<section
+			className="flex scroll-pb-[100px] flex-col items-center justify-center overflow-hidden transition-all duration-500 min-[700px]:flex-row"
+			id="projects"
+		>
+			<div className="w-full">
+				<h2 className="my-[0.8em] flex items-center justify-center text-[2.6em] tracking-[1px] min-[701px]:text-5xl">
 					{t('title')}
-				</Typography>
-			</Grid>
-			<Grid size={{ xs: 12 }}>
-				<Box
+				</h2>
+			</div>
+			<div className="w-full">
+				<div
 					ref={elRef}
-					className={cx(classes.containerCards, animated && classes.containerCardsFadeIn)}
-					sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}
+					className={cn(
+						'flex translate-x-[200px] flex-wrap items-center justify-center overflow-hidden opacity-0 transition duration-1000',
+						animated && 'translate-x-0 opacity-100'
+					)}
 				>
 					{dataCards.map((element, index) => (
 						<ProjectCard data={element} index={index} key={`abc_${index}`} />
 					))}
-				</Box>
-			</Grid>
-		</Grid>
+				</div>
+			</div>
+		</section>
 	)
 }

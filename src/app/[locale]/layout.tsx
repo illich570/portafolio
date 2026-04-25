@@ -1,11 +1,9 @@
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter'
 import { Alegreya, Poppins } from 'next/font/google'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { isSupportedLocale, routing } from '@/i18n/routing'
-import Providers from '@/components/Providers'
 import '@/app/globals.css'
 import type { ReactNode } from 'react'
 
@@ -78,9 +76,7 @@ export default async function LocaleLayout({
 		<html className={`${alegreya.variable} ${poppins.variable}`} lang={locale}>
 			<body>
 				<NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
-					<AppRouterCacheProvider options={{ enableCssLayer: true }}>
-						<Providers>{children}</Providers>
-					</AppRouterCacheProvider>
+					{children}
 				</NextIntlClientProvider>
 			</body>
 		</html>

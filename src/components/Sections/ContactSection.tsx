@@ -1,44 +1,26 @@
 'use client'
 
-import { Grid, Typography } from '@mui/material'
-import { makeStyles } from 'tss-react/mui'
-
-const useStyles = makeStyles()((theme) => ({
-	link: {
-		color: theme.palette.primary.main,
-		marginLeft: '0.2em',
-		textDecoration: 'underline',
-	},
-	container: {
-		margin: '10em 0',
-	},
-}))
-
 export type ContactSectionProps = {
 	preamble: string
 	actionLabel: string
 }
 
 export default function ContactSection({ preamble, actionLabel }: ContactSectionProps) {
-	const { classes } = useStyles()
-
 	return (
-		<Grid alignItems="center" className={classes.container} container justifyContent="center">
-			<Grid size={{ xs: 10 }}>
-				<Typography align="center" id="contact_me" variant="h4">
-					{preamble}
-					<address style={{ display: 'inline' }}>
-						<a
-							className={classes.link}
-							href="mailto:illich570@gmail.com"
-							rel="noreferrer noopener"
-							target="_blank"
-						>
-							{actionLabel}
-						</a>
-					</address>
-				</Typography>
-			</Grid>
-		</Grid>
+		<section className="my-40 flex items-center justify-center">
+			<h2 className="w-10/12 text-center text-3xl font-medium" id="contact_me">
+				{preamble}
+				<address className="inline not-italic">
+					<a
+						className="ml-1 text-primary underline"
+						href="mailto:illich570@gmail.com"
+						rel="noreferrer noopener"
+						target="_blank"
+					>
+						{actionLabel}
+					</a>
+				</address>
+			</h2>
+		</section>
 	)
 }
